@@ -1,3 +1,5 @@
+<!-- @format -->
+
 # ✅ Checklist do Projeto de Calibração
 
 ## 1. ⚙️ Preparação Inicial
@@ -13,8 +15,8 @@
 
 ### 2.1. Tratamento de Erros e Validação
 
-- [ ] **Instalação de Dependências:**
-  - [ ] Instalar `express-validator`.
+- [x] **Instalação de Dependências:**
+  - [x] Instalar `express-validator`.
 - [x] **Camada de Erros Personalizados:**
   - [x] Criar o diretório `errors/`.
   - [x] Criar as classes de erros (`CustomError`, `ValidationError`, `ConflictError`).

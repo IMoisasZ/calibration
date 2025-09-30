@@ -1,0 +1,7 @@
+# backend
+backend/node_modules
+backend/src/uploads
+backend/calibration.log
+
+# frontend
+frontend/node_modules

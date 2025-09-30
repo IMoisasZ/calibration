@@ -1,0 +1,226 @@
+.container {
+    max-width: 1400px;
+    & h1 {
+        margin-bottom: 2rem;
+    }
+    .container_card {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: 1rem;
+        flex-wrap: wrap;
+
+        & .card {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #c1c1c1;
+            border-radius: .25rem;
+            padding: .5rem;
+            transition: 1s ease-in-out;
+            width: 18rem;
+            max-width: 20rem;
+            height: 18rem;
+
+            & .div_status {
+                width: 100%;
+                font-size: .9rem;
+                margin-block: 1rem;
+            }
+
+            &:hover {
+                transform: scale(1.05);
+                box-shadow: 
+                0 8px 16px rgba(0, 0, 0, 0.2), /* Aumenta a sombra */
+                0 12px 40px rgba(0, 0, 0, 0.1); 
+                transform: translateY(-3px);
+                cursor: pointer;
+            }
+
+            & .btn_analysis_calibration {
+                width: 100%;
+            }
+        }
+
+        & h3, h4 {
+            color: blue;
+        }
+
+        & p {
+            font-weight: 600;
+        }
+
+        .status {
+            font-weight: 700;
+            width: 100%;
+            border-radius: .25rem;
+        }
+
+        .analysis {
+            background-color: rgb(222, 146, 5);
+            color: white;
+            text-align: center;
+        }
+
+        .reproved {
+            background-color: rgb(158, 8, 8);
+            color: white;
+            text-align: center;
+        }
+    }
+
+    .container_btns{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-block: 1rem;
+    }
+
+    .truncate {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+    }
+}
+
+/* calibration analysis data calibration */
+.container_data_calibration {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .5rem;
+    width: 100%;
+
+    & .equipment_calibration {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        & p {
+            font-weight: 600;
+        }
+    }
+
+    & .data_calibration {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        & p {
+            font-weight: 600;
+            font-size: .9rem;
+        }
+    }
+
+    & .calibration_result {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        & .calibration_result_data {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: .3rem;
+            border-bottom: 1px dashed #c1c1c1;
+            padding: .5rem;
+            transition: 1s ease-in;
+
+            & .result_data {
+                width: 100%;
+                & p, span {
+                    font-weight: 600;
+                    font-size: .8rem;
+                    width: 7rem;
+                }
+            }
+
+            &:hover {
+                cursor: pointer;
+                background-color: rgb(3, 3, 42);
+                color: white;
+            }
+
+        }
+    }
+
+    .status_approved {
+        vertical-align: middle;
+        background-color: rgb(4, 90, 4);
+        color: white;
+        padding: .5rem;
+        text-align: center;
+        border-radius: .5rem;
+    }
+
+    .status_reproved {
+        vertical-align: middle;
+        background-color: rgb(143, 5, 5);
+        color: white;
+        padding: .5rem;
+        text-align: center;
+        border-radius: .5rem;
+    }
+
+    .status_analysis {
+        vertical-align: middle;
+        background-color: rgb(153, 101, 5);
+        color: white;
+        padding: .3rem;
+        text-align: center;
+        border-radius: .5rem;
+    }
+
+    
+}
+
+.divider {
+    margin-block: .5rem;
+}
+
+/* calibration analysis definition */
+.container_analysis_calibration {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+
+    & .select {
+        width: 50%;
+        margin-top: .5rem;
+    }
+
+    & .textArea {
+        width: 100%;
+
+        
+    }
+
+    & .container_textArea {
+        width: 100%;
+
+        & span {
+            display: block;
+            width: 100%;
+            font-size: .8rem;
+            font-weight: 700;
+            text-align: right;
+        }
+    }
+}
+
+.count_ok {
+    color: green;
+}
+
+.count_nok {
+    color: red;
+}
+
+.container_btns_calibration_analysis_definition {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}

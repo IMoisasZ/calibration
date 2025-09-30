@@ -18,4 +18,10 @@ class BadRequestError extends CustomError {
 	}
 }
 
-export { CustomError, NotFoundError, BadRequestError }
+class AlreadyAdded extends CustomError {
+	constructor(message = 'Bad request') {
+		super(message, 400)
+	}
+}
+
+export { CustomError, NotFoundError, BadRequestError, AlreadyAdded }

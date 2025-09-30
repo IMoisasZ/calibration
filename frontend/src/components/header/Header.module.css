@@ -1,0 +1,53 @@
+/* frontend/src/components/Header.module.css */
+.header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 24px;
+}
+
+.navLink {
+    text-decoration: none;
+    color: #495057;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+}
+
+.navLink:hover {
+    color: #007bff;
+}
+
+.userAvatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover; /*Guarantee that the image don't stay distorted */
+    border: 2px solid #000;
+
+    & p {
+        font-weight: bold;
+        transition: 1s ease-in-out;
+    }
+
+    &:hover {
+        cursor: pointer;
+        color: #007bff;
+    }
+}

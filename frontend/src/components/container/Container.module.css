@@ -1,0 +1,22 @@
+.container {
+    width: 100%;
+    max-width: 1200px; /*Default value for longer screen*/
+    margin: 0 auto;
+    padding: 0 20px; /* Default padding*/
+}
+
+/* For small screens that 768px (tablets, some iPads) */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px; /*Reducing the padding on small screens*/
+    }
+}
+
+/* For small screens that 576px (smartphones) */
+@media (max-width: 576px) {
+    .container {
+        padding: 0 12px; /* Reducing more the padding on some mobiles screen. */
+        /*The max-width can be removed or adjusted if you want that the container take all width on mobiles*/
+        max-width: none; 
+    }
+}

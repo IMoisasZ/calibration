@@ -1,9 +1,19 @@
 /** @format */
 
-import { body, param, validationResult } from 'express-validator'
-import { BadRequestError } from '../errors/errorMiddleware.js'
+import { param, body } from 'express-validator'
+import { validationResult } from '../utils/validationResult.utils.js'
 
-const createLocalizationValidate = [
+/**@description -> Reusable the function for param ID */
+const localizationParamValidation = [
+	param('id')
+		.notEmpty()
+		.withMessage('Id não informado!')
+		.isNumeric()
+		.withMessage(`O valor deve ser numerico!`),
+]
+
+/**@description -> Reusable the function for body description and active */
+const localizationBodyValidation = [
 	body('description')
 		.notEmpty()
 		.withMessage('Descrição não informada!')
@@ -14,90 +24,32 @@ const createLocalizationValidate = [
 		.withMessage('Active não informada!')
 		.isBoolean()
 		.withMessage('A informação deve ser do tipo boolean!'),
-	(req, res) => {
-		const errors = validationResult(req)
+]
 
-		if (!errors.isEmpty()) {
-			const errorMessages = errors.array().map((error) => error.msg)
-
-			return res
-				.status(400)
-				.json({ message: defaultMessage, errors: errorMessages })
-		}
-		next()
-	},
+const createLocalizationValidate = [
+	...localizationBodyValidation,
+	validationResult(),
 ]
 
 const updateLocalizationValidate = [
-	param('id')
-		.notEmpty()
-		.withMessage('Id não informado!')
-		.isNumeric()
-		.withMessage(`O valor deve ser numerico!`),
-	body('description')
-		.notEmpty()
-		.withMessage('Descrição não informada!')
-		.isString()
-		.withMessage('Deve ser informado como texto'),
-	body('active')
-		.notEmpty()
-		.withMessage('Active não informada!')
-		.isBoolean()
-		.withMessage('A informação deve ser do tipo boolean!'),
-	(req, res) => {
-		const errors = validationResult(req)
-
-		if (!errors.isEmpty()) {
-			const errorMessages = errors.array().map((error) => error.msg)
-
-			return res
-				.status(400)
-				.json({ message: defaultMessage, errors: errorMessages })
-		}
-	},
+	...localizationParamValidation,
+	...localizationBodyValidation,
+	validationResult(),
 ]
 
 const getLocalizationValidate = [
-	param('id')
-		.notEmpty()
-		.withMessage('Id não informado!')
-		.isNumeric()
-		.withMessage(`O valor deve ser numerico!`),
-	(req, res) => {
-		const errors = validationResult(req)
-
-		if (!errors.isEmpty()) {
-			const errorMessages = errors.array().map((error) => error.msg)
-
-			return res
-				.status(400)
-				.json({ message: defaultMessage, errors: errorMessages })
-		}
-	},
+	...localizationParamValidation,
+	validationResult(),
 ]
 
 const updateLocalizationStatusValidate = [
-	param('id')
-		.notEmpty()
-		.withMessage('Id não informado!')
-		.isNumeric()
-		.withMessage(`O valor deve ser numerico!`),
+	...localizationParamValidation,
 	body('active')
 		.notEmpty()
 		.withMessage('Active não informada!')
 		.isBoolean()
 		.withMessage('A informação deve ser do tipo boolean!'),
-	(req, res) => {
-		const errors = validationResult(req)
-
-		if (!errors.isEmpty()) {
-			const errorMessages = errors.array().map((error) => error.msg)
-
-			return res
-				.status(400)
-				.json({ message: defaultMessage, errors: errorMessages })
-		}
-	},
+	validationResult(),
 ]
 
 export {

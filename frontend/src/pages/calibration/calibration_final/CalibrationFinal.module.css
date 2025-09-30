@@ -1,0 +1,31 @@
+.container {
+    max-width: 100%;
+
+    & .table td {
+        color: black;
+        font-size: .8rem;
+        font-weight: 600;
+        transition: 1s ease-in;
+
+        & svg {
+            color: orange;
+        }
+    }
+
+    & .table tr {
+        transition: .8s ease-in;
+        
+        &:hover {
+            background-color: rgb(2, 2, 55);
+            & td {
+                color: #fff;
+            }
+        }
+    }
+
+    
+}
+
+.ttt {
+        color: aqua;
+    }

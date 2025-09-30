@@ -1,18 +1,8 @@
 import { LocalizationModel } from '../models/__index.js'
-import { UniqueConstraintError } from 'sequelize'
 
 async function createLocalization(localization) {
-	try {
-		const newLocalization = await LocalizationModel.create(localization)
-		return await newLocalization
-	} catch (error) {
-		if (error instanceof UniqueConstraintError) {
-			throw new Error(
-				`A localização ${localization.description} já foi cadastrada!`
-			)
-		}
-		throw error
-	}
+	const newLocalization = await LocalizationModel.create(localization)
+	return await newLocalization
 }
 
 async function updateLocalization(id, localization) {

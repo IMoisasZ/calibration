@@ -1,7 +1,10 @@
 /** @format */
-function validationResult(defaultMessage = 'Dados inválidos!') {
+import { validationResult as expressValidationResult } from 'express-validator'
+import { BadRequestError } from '../errors/customErrors.error.js'
+
+function validationResult() {
 	return (req, res, next) => {
-		const errors = validationResult(req)
+		const errors = expressValidationResult(req)
 
 		if (!errors.isEmpty()) {
 			const errorMessages = errors.array().map((error) => error.msg)
@@ -10,3 +13,5 @@ function validationResult(defaultMessage = 'Dados inválidos!') {
 		next()
 	}
 }
+
+export { validationResult }

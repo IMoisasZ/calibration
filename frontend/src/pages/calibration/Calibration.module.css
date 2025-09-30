@@ -1,0 +1,366 @@
+.container_calibration {
+    max-width: 1400px;
+    .container_div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        
+        & .data_equipment_info_default {
+            border-bottom: 1px solid #c1c1c1;
+            width: 90%;
+            margin-top: .7rem;
+            height: 2.7rem;
+            padding: .25rem .5rem;
+        }
+
+        & .data_equipment_info {
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: .25rem;
+        }
+
+    }
+    & .div_data_calibration {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: .5rem;
+    }
+}
+
+.div_data_equipment {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    border: 1px solid #c1c1c1;
+    padding: .5rem;
+    border-radius: .5rem;
+}
+
+/* input */
+.input {
+    width: 10%;
+}
+
+.input_description {
+    width: 90%;
+}
+
+.input_date {
+    width: 11%
+}
+
+.input_date_next {
+    width: 20%
+}
+
+.input_certificate_number {
+    width: 40%;
+}
+
+.input_certificate_file {
+    width: 80%;
+}
+
+/* button */
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & svg {
+        font-size: 2rem;
+    }
+}
+
+.div_btns {
+    display: flex;
+    gap: 1rem;
+    margin-top: .5rem;
+    & .btn_add:nth-child(1) {
+        width: 100%;
+        border: none;
+        transition: 1s ease-in;
+    }
+
+    & .btn_add:nth-child(2) {
+        width: 100%;
+        transition: 1s ease-in;
+        &:hover {
+            background-color: rgb(6, 6, 94);
+        }
+    }
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    & h2 {
+        text-decoration: underline;;
+    }
+
+    & p {
+        line-height: 1.5;
+    }
+}
+
+
+/* Calibration items */
+.container {
+    max-width: 100%;
+    
+    & .div_items {
+        display: flex;
+        gap: .25rem;
+        flex-direction: column;
+
+        & div {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            width: 100%;        
+        }
+    
+        & .div_data_equipment_list{
+            display: flex;
+            transition: 1s ease;
+
+            & .div_info_items {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+    
+            &:hover {
+                background-color: #c1c1c1;
+                cursor: pointer;
+    
+                & span {
+                    color: blue;
+                }
+
+                & p {
+                    font-style: italic;
+                }
+            }
+            
+            & div:nth-child(1){
+                width: 5%;
+            }
+            & div:nth-child(2){
+                width: 15%;
+            }
+            & div:nth-child(3){
+                width: 35%;
+            }
+            & div:nth-child(4){
+                width: 25%;
+            }
+            & div:nth-child(5){
+                width: 5%;
+            }
+            & div:nth-child(6){
+                width: 10%;
+            }
+            & div:nth-child(7){
+                width: 5%;
+            }
+            & div:nth-child(8){
+                width: 5%;
+            }
+            & span {
+                font-weight: bold;
+            }
+            & p {
+                font-size: .8rem;
+            }
+        }
+    }
+}
+
+.error_equipment {
+    color: red;
+    padding: 0;
+    margin: 0;
+}
+
+/* calibration result */
+.calibration_result {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 1rem;
+
+    border: 1px solid #c1c1c1;
+    border-radius: .25rem;
+    padding: .5rem;
+
+    & .calibration_result_main {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    & .calibration_result_first {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 30%;
+        gap: 1rem;
+
+        .input {
+            width: 50%;
+        }
+    }
+
+    & .div_checkboxes{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        width: 10%;
+        
+        & .checkbox {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+
+            & label {
+                text-align: center;
+            }
+        }
+    }
+
+    & .calibration_result_second {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        width: 50%;
+
+        & .input {
+            width: 40%;
+        }
+    }
+
+    & .input_comment {
+            width: 100%;
+        }
+
+    & .calibration_result_data {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        & .input {
+            width: 23%;
+        }
+    }
+
+    & .section_result {
+        display: flex;
+        flex-direction: column;
+    }
+
+    & .calibration_result_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+}
+
+.table tbody  {
+
+    & td {
+        color: blue;
+    }
+
+    & tr {
+        transition: 1s ease-in;
+        &:hover {
+            background-color: #c1c1c1
+        }
+    }
+}
+
+.btn_remove {
+    background-color: red;
+    border: none;
+    transition: 1s ease;
+
+    &:hover {
+        background-color: orange
+    }
+}
+
+.btn_remove_calibration {
+    width: 100%;
+}
+
+.approved input {
+    background-color: green;
+    color: white;
+    
+}
+
+.reproved input {
+    background-color: red;
+    color: white;
+    
+}
+
+.status_calibration {
+    text-align: center;
+    padding: .5rem;
+    border-radius: .25rem;
+    font-weight: 600;
+    width: 18rem;
+}
+
+.status_approved {
+    background-color: green;
+    color: white;
+}
+
+.status_reproved {
+    background-color: red;
+    color: white;
+}
+
+.status_analysis {
+    background-color: rgb(204, 133, 0);
+    color: white;
+}
+
+.unity_calibration_result {
+    color: blue;
+    font-style: italic;
+}
+
+/* calibration menu */
+.container_menu_calibration{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 10rem;
+
+    & button {
+        height: 5rem;
+        width: 20rem;
+        transition: 1s ease;
+        font-weight: 600;
+    }
+}

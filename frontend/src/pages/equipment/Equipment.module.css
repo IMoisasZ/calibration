@@ -1,0 +1,134 @@
+.container_div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+/* Selects */
+.select {
+    margin-bottom: 0;
+    margin-top: .8rem;
+    width: 100%;
+}
+
+.select_owner {
+    width: 100%;
+}
+
+.select_unity {
+    width: 50%;
+}
+
+.select_periodicity {
+    width: 20%;
+}
+
+
+/* Inputs */
+.input {
+    width: 100%;
+}
+
+.input_identifier {
+    width: 20%;
+}
+
+.input_division {
+    width: 30%;
+}
+
+.input_capacity {
+    width: 50%;
+}
+
+.input_acceptance_criteria {
+    width: 35%;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 0;
+}
+
+.container_div_last {
+    display: flex;
+    align-items: center;
+
+    gap: 1rem;
+
+    & .select {
+        margin-bottom: 0;
+        width: 100%;
+    }
+}
+
+.container_btn {
+    display: flex;
+    gap: 1rem;
+}
+
+
+
+/* EquipmentList */
+.container {
+    max-width: 1800px;
+    .equipment_list {
+        & .equipmentList_header{
+            display: flex;
+            justify-content: end;
+        }
+    
+        & .equipment_list_information p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+    
+        & table {
+            font-size: .8rem;
+            margin-bottom: .5rem;
+        }
+    
+        & span {
+            font-size: .8rem;
+        }
+        
+        & .div_filter {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+
+            margin-top: .5rem;
+            border: 1px solid #c1c1c1;
+            border-radius: .5rem;
+            padding: .5rem;
+
+            & .equipment_list_checkbox{
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            margin: 0;
+    
+            & label {
+                margin: 0 !important;
+                font-size: .8rem;
+            }
+        }
+
+            & .select {
+                margin: 0;
+                width: 30%;
+                & select {
+
+                    font-size: .8rem;
+                }
+            }
+        }
+    }
+}

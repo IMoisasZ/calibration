@@ -1,0 +1,33 @@
+.calibration_periodicity_form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+
+    & .input:nth-child(1) {
+        width: 100%;
+    }
+
+    & .input {
+        width: 25%;
+    }
+
+    & .checkbox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: 0
+    }
+}
+
+.checkbox_status {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    & label {
+        margin-bottom: 0 !important;
+    }
+}

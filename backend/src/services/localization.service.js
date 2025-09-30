@@ -1,5 +1,10 @@
 import LocalizationRepository from '../repositories/localization.repository.js'
-import { BadRequestError, NotFoundError } from '../errors/customErrors.error.js'
+import {
+	BadRequestError,
+	NotFoundError,
+	AlreadyAdded,
+} from '../errors/customErrors.error.js'
+import { UniqueConstraintError } from 'sequelize'
 
 /**@description -> Function to verify if exist localization */
 async function verifyLocalizationExistence(id) {
@@ -15,13 +20,31 @@ async function verifyLocalizationExistence(id) {
 }
 
 async function createLocalization(localization) {
-	return await LocalizationRepository.createLocalization(localization)
+	try {
+		return await LocalizationRepository.createLocalization(localization)
+	} catch (error) {
+		if (error instanceof UniqueConstraintError) {
+			throw new AlreadyAdded(
+				`A localização ${localization.description.toUpperCase()} já foi cadastrada!`
+			)
+		}
+		throw error
+	}
 }
 
 async function updateLocalization(id, localization) {
 	await verifyLocalizationExistence(id)
 
-	return await LocalizationRepository.updateLocalization(id, localization)
+	try {
+		return await LocalizationRepository.updateLocalization(id, localization)
+	} catch (error) {
+		if (error instanceof UniqueConstraintError) {
+			throw new AlreadyAdded(
+				`A localização ${localization.description.toUpperCase()} já foi cadastrada!`
+			)
+		}
+		throw error
+	}
 }
 
 async function getAllLocalization() {

@@ -1,0 +1,51 @@
+/* frontend/src/components/Button.module.css */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.button:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.button:focus {
+    outline: 0;
+    /* box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25); */
+}
+
+.button:disabled {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+.icon {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+
+    &:hover {
+        background-color: transparent;
+    }
+
+    & span {
+        color: #004085;
+        font-size: 1.5rem;
+
+        &:hover {
+            color: #007bff;
+        }
+    }
+}

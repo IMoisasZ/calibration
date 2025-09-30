@@ -1,0 +1,16 @@
+/*Reset te padding and the margin all of elements*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Guarantee that padding and borders don't affect the width/height */
+}
+
+/*Default style to body of page and the font */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased; /* Improvement the rendering of font in the webkit */
+    -moz-osx-font-smoothing: grayscale; /* Improvement the rendering of font in the Firefox */
+    background-color: #f0f2f5; /* One smooth background colo for the body and page */
+}

@@ -1,0 +1,33 @@
+.selectContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+}
+
+.selectContainer label {
+    font-weight: bold;
+    color: var(--primary-color-text-01);
+}
+
+.select {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--primary-color-text-02);
+    background-color: var(--color-background-03);
+    outline: none;
+    transition: border-color 0.3s ease;
+    width: 100%;
+    cursor: pointer;
+}
+
+.select:focus {
+    border-color: var(--primary-color-01);
+}
+
+.select option {
+    background-color: var(--color-background-03);
+    color: var(--primary-color-text-02);
+}

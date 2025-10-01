@@ -56,12 +56,14 @@ export default function Equipment() {
 				unity_id: unityId,
 				min_capacity: minCapacity,
 				max_capacity: maxCapacity,
+				acceptance_criteria: acceptanceCriteria,
 				calibration_periodicity_id: calibrationPeriodicity,
 				active,
 			}
 			createUpdateEquipmentValidator(dataEquipment)
 			if (!id) {
-				await createEquipment(dataEquipment)
+				const { id, ...data } = dataEquipment
+				await createEquipment(data)
 				createMessage('success', 'Equipamento criado com sucesso!')
 			} else {
 				await updateEquipment(dataEquipment)
@@ -138,7 +140,7 @@ export default function Equipment() {
 							classNameContainerInput={`${styles.input} ${styles.input_identifier}`}
 							name='identifier'
 							type='text'
-							value={identifier}
+							value={identifier?.toUpperCase()}
 							handleChange={(e) => setIdentifier(e.currentTarget.value)}
 						/>
 					</div>
@@ -147,7 +149,7 @@ export default function Equipment() {
 						classNameContainerInput={`${styles.input} ${styles.input_description}`}
 						name='description'
 						type='text'
-						value={description}
+						value={description?.toUpperCase()}
 						handleChange={(e) => setDescription(e.currentTarget.value)}
 					/>
 					<div className={styles.container_div}>
@@ -203,7 +205,7 @@ export default function Equipment() {
 							handleChange={(e) => setMaxCapacity(e.currentTarget.value)}
 						/>
 						<Input
-							labelName='Critério de ceitação'
+							labelName='Critério de aceitação'
 							classNameContainerInput={`${styles.input} ${styles.input_acceptance_criteria}`}
 							name='acceptance_criteria'
 							type='number'

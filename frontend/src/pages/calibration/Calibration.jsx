@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Container from '../../components/container/Container'
 import Form from '../../components/form/Form'
 import Button from '../../components/button/Button'
@@ -20,7 +21,10 @@ import {
 } from '../../utils/calibration.utils'
 import { getAllCalibrationConfig } from '../../services/calibration_config.service'
 import debounce from 'lodash.debounce'
-import { createUpdateCalibrationValidator } from '../../validator/calibration.validator'
+import {
+	createUpdateCalibrationValidator,
+	factorValidator,
+} from '../../validator/calibration.validator'
 import { createCalibrationWithResults } from '../../services/calibration.service'
 import { createMessage } from '../../utils/message.utils'
 
@@ -77,6 +81,8 @@ export default function Calibration() {
 		body: null,
 		actions: null,
 	})
+
+	const navigate = useNavigate()
 
 	const fetchEquipment = useCallback(
 		async (identifierNumber) => {
@@ -409,7 +415,7 @@ export default function Calibration() {
 	useEffect(() => {
 		const loadActualFactor = async () => {
 			try {
-				const factorData = await getAllCalibrationConfig()
+				const factorData = (await getAllCalibrationConfig()) || []
 				const factor = Number(factorData[0].factor)
 
 				setFormData((prevData) => ({
@@ -420,12 +426,16 @@ export default function Calibration() {
 					},
 				}))
 			} catch (error) {
-				console.error('Erro ao carregar o fator de calibração:', error)
+				console.error({ error })
 				createMessage('error', 'Erro ao carregar o fator de calibração.')
+				setTimeout(() => {
+					navigate('/calibration_config')
+					createMessage('info', 'Crie um fator!.')
+				}, 3000)
 			}
 		}
 		loadActualFactor()
-	}, [])
+	}, [navigate])
 
 	// 2. EFEITO: Recalcula optimal_resolution quando o FATOR ou o CRITÉRIO de aceitação mudam - MANTIDO
 	useEffect(() => {
@@ -509,7 +519,7 @@ export default function Calibration() {
 			biggest_deviation_plus_measurement_uncertainty:
 				formData.currentResult.biggest_deviation_plus_measurement_uncertainty,
 			status_result: formData.currentResult.status_result,
-			comment: formData.currentResult.comment,
+			comment: formData.currentResult.comment.toUpperCase(),
 		}
 
 		let updatedResults

@@ -26,6 +26,11 @@
     
 }
 
-.ttt {
-        color: aqua;
-    }
+.subtitle {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-top: .5rem;
+    font-size: .8rem;
+    font-weight: 600;
+}

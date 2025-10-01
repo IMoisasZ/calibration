@@ -9,7 +9,7 @@ async function createOwner(owner) {
 async function updateOwner(owner) {
 	const { id } = owner
 	delete owner.id
-	const { data } = await API.put(`owner/${id}`, owner)
+	const { data } = await API.put(`owner/${Number(id)}`, owner)
 	return data
 }
 

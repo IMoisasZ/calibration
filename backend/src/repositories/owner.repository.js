@@ -9,13 +9,11 @@ async function createOwner(owner) {
 async function updateOwner(id, owner) {
 	const instanceOwner = await getOwner(id)
 
-	instanceOwner.owner = owner.owner
-	instanceOwner.localization_id = owner.localization_id
-	instanceOwner.active = owner.active
+	Object.assign(instanceOwner, owner)
 
 	await instanceOwner.save()
 
-	return await getOwner(id)
+	return instanceOwner
 }
 
 async function getAllOwner(whereClause) {
@@ -47,10 +45,10 @@ async function updateOwnerStatus(id, active) {
 	return await getOwner(id)
 }
 
-async function getExistOwnerAndLocalization(owner, localization_id) {
+async function getExistOwnerAndLocalization(owner, localization_id, id) {
 	return await OwnerModel.findAll({
 		where: {
-			[Op.and]: [{ owner }, { localization_id }],
+			[Op.and]: [{ owner }, { localization_id }, { id: { [Op.ne]: id } }],
 		},
 	})
 }

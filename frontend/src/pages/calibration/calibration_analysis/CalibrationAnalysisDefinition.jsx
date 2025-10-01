@@ -33,6 +33,9 @@ export default function CalibrationAnalysisDefinition() {
 
 			await createCalibrationAnalysis(CalibrationAnalysis)
 			createMessage('success', 'Analise da calibração realizada com sucesso!')
+			setTimeout(() => {
+				navigate('/calibration_analysis_list')
+			}, 2000)
 		} catch (error) {
 			console.error({ error })
 			const errorMessage =
@@ -40,10 +43,6 @@ export default function CalibrationAnalysisDefinition() {
 				error.message ||
 				'Ocorreu um erro desconhecido!'
 			createMessage('error', errorMessage)
-		} finally {
-			setTimeout(() => {
-				navigate('/calibration_analysis_list')
-			}, 2000)
 		}
 	}
 
@@ -54,18 +53,17 @@ export default function CalibrationAnalysisDefinition() {
 	}, [location.state])
 
 	const optionStatusDefinition = [
-		{ label: 'APROVADO' },
 		{ label: 'APROVADO CONDICIONAL' },
 		{ label: 'REPROVADO' },
 	]
 
 	function createNotes(selectedStatus) {
-		if (selectedStatus === 'APROVADO') {
-			setNotes('CALIBRAÇÃO APROVADA!')
+		if (selectedStatus === 'REPROVADO') {
+			setNotes('CALIBRAÇÃO REPROVADA!')
 			return
 		}
 
-		if (selectedStatus === 'EM ANALISE') {
+		if (selectedStatus === 'APROVADO CONDICIONAL') {
 			const notesByCalibrationResult = calibration.calibration_results.filter(
 				(item) => item.status_result === 'APROVADO'
 			)
@@ -75,10 +73,6 @@ export default function CalibrationAnalysisDefinition() {
 				)}`
 			)
 			return
-		}
-
-		if (selectedStatus === 'REPROVADO') {
-			setNotes('CALIBRAÇÃO REPROVADA!')
 		}
 	}
 

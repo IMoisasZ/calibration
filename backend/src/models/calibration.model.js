@@ -59,11 +59,10 @@ const Calibration = dbConnection.define(
 		calibration_status: {
 			type: DataTypes.STRING(20),
 			allowNull: false,
-			defaultValue: 'PENDENTE',
 			validate: {
 				isIn: {
-					args: [['EM ANALISE', 'APROVADO CONDICIONAL', 'REPROVADO']],
-					msg: 'Informe apenas EM ANALISE, APROVADO CONDICIONAL ou REPROVADO!',
+					args: [['EM ANALISE', 'APROVADO', 'REPROVADO']],
+					msg: 'Informe apenas "EM ANALISE", "APROVADO" ou "REPROVADO"!',
 				},
 			},
 		},

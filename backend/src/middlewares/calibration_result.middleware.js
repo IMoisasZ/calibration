@@ -44,7 +44,8 @@ const calibrationResultBodyValidator = [
 		.optional()
 		.isString()
 		.withMessage('Tipo de dados do status do resultado da calibração é texto!')
-		.isIn(['APROVADO', 'REPROVADO']),
+		.isIn(['APROVADO', 'REPROVADO'])
+		.withMessage('Informe apenas: "APROVADO" ou "REPROVADO"'),
 ]
 
 const calibrationResultBodyStatusResultValidator = [

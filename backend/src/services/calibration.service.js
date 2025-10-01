@@ -4,7 +4,6 @@ import EquipmentRepository from '../repositories/equipment.repository.js'
 import CalibrationPeriodicityRepository from '../repositories/calibration_periodicity.repository.js'
 import { BadRequestError, NotFoundError } from '../errors/customErrors.error.js'
 import { nextCalibration } from '../utils/next_calibration.utils.js'
-import sequelize from '../connection/db.connection.js'
 
 async function existCalibrationById(id) {
 	if (!id) {

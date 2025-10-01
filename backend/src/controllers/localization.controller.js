@@ -37,7 +37,8 @@ async function updateLocalization(req, res, next) {
 
 async function getAllLocalization(req, res, next) {
 	try {
-		res.status(200).send(await LocalizationService.getAllLocalization())
+		const { status } = req.query
+		res.status(200).send(await LocalizationService.getAllLocalization(status))
 
 		const loggerMessage = `GET - /localization - All localizations`
 		logger.info(loggerMessage)

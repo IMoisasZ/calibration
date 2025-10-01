@@ -23,9 +23,9 @@ const calibrationBodyValidator = [
 	body('calibration_status')
 		.isString()
 		.withMessage('O tipo de dados do status do certificado é texto! ')
-		.isIn(['EM ANALISE', 'APROVADO CONDICIONAL', 'REPROVADO'])
+		.isIn(['EM ANALISE', 'APROVADO', 'REPROVADO'])
 		.withMessage(
-			'O status deve ser uma das opções: "EM ANALISE", "APROVADO CONDICIONAL" ou "REPROVADO"'
+			'O status deve ser uma das opções: "EM ANALISE", "APROVADO" ou "REPROVADO"'
 		),
 ]
 
@@ -51,9 +51,9 @@ const calibrationQueryCalibration = [
 		.withMessage('Status da calibração não informado!')
 		.isString()
 		.withMessage('O tipo de dados do status da calibração é texto!')
-		.isIn(['EM ANALISE', 'APROVADO CONDICIONAL', 'REPROVADO'])
+		.isIn(['EM ANALISE', 'APROVADO', 'REPROVADO'])
 		.withMessage(
-			'O status deve ser uma das opções: "EM ANALISE", "APROVADO CONDICIONAL" ou "REPROVADO"'
+			'O status deve ser uma das opções: "EM ANALISE", "APROVADO" ou "REPROVADO"'
 		),
 ]
 

@@ -47,7 +47,7 @@ export default function Owner() {
 				'Ocorreu um erro desconhecido!'
 			createMessage('error', errorMessage)
 		}
-	}, [status, setListOwners])
+	}, [status])
 
 	useEffect(() => {
 		loadOwners()
@@ -60,8 +60,8 @@ export default function Owner() {
 			const ownerData = { id, owner, localization_id: localization, active }
 			createUpdateOwnerValidator(ownerData)
 			if (!id) {
-				delete ownerData.id
-				await createOwner(ownerData)
+				const { id, ...ownerDataSeparated } = ownerData
+				await createOwner(ownerDataSeparated)
 				createMessage('success', 'Proprietário incluído com sucesso!')
 			} else {
 				await updateOwner(ownerData)
@@ -106,6 +106,7 @@ export default function Owner() {
 				'Ocorreu um erro desconhecido!'
 			createMessage('error', errorMessage)
 		} finally {
+			handleClear()
 			loadOwners()
 		}
 	}
@@ -127,7 +128,7 @@ export default function Owner() {
 					type='text'
 					name='owner'
 					handleChange={(e) => setOwner(e.currentTarget.value)}
-					value={owner}
+					value={owner?.toUpperCase()}
 					labelName='Proprietário'
 				/>
 				<Select

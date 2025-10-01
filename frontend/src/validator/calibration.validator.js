@@ -37,4 +37,26 @@ function createUpdateCalibrationValidator(dataCalibration) {
 	return true
 }
 
-export { createUpdateCalibrationValidator }
+function factorValidator(factorData) {
+	console.log(factorData)
+
+	if (!Array.isArray(factorData)) {
+		throw new Error('Dados informados incorretamente!')
+	}
+
+	if (factorData.length === 0) {
+		throw new Error('Não há dados para apresentar!')
+	}
+
+	if (!factorData[0].factor) {
+		throw new Error(`Fator não inexistente!`)
+	}
+
+	if (factorData[0].factor === 0) {
+		throw new Error('O fator não pode ser 0!')
+	}
+
+	return true
+}
+
+export { createUpdateCalibrationValidator, factorValidator }

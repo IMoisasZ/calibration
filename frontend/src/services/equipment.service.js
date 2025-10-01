@@ -10,7 +10,6 @@ async function createEquipment(equipment) {
 
 async function updateEquipment(equipment) {
 	const { id } = equipment
-	delete equipment.id
 	const { data } = await API.put(`${pathName}/${id}`, equipment)
 	return data
 }

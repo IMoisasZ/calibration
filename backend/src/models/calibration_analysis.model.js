@@ -22,8 +22,8 @@ const CalibrationAnalysis = dbConnection.define(
 					msg: 'Status original não informado!',
 				},
 				isIn: {
-					args: [['APROVADO CONDICIONAL', 'REPROVADO']],
-					msg: 'São aceitos apenas os status "APROVADO CONDICIONAL" e "REPROVADO"!',
+					args: [['EM ANALISE', 'APROVADO', 'REPROVADO']],
+					msg: 'São aceitos apenas os status "EM ANALISE", "APROVADO" ou "REPROVADO"!',
 				},
 			},
 		},
@@ -35,8 +35,8 @@ const CalibrationAnalysis = dbConnection.define(
 					msg: 'Status de decisão final não informado!',
 				},
 				isIn: {
-					args: [['APROVADO', 'APROVADO CONDICIONAL', 'REPROVADO']],
-					msg: 'São aceitos apenas os status "APROVADO", "APROVADO CONDICIONAL" e "REPROVADO"!',
+					args: [['APROVADO CONDICIONAL', 'REPROVADO']],
+					msg: 'São aceitos apenas os status "APROVADO CONDICIONAL" ou "REPROVADO"!',
 				},
 			},
 		},

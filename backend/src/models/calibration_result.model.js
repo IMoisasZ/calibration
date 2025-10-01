@@ -85,8 +85,8 @@ const CalibrationResult = dbConnection.define(
 					msg: 'Status do resultado da calibração não informado!',
 				},
 				isIn: {
-					args: [['APROVADO', 'APROVADO CONDICIONAL', 'REPROVADO']],
-					msg: 'São aceitos apenas "APROVADO" e "REPROVADO"',
+					args: [['APROVADO', 'REPROVADO']],
+					msg: 'São aceitos apenas "APROVADO" ou "REPROVADO"',
 				},
 			},
 		},

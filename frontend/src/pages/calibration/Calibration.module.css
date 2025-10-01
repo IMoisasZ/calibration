@@ -1,5 +1,6 @@
 .container_calibration {
     max-width: 1400px;
+    margin-bottom: 1rem;
     .container_div {
         display: flex;
         align-items: center;

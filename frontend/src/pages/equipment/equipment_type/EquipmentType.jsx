@@ -120,7 +120,7 @@ export default function EquipmentType() {
 						labelName='Tipo de equipamento'
 						type='text'
 						name='equipment_type'
-						value={equipmentType}
+						value={equipmentType?.toUpperCase()}
 						handleChange={(e) => setEquipmentType(e.currentTarget.value)}
 						classNameContainerInput={styles.input}
 					/>

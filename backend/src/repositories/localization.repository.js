@@ -14,8 +14,10 @@ async function updateLocalization(id, localization) {
 	return await getLocalization(id)
 }
 
-async function getAllLocalization() {
-	return await LocalizationModel.findAll()
+async function getAllLocalization(whereClause) {
+	return await LocalizationModel.findAll({
+		where: whereClause,
+	})
 }
 
 async function getLocalization(id) {

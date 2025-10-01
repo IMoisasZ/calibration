@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Container from '../../../components/container/Container'
 import Table from '../../../components/table/Table'
 import { getAllCalibrationIsAnalysis } from '../../../services/calibration.service'
-import { FaTriangleExclamation } from 'react-icons/fa6'
+import { FaTriangleExclamation, FaCircle } from 'react-icons/fa6'
 import styles from './CalibrationFinal.module.css'
 import { verifyNextCalibration } from '../../../utils/calibration.utils'
 
@@ -32,8 +32,15 @@ export default function CalibrationFinalData() {
 					item.equipment.calibration_periodicity.description,
 				calibration_date: new Date(item.calibration_date).toLocaleDateString(),
 				next_calibration: new Date(item.next_calibration).toLocaleDateString(),
-				status_data_calibration: verifyNextCalibration(item.next_calibration)
-					.status,
+				status_data_calibration:
+					verifyNextCalibration(item.next_calibration).status === 'NO PRAZO' ? (
+						<FaCircle color='green' />
+					) : verifyNextCalibration(item.next_calibration).status ===
+					  'proximo a vencer' ? (
+						<FaCircle color='orange' />
+					) : (
+						<FaCircle color='red' />
+					),
 				left_days: verifyNextCalibration(item.next_calibration).leftDays,
 				status: item.is_analysis
 					? item.calibration_analyses[0].decision_status
@@ -74,6 +81,14 @@ export default function CalibrationFinalData() {
 				title={listCalibration.left_days}
 				handleClick={handleClique}
 			/>
+			<div className={styles.subtitle}>
+				<span>NO PRAZO </span>
+				<FaCircle color='green' />
+				<span>PROXIMO A VENCER </span>
+				<FaCircle color='orange' />
+				<span>VENCIDO </span>
+				<FaCircle color='red' />
+			</div>
 		</Container>
 	)
 }

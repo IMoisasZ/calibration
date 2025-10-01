@@ -1,6 +1,6 @@
 /** @format */
 
-import { param, body } from 'express-validator'
+import { param, body, query } from 'express-validator'
 import { validationResult } from '../utils/validationResult.utils.js'
 
 /**@description -> Reusable the function for param ID */
@@ -26,6 +26,16 @@ const localizationBodyValidation = [
 		.withMessage('A informação deve ser do tipo boolean!'),
 ]
 
+const localizationQueryValidator = [
+	query('status')
+		.exists()
+		.withMessage('Status não informado!')
+		.notEmpty()
+		.withMessage('Status não informada!')
+		.isString()
+		.withMessage('O tipo de dados do status deve ser um texto!'),
+]
+
 const createLocalizationValidate = [
 	...localizationBodyValidation,
 	validationResult(),
@@ -34,6 +44,11 @@ const createLocalizationValidate = [
 const updateLocalizationValidate = [
 	...localizationParamValidation,
 	...localizationBodyValidation,
+	validationResult(),
+]
+
+const getAllLocalizationValidator = [
+	...localizationQueryValidator,
 	validationResult(),
 ]
 
@@ -55,6 +70,7 @@ const updateLocalizationStatusValidate = [
 export {
 	createLocalizationValidate,
 	updateLocalizationValidate,
+	getAllLocalizationValidator,
 	getLocalizationValidate,
 	updateLocalizationStatusValidate,
 }

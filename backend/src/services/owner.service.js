@@ -13,24 +13,29 @@ async function existOwnerById(id) {
 	return owner
 }
 
-async function existOwnerAndLocalization(owner, localization_id) {
-	if (!owner || !localization_id) {
+async function existOwnerAndLocalization(ownerName, localization_id) {
+	if (!ownerName || !localization_id) {
 		throw new BadRequestError(
 			`O proprietário e a localização devem ser informados!`
 		)
 	}
 
 	const data = await OwnerRepository.getExistOwnerAndLocalization(
-		owner,
+		ownerName,
 		localization_id
 	)
 
-	if (data && data.length === 0) {
-		return true /**@description -> Return that don't have owner and localization_id already included. In this case data could be included. */
+	// CORREÇÃO DA LÓGICA:
+	// Se o array 'data' tem algum elemento (data.length > 0), a combinação já existe!
+	if (data && data.length > 0) {
+		throw new BadRequestError(
+			`O proprietario '${ownerName}' e a localização (ID: ${localization_id}) já foram incluidos juntos!`
+		)
 	}
-	throw new BadRequestError(
-		`O proprietario e a localização já foram incluidos!`
-	)
+
+	// Se o código chegou até aqui, significa que a combinação NÃO EXISTE no banco de dados.
+	// Retornamos true (ou simplesmente encerramos a função) para sinalizar que é seguro prosseguir.
+	return true
 }
 
 async function createOwner(owner) {
@@ -39,8 +44,13 @@ async function createOwner(owner) {
 }
 
 async function updateOwner(id, owner) {
-	await existOwnerById(id)
-	await existOwnerAndLocalization(owner.owner, owner.localization_id)
+	const p = await existOwnerById(id)
+
+	const r = await existOwnerAndLocalization(
+		owner.owner,
+		owner.localization_id,
+		id
+	)
 
 	return await OwnerRepository.updateOwner(id, owner)
 }

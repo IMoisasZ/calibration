@@ -47,8 +47,11 @@ async function updateLocalization(id, localization) {
 	}
 }
 
-async function getAllLocalization() {
-	return await LocalizationRepository.getAllLocalization()
+async function getAllLocalization(status) {
+	if (status === 'true') {
+		return await LocalizationRepository.getAllLocalization({ active: true })
+	}
+	return await LocalizationRepository.getAllLocalization({})
 }
 
 async function getLocalization(id) {

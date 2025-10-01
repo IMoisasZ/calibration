@@ -1,5 +1,6 @@
 import { API } from '../api/API'
 
+const routeName = 'localization'
 async function createLocalization(localization) {
 	const { data } = await API.post('localization', localization)
 	return data
@@ -14,8 +15,8 @@ async function updateLocalization(localization) {
 	return data
 }
 
-async function getAllLocalization() {
-	const { data } = await API.get('localization')
+async function getAllLocalization(status = 'true') {
+	const { data } = await API.get(`${routeName}?status=${status}`)
 	return data
 }
 

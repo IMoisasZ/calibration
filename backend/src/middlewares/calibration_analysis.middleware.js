@@ -16,8 +16,8 @@ const calibrationAnalysisBodyValidator = [
 		.withMessage('O original_status não pode ser nulo!')
 		.isString()
 		.withMessage('O tipo de dados do original_status deve ser um texto!')
-		.isIn(['APROVADO CONDICIONAL', 'REPROVADO'])
-		.withMessage('São aceitos apenas "APROVADO CONDICIONAL" ou "REPROVADO"!'),
+		.isIn(['EM ANALISE', 'APROVADO', 'REPROVADO'])
+		.withMessage('São aceitos apenas "EM ANALISE", "APROVADO" ou "REPROVADO"!'),
 	body('decision_status')
 		.exists()
 		.withMessage('decision_status não informado!')
@@ -25,10 +25,8 @@ const calibrationAnalysisBodyValidator = [
 		.withMessage('O decision_status não pode ser nulo!')
 		.isString()
 		.withMessage('O tipo de dados do decision_status deve ser um texto!')
-		.isIn(['APROVADO', 'APROVADO CONDICIONAL', 'REPROVADO'])
-		.withMessage(
-			'São aceitos apenas "APROVADO","APROVADO CONDICIONAL" ou "REPROVADO"!'
-		),
+		.isIn(['APROVADO CONDICIONAL', 'REPROVADO'])
+		.withMessage('São aceitos apenas "APROVADO CONDICIONAL" ou "REPROVADO"!'),
 	body('user_id')
 		.exists()
 		.withMessage('user_id não informado!')

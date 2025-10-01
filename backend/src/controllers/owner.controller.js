@@ -18,7 +18,10 @@ async function updateOwner(req, res, next) {
 	try {
 		const { id } = req.params
 		const owner = req.body
+		console.log('controller: ', id)
+
 		const alterOwner = await OwnerService.updateOwner(id, owner)
+
 		res.status(200).send(alterOwner)
 		const loggerMessage = `PUT - ${routeName}/${id} - ${JSON.stringify(owner)}`
 		logger.info(loggerMessage)

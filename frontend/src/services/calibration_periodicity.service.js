@@ -2,7 +2,6 @@ import { API } from '../api/API'
 
 const pathName = 'calibration_periodicity'
 async function createCalibrationPeriodicity(calibrationPeriodicity) {
-	delete calibrationPeriodicity.id
 	const { data } = API.post(`${pathName}`, calibrationPeriodicity)
 	return data
 }

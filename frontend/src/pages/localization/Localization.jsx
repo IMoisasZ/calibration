@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Container from '../../components/container/Container'
 import Form from '../../components/form/Form'
 import Input from '../../components/input/Input'
@@ -21,6 +21,7 @@ export default function Localization() {
 	const [active, setActive] = useState(true)
 	const [isLoading, setIsLoading] = useState(false)
 	const [listLocalization, setListLocalization] = useState([])
+	const [status, setStatus] = useState(true)
 
 	/**@param {e} e -> Event to use the onSubmit  */
 	/**@description -> Function to create or update the localization */
@@ -50,12 +51,13 @@ export default function Localization() {
 		} finally {
 			setIsLoading(false)
 			loadLocalization()
+			handleClear()
 		}
 	}
 
-	async function loadLocalization() {
+	const loadLocalization = useCallback(async () => {
 		try {
-			const data = await getAllLocalization()
+			const data = await getAllLocalization(status)
 
 			const formatDataLocalization = data.map((item) => ({
 				...item,
@@ -70,11 +72,11 @@ export default function Localization() {
 				'Ocorreu um erro desconhecido!'
 			createMessage('error', errorMessage)
 		}
-	}
+	}, [status])
 
 	useEffect(() => {
 		loadLocalization()
-	}, [])
+	}, [loadLocalization])
 
 	/**@description -> Function to clear all fields of the form */
 	function handleClear() {
@@ -87,6 +89,7 @@ export default function Localization() {
 		setId(row.id)
 		setDescription(row.description)
 		setActive(row.active)
+		setStatus(true)
 	}
 
 	async function disableEnableLocalization(row) {
@@ -100,6 +103,7 @@ export default function Localization() {
 				'Ocorreu um erro desconhecido!'
 			createMessage('error', errorMessage)
 		} finally {
+			handleClear()
 			loadLocalization()
 		}
 	}
@@ -118,7 +122,7 @@ export default function Localization() {
 				<Input
 					classNameContainerInput={style.input}
 					labelName='Localização'
-					value={description}
+					value={description?.toUpperCase()}
 					handleChange={(e) => setDescription(e.currentTarget.value)}
 				/>
 				<Input
@@ -134,12 +138,20 @@ export default function Localization() {
 					disabled={isLoading}
 				/>
 				<Button
-					nameBtn='Novo'
+					nameBtn='Limpar'
 					type='button'
 					handleClick={handleClear}
 					disabled={isLoading}
 				/>
 			</Form>
+			<Input
+				classNameContainerInput={style.checkbox_status}
+				labelName='Mostrar apenas localizações ativas?'
+				name='status'
+				type='checkbox'
+				handleChange={() => setStatus(!status)}
+				checked={status}
+			/>
 			<Table
 				headers={header}
 				data={listLocalization}

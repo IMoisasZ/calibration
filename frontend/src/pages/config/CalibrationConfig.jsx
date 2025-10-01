@@ -94,6 +94,7 @@ export default function CalibrationConfig() {
 			<Table
 				data={listFactor}
 				headers={header}
+				className={styles.table}
 			/>
 		</Container>
 	)

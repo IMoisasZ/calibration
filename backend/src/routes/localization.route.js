@@ -5,6 +5,7 @@ import LocalizationController from '../controllers/localization.controller.js'
 import {
 	createLocalizationValidate,
 	updateLocalizationValidate,
+	getAllLocalizationValidator,
 	getLocalizationValidate,
 	updateLocalizationStatusValidate,
 } from '../middlewares/localization.middleware.js'
@@ -21,7 +22,11 @@ route.put(
 	updateLocalizationValidate,
 	LocalizationController.updateLocalization
 )
-route.get('/', LocalizationController.getAllLocalization)
+route.get(
+	'/',
+	getAllLocalizationValidator,
+	LocalizationController.getAllLocalization
+)
 route.get(
 	'/:id',
 	getLocalizationValidate,

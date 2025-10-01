@@ -23,3 +23,13 @@ h1 {
     justify-content: flex-end;
     margin: 0;
 }
+
+.checkbox_status {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    & label {
+        margin-bottom: 0 !important;
+    }
+}

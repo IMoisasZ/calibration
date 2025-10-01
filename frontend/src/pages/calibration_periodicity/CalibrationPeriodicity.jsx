@@ -37,10 +37,11 @@ export default function CalibrationPeriodicity() {
 			}
 			createUpdateCalibrationPeriodicityValidator(calibration_periodicity)
 			if (!id) {
-				await createCalibrationPeriodicity(calibration_periodicity)
+				const { id, ...periodicity } = calibration_periodicity
+				await createCalibrationPeriodicity(periodicity)
 				createMessage(
 					'success',
-					'Periodicidade de calibração cadastrada com sucesso!'
+					'Periodicidade de calibração incluída com sucesso!'
 				)
 			} else {
 				await updateCalibrationPeriodicity(calibration_periodicity)
@@ -59,6 +60,7 @@ export default function CalibrationPeriodicity() {
 		} finally {
 			setIsLoading(false)
 			loadCalibrationPeriodicity()
+			handleClear()
 		}
 	}
 
@@ -71,7 +73,6 @@ export default function CalibrationPeriodicity() {
 				activeStatus: item.active ? 'Sim' : 'Não',
 			}))
 			setListCalibrationPeriodicity(formatDataCalibrationPeriodicity)
-			handleClear()
 		} catch (error) {
 			console.error({ error })
 			const errorMessage =
@@ -80,7 +81,7 @@ export default function CalibrationPeriodicity() {
 				'Ocorreu um erro desconhecido!'
 			createMessage('error', errorMessage)
 		}
-	}, [status, setListCalibrationPeriodicity])
+	}, [status])
 
 	useEffect(() => {
 		loadCalibrationPeriodicity()
@@ -104,6 +105,7 @@ export default function CalibrationPeriodicity() {
 				'Ocorreu um erro desconhecido!'
 			createMessage('error', errorMessage)
 		} finally {
+			handleClear()
 			loadCalibrationPeriodicity()
 		}
 	}
@@ -131,7 +133,7 @@ export default function CalibrationPeriodicity() {
 					labelName='Descrição'
 					name='description'
 					type='text'
-					value={description}
+					value={description?.toUpperCase()}
 					handleChange={(e) => setDescription(e.currentTarget.value)}
 					classNameContainerInput={styles.input}
 				/>

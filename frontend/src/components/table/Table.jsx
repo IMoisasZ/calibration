@@ -33,7 +33,7 @@ export default function Table({
 				{data?.map((row, rowIndex) => (
 					<tr
 						key={rowIndex}
-						onClick={() => handleClick(row)}>
+						onClick={() => handleClick && handleClick(row)}>
 						{headers?.map((header, cellIndex) =>
 							header.label !== 'Ações' ? (
 								<td
@@ -50,7 +50,7 @@ export default function Table({
 										row.active && row.active ? styles.enabled : styles.disabled
 									}
 									key={cellIndex}>
-									{row.active && (
+									{toggleStatus && (
 										<Button
 											iconName={
 												row.active && row.active ? 'enabled' : 'disabled'
@@ -63,12 +63,14 @@ export default function Table({
 											handleClick={() => toggleStatus(row)}
 										/>
 									)}
-									<Button
-										iconName='edit'
-										handleClick={() => handleEdit(row)}
-										type='button'
-										title='Clique para editar!'
-									/>
+									{handleEdit && (
+										<Button
+											iconName='edit'
+											handleClick={() => handleEdit(row)}
+											type='button'
+											title='Clique para editar!'
+										/>
+									)}
 								</td>
 							)
 						)}

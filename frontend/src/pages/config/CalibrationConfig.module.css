@@ -21,3 +21,25 @@
         margin-bottom: 0 !important;
     }
 }
+
+.table td {
+    color: black;
+}
+
+
+.table tr {
+    color: black;
+    font-weight: 600;
+    transition: 1s ease-in;
+
+    & td {
+        transition: 1s ease-in-out;
+    }
+    
+    &:hover {
+        background-color: rgb(2, 2, 57);
+        & td {
+            color: white;
+        }
+    }
+}

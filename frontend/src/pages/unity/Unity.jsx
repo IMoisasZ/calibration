@@ -56,6 +56,7 @@ export default function Unity() {
 
 			const formatDataUnities = data.map((item) => ({
 				...item,
+				tag: item.tag.toLowerCase(),
 				activeStatus: item.active ? 'Sim' : 'Não',
 			}))
 			setListUnities(formatDataUnities)
@@ -118,7 +119,7 @@ export default function Unity() {
 					name='description'
 					labelName='Unidade'
 					type='text'
-					value={description}
+					value={description?.toUpperCase()}
 					handleChange={(e) => setDescription(e.currentTarget.value)}
 					classNameContainerInput={styles.input}
 				/>

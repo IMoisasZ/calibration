@@ -1,0 +1,198 @@
+/** @format */
+
+.container {
+	max-width: 1800px;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	& h4,
+	h3 {
+		font-size: 1.5rem;
+		color: blue;
+		transition: 1s;
+
+		&:hover {
+			color: rgb(0, 0, 96);
+		}
+	}
+
+	.div_h4_h3 {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		& div {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+
+			& p {
+				font-weight: bold;
+			}
+		}
+	}
+
+	/* equipment / calibration*/
+	& .equipment .div_data_equipment,
+	.calibration .div_data_calibration {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		& p {
+			font-size: 1.1rem;
+			font-weight: bold;
+		}
+
+		& span {
+			font-size: 0.8rem;
+			font-weight: 600;
+		}
+	}
+
+	/* calibration result */
+	& .calibration_result {
+		border: 1px solid #c1c1c1;
+		padding: 0.5rem;
+		border-radius: 0.5rem;
+		& span {
+			font-weight: bold;
+		}
+
+		& .unity {
+			font-weight: bold;
+			text-decoration: underline;
+		}
+		& .div_main_calibration_result {
+			margin-top: 0.5rem;
+
+			& .div_calibration_result {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+
+				& .div_result {
+					display: flex;
+					align-items: flex-start;
+					flex-direction: column;
+					padding: 0.2rem 0;
+					gap: 0.5rem;
+
+					& span {
+						font-weight: bold;
+						width: 100%;
+					}
+
+					& p {
+						font-weight: 600;
+						color: blue;
+						border-radius: 0.5rem;
+						vertical-align: middle;
+						width: 100%;
+						text-align: left;
+					}
+
+					& .status_approved {
+						background-color: green;
+						color: white;
+						padding: 0.5rem;
+					}
+
+					& .status_reproved {
+						background-color: red;
+						color: white;
+						padding: 0.5rem;
+					}
+				}
+
+				& .div_result:nth-child(8) {
+					width: 7rem;
+				}
+			}
+		}
+	}
+
+	/* calibration analysis */
+	& .calibration_analysis {
+		display: flex;
+		flex-direction: column;
+
+		& .data_calibration_analysis {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+
+			& div {
+				display: flex;
+				gap: 1rem;
+
+				& p {
+					font-weight: bold;
+
+					& span {
+						font-weight: 600;
+					}
+				}
+			}
+
+			& p {
+				font-weight: bold;
+
+				& span {
+					font-weight: 600;
+				}
+			}
+		}
+
+		& .has_not_data_analysis {
+			font-weight: bold;
+		}
+	}
+
+	/* buttons */
+	& .btns {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+
+		& button {
+			border: none;
+			transition: 1s ease-in;
+		}
+
+		& .remove {
+			background-color: rgb(132, 2, 2);
+			border: none;
+			transition: 1s ease-in;
+
+			&:hover {
+				background-color: rgb(208, 7, 7);
+			}
+		}
+	}
+
+	& .approved {
+		background-color: green;
+		border-radius: 0.5rem;
+		color: white;
+		padding: 0.2rem;
+		vertical-align: middle;
+	}
+
+	& .reproved {
+		background-color: red;
+		border-radius: 0.5rem;
+		color: white;
+		padding: 0.2rem;
+		vertical-align: middle;
+	}
+
+	& .analysis {
+		background-color: orange;
+		border-radius: 0.5rem;
+		color: white;
+		padding: 0.2rem;
+		vertical-align: middle;
+	}
+}

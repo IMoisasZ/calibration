@@ -1,4 +1,7 @@
+/** @format */
+
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Container from '../../../components/container/Container'
 import Table from '../../../components/table/Table'
 import { getAllCalibrationIsAnalysis } from '../../../services/calibration.service'
@@ -10,6 +13,8 @@ export default function CalibrationFinalData() {
 	const [listCalibration, setListCalibration] = useState([])
 	const [status, setStatus] = useState(null)
 	const [localization, setLocalization] = useState('')
+
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		async function loadCalibration() {
@@ -51,8 +56,6 @@ export default function CalibrationFinalData() {
 		loadCalibration()
 	}, [status])
 
-	console.log(listCalibration)
-
 	const header = [
 		{ label: 'Analise', key: 'analysis' },
 		{ label: 'Ident.', key: 'identifier' },
@@ -70,7 +73,10 @@ export default function CalibrationFinalData() {
 		{ label: 'Farol', key: 'status_data_calibration' },
 	]
 
-	function handleClique(row) {}
+	function handleClick(row) {
+		const { analysis, status_data_calibration, ...rowChanged } = row
+		navigate('/calibration_geral', { state: rowChanged })
+	}
 
 	return (
 		<Container classNameContainer={styles.container}>
@@ -79,7 +85,7 @@ export default function CalibrationFinalData() {
 				data={listCalibration}
 				headers={header}
 				title={listCalibration.left_days}
-				handleClick={handleClique}
+				handleClick={handleClick}
 			/>
 			<div className={styles.subtitle}>
 				<span>NO PRAZO </span>

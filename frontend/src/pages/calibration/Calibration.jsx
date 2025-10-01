@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Container from '../../components/container/Container'
@@ -21,10 +23,7 @@ import {
 } from '../../utils/calibration.utils'
 import { getAllCalibrationConfig } from '../../services/calibration_config.service'
 import debounce from 'lodash.debounce'
-import {
-	createUpdateCalibrationValidator,
-	factorValidator,
-} from '../../validator/calibration.validator'
+import { createUpdateCalibrationValidator } from '../../validator/calibration.validator'
 import { createCalibrationWithResults } from '../../services/calibration.service'
 import { createMessage } from '../../utils/message.utils'
 
@@ -33,10 +32,11 @@ const today = new Date()
 // Estado inicial MÍNIMO para limpeza de um resultado
 const getInitialCurrentResult = () => ({
 	id_result: null,
+	factor_id: 0,
 	measuring_range: '',
 	optimal_resolution: '',
-	identifier: false,
-	environmental_conditions: false,
+	identifier: true,
+	environmental_conditions: true,
 	biggest_deviation: '',
 	measurement_uncertainty: '',
 	// Garante que o MD+IM seja inicializado com o valor de cálculo (geralmente '0.00000')
@@ -122,6 +122,7 @@ export default function Calibration() {
 				setFormData((prevData) => {
 					const acceptanceCriteria = data.acceptance_criteria || 0
 					const currentFactor = Number(prevData.calibrationOthers.factor)
+					const factorIdToPreserve = prevData.currentResult.factor_id
 					// Recalcula a resolução OTIMAL usando o FATOR ATUAL e o novo critério
 					const currentOptimalResolution = calculateOptimalResolution(
 						acceptanceCriteria,
@@ -148,6 +149,7 @@ export default function Calibration() {
 						calibrationResults: [],
 						currentResult: {
 							...getInitialCurrentResult(),
+							factor_id: factorIdToPreserve, // ✅ MANTÉM O ID CORRETO
 							optimal_resolution: currentOptimalResolution,
 						},
 					}
@@ -227,6 +229,7 @@ export default function Calibration() {
 				const acceptanceCriteria = equipment.acceptance_criteria || 0
 				const periodicityDays =
 					equipment.calibration_periodicity?.calibration_days || null
+				const factorIdToPreserve = prevData.currentResult.factor_id
 
 				// 1. Recálculo da Resolução Ideal (usa o FATOR já carregado)
 				const currentFactor = Number(prevData.calibrationOthers.factor)
@@ -269,6 +272,7 @@ export default function Calibration() {
 					calibrationResults: [],
 					currentResult: {
 						...getInitialCurrentResult(),
+						factor_id: factorIdToPreserve,
 						optimal_resolution: currentOptimalResolution, // Mantém a resolução ideal
 					},
 				}
@@ -416,13 +420,20 @@ export default function Calibration() {
 		const loadActualFactor = async () => {
 			try {
 				const factorData = (await getAllCalibrationConfig()) || []
-				const factor = Number(factorData[0].factor)
+				const factorId = factorData.length > 0 ? Number(factorData[0].id) : 1
+				const factor = factorData.length > 0 ? Number(factorData[0].factor) : 0
+
+				console.log(factorData)
 
 				setFormData((prevData) => ({
 					...prevData,
 					calibrationOthers: {
 						...prevData.calibrationOthers,
 						factor,
+					},
+					currentResult: {
+						...prevData.currentResult,
+						factor_id: factorId,
 					},
 				}))
 			} catch (error) {
@@ -508,6 +519,7 @@ export default function Calibration() {
 		}
 
 		const newResultData = {
+			factor_id: formData.currentResult.factor_id,
 			measuring_range,
 			optimal_resolution: formData.currentResult.optimal_resolution,
 			identifier: formData.currentResult.identifier ? 'OK' : 'NOK',
@@ -557,6 +569,7 @@ export default function Calibration() {
 			currentResult: {
 				...getInitialCurrentResult(),
 				optimal_resolution: prevData.currentResult.optimal_resolution,
+				factor_id: prevData.currentResult.factor_id,
 			},
 		}))
 	}
@@ -573,7 +586,7 @@ export default function Calibration() {
 
 	function handleClearCalibration() {
 		const currentFactor = formData.calibrationOthers.factor
-
+		const currentFactorId = formData.currentResult.factor_id
 		if (formData.calibrationData.equipment_id) {
 			// Redefine para o estado inicial, mas mantém o FATOR
 			setFormData((prevData) => {
@@ -596,6 +609,7 @@ export default function Calibration() {
 					currentResult: {
 						...initialState.currentResult,
 						optimal_resolution: newOptimalResolution, // APLICA NOVA RESOLUÇÃO
+						factor_id: currentFactorId, // ✅ PRESERVA O ID NA LIMPEZA GERAL
 					},
 				}
 			})
@@ -680,6 +694,7 @@ export default function Calibration() {
 			createMessage('error', errorMessage)
 		} finally {
 			setFormData((prevData) => {
+				const currentFactorId = prevData.calibrationData.factor_id
 				const initialState = getInitialState()
 
 				// Recalcula a resolução ideal para o novo currentResult com base no FATOR carregado
@@ -699,6 +714,7 @@ export default function Calibration() {
 					currentResult: {
 						...initialState.currentResult,
 						optimal_resolution: newOptimalResolution, // APLICA NOVA RESOLUÇÃO
+						factor_id: currentFactorId,
 					},
 				}
 			})
@@ -803,6 +819,7 @@ export default function Calibration() {
 			/>
 		)
 	}
+	console.log(formData.calibrationData)
 
 	return (
 		<Container

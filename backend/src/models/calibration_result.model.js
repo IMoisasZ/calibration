@@ -1,6 +1,8 @@
+/** @format */
+
 import { DataTypes } from 'sequelize'
 import dbConnection from '../connection/db.connection.js'
-import { CalibrationModel } from './__index.js'
+import { CalibrationConfigModel, CalibrationModel } from './__index.js'
 
 const CalibrationResult = dbConnection.define(
 	'calibration_result',
@@ -11,6 +13,10 @@ const CalibrationResult = dbConnection.define(
 			primaryKey: true,
 		},
 		calibration_id: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+		},
+		factor_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
@@ -118,4 +124,7 @@ CalibrationResult.belongsTo(CalibrationModel, {
 	onDelete: 'CASCADE',
 })
 CalibrationModel.hasMany(CalibrationResult, { foreignKey: 'calibration_id' })
+
+CalibrationResult.belongsTo(CalibrationConfigModel, { foreignKey: 'factor_id' })
+CalibrationConfigModel.hasMany(CalibrationResult, { foreignKey: 'factor_id' })
 export default CalibrationResult

@@ -17,6 +17,7 @@ import CalibrationMenu from '../pages/calibration/CalibrationMenu'
 import CalibrationAnalysisDefinition from '../pages/calibration/calibration_analysis/CalibrationAnalysisDefinition'
 import CalibrationAnalysisList from '../pages/calibration/calibration_analysis/CalibrationAnalysisList'
 import CalibrationFinalList from '../pages/calibration/calibration_final/CalibrationFinalList'
+import CalibrationGeral from '../pages/calibration/calibration_final/calibration_geral/CalibrationGeral'
 
 export default function CalibrationRoutes({ children }) {
 	return (
@@ -72,6 +73,10 @@ export default function CalibrationRoutes({ children }) {
 					<Route
 						path='/calibration_final_list'
 						element={<CalibrationFinalList />}
+					/>
+					<Route
+						path='/calibration_geral'
+						element={<CalibrationGeral />}
 					/>
 					<Route
 						path='/calibration_config'

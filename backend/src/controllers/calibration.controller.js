@@ -1,3 +1,5 @@
+/** @format */
+
 import CalibrationService from '../services/calibration.service.js'
 
 const routeName = '/calibration'
@@ -86,6 +88,7 @@ async function createCalibrationWithResults(req, res, next) {
 	try {
 		const calibrationData = JSON.parse(req.body.calibrationData)
 		const calibrationResults = JSON.parse(req.body.calibrationResults)
+		console.log(typeof calibrationResults)
 
 		const certificateFilePath = req.file
 			? `${BASE_URL_CERTIFICATES}${req.file.filename}`

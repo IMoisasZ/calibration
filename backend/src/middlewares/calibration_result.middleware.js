@@ -1,3 +1,5 @@
+/** @format */
+
 import { param, body } from 'express-validator'
 import { validationResult } from '../utils/validationResult.utils.js'
 
@@ -7,6 +9,11 @@ const calibrationResultBodyValidator = [
 		.withMessage('Calibração ID não informada!')
 		.isNumeric()
 		.withMessage('Tipo de dados da calibração ID é numerico!'),
+	body('factor_id')
+		.notEmpty()
+		.withMessage('Fator ID não informado!')
+		.isInt()
+		.withMessage('Tipo de dados do factor_id deve ser um numero inteiro!'),
 	body('measuring_range')
 		.notEmpty()
 		.withMessage('Faixa de medição não informada!')

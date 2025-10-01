@@ -1,3 +1,5 @@
+/** @format */
+
 import UserModel from './user.model.js'
 import LocalizationModel from './localization.model.js'
 import EquipmentTypeModel from './equipment_type.model.js'
@@ -31,8 +33,8 @@ async function syncModels() {
 }
 
 export {
-	UserModel,
 	syncModels,
+	UserModel,
 	LocalizationModel,
 	EquipmentTypeModel,
 	UnityModel,

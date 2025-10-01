@@ -1,3 +1,5 @@
+/** @format */
+
 import {
 	CalibrationModel,
 	CalibrationResultModel,
@@ -7,6 +9,8 @@ import {
 	OwnerModel,
 	UnityModel,
 	CalibrationAnalysisModel,
+	CalibrationConfigModel,
+	UserModel,
 } from '../models/__index.js'
 import CalibrationPeriodicity from '../models/calibration_periodicity.model.js'
 
@@ -75,10 +79,20 @@ async function getAllCalibrationsIsAnalysis() {
 			},
 			{
 				model: CalibrationResultModel,
+				include: [
+					{
+						model: CalibrationConfigModel,
+					},
+				],
 			},
 			{
 				model: CalibrationAnalysisModel,
-			},	
+				include: [
+					{
+						model: UserModel,
+					},
+				],
+			},
 		],
 	})
 }

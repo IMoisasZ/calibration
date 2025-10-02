@@ -1,0 +1,10 @@
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    flex-direction: column;
+    height: 80vh;
+    vertical-align: middle;
+}

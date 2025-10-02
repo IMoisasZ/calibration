@@ -53,6 +53,18 @@ async function getUser(req, res, next) {
 	}
 }
 
+async function getUserByEmail(req, res, next) {
+	try {
+		const { email } = req.query
+		const user = await UserService.getUserByEmail(email)
+		res.status(200).send(user)
+		const loggerMessage = `GET - ${pathName}/user?email=${email}`
+		logger.info(loggerMessage)
+	} catch (error) {
+		next(error)
+	}
+}
+
 async function patchUserDisableEnable(req, res, next) {
 	try {
 		const { id } = req.params
@@ -73,5 +85,6 @@ export default {
 	updateUser,
 	getAllUsers,
 	getUser,
+	getUserByEmail,
 	patchUserDisableEnable,
 }

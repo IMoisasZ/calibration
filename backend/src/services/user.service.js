@@ -5,6 +5,7 @@ import {
 	AlreadyAdded,
 } from '../errors/customErrors.error.js'
 import { UniqueConstraintError } from 'sequelize'
+import { UserModel } from '../models/__index.js'
 
 async function existUserById(id) {
 	if (!id) {
@@ -78,6 +79,20 @@ async function getUser(id) {
 	return removePassword(data)
 }
 
+async function getUserByEmail(email) {
+	if (!email) {
+		throw new BadRequestError(`Email não informado!`)
+	}
+
+	const dataUser = await UserModel.getUserByEmail(email)
+
+	if (!dataUser) {
+		throw new NotFoundError(`Não foin encontrao usuário com o email ${email}!`)
+	}
+
+	return dataUser
+}
+
 async function patchUserDisableEnable(id, active) {
 	await existUserById(id)
 
@@ -90,5 +105,6 @@ export default {
 	updateUser,
 	getAllUsers,
 	getUser,
+	getUserByEmail,
 	patchUserDisableEnable,
 }

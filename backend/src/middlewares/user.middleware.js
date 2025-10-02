@@ -58,6 +58,18 @@ const userQueryValidator = [
 		.withMessage('O tipo de dados do active deve ser um texto!'),
 ]
 
+const userQueryEmailValidator = [
+	query('email')
+		.exists()
+		.withMessage('email não informado!')
+		.notEmpty()
+		.withMessage('Email não informado!')
+		.isString()
+		.withMessage('O tipo de dados do email deve ser um texto!')
+		.isEmail()
+		.withMessage('Formado de email invalido!'),
+]
+
 const createUserValidator = [
 	...createUserRequiredFields,
 	...userBodyValidator,
@@ -74,6 +86,8 @@ const getAllUsersValidator = [...userQueryValidator, validationResult()]
 
 const getUserValidator = [...userParamValidator, validationResult()]
 
+const getUserByEmailValidator = [...userQueryEmailValidator, validationResult()]
+
 const patchUserDisableEnableValidator = [
 	...userParamValidator,
 	...userBodyActiveValidator,
@@ -85,5 +99,6 @@ export {
 	updateUserValidator,
 	getAllUsersValidator,
 	getUserValidator,
+	getUserByEmailValidator,
 	patchUserDisableEnableValidator,
 }

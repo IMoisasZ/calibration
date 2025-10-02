@@ -5,6 +5,7 @@ import {
 	updateUserValidator,
 	getAllUsersValidator,
 	getUserValidator,
+	getUserByEmailValidator,
 	patchUserDisableEnableValidator,
 } from '../middlewares/user.middleware.js'
 
@@ -14,6 +15,7 @@ route.post('/', createUserValidator, UserController.createUser)
 route.put('/:id', updateUserValidator, UserController.updateUser)
 route.get('/', getAllUsersValidator, UserController.getAllUsers)
 route.get('/:id', getUserValidator, UserController.getUser)
+route.get('/user', getUserByEmailValidator, UserController.getUserByEmail)
 route.patch(
 	'/:id',
 	patchUserDisableEnableValidator,

@@ -22,6 +22,14 @@ async function getUser(id) {
 	return await UserModel.findByPk(id)
 }
 
+async function getUserByEmail(email) {
+	return await UserModel.findOne({
+		where: {
+			email,
+		},
+	})
+}
+
 async function patchUserDisableEnable(id, active) {
 	await UserModel.update(
 		{ active },
@@ -39,5 +47,6 @@ export default {
 	updateUser,
 	getAllUsers,
 	getUser,
+	getUserByEmail,
 	patchUserDisableEnable,
 }

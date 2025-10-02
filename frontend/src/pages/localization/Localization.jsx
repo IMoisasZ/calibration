@@ -12,7 +12,7 @@ import {
 	getAllLocalization,
 	updateLocalizationStatus,
 } from '../../services/localization.service'
-import { createMessage } from '../../utils/message.utils'
+import { createMessage, defaultErrorMessage } from '../../utils/message.utils'
 
 export default function Localization() {
 	/**@description -> useStates of page */
@@ -42,12 +42,13 @@ export default function Localization() {
 				handleClear()
 			}
 		} catch (error) {
-			console.error({ error })
-			const errorMessage =
-				error.response?.data?.errors ||
-				error.message ||
-				'Ocorreu um erro desconhecido!'
-			createMessage('error', errorMessage)
+			// console.error({ error })
+			// const errorMessage =
+			// 	error.response?.data?.errors ||
+			// 	error.message ||
+			// 	'Ocorreu um erro desconhecido!'
+			// createMessage('error', errorMessage)
+			defaultErrorMessage(error)
 		} finally {
 			setIsLoading(false)
 			loadLocalization()

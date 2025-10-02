@@ -53,3 +53,12 @@ export function createMessage(type = 'success', message = '') {
 			break
 	}
 }
+
+export function defaultErrorMessage(error) {
+	console.log({ error })
+	const errorMessage =
+		error.response?.data?.errors ||
+		error.message ||
+		'Ocorreu um erro desconhecido!'
+	createMessage('error', errorMessage)
+}

@@ -1,0 +1,26 @@
+.container {
+    & h1 {
+        text-align: center;
+    }
+
+    & .form {
+        width: 40%;
+        margin: 1rem auto;
+        display: flex;
+        flex-direction: column;
+
+        border: 1px solid #c1c1c1;
+        border-radius: .5rem;
+        padding: .5rem;
+
+
+        & button {
+            margin-bottom: 1rem;
+        }
+
+        & span {
+            font-weight: 600;
+        }
+    }
+
+}

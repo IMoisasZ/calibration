@@ -6,6 +6,12 @@ class CustomError extends Error {
 	}
 }
 
+class UnauthorizedError extends CustomError {
+	constructor(message = 'Unauthorized access') {
+		super(message, 401)
+	}
+}
+
 class NotFoundError extends CustomError {
 	constructor(message = 'Resource not found') {
 		super(message, 404)
@@ -20,8 +26,14 @@ class BadRequestError extends CustomError {
 
 class AlreadyAdded extends CustomError {
 	constructor(message = 'Bad request') {
-		super(message, 400)
+		super(message, 409)
 	}
 }
 
-export { CustomError, NotFoundError, BadRequestError, AlreadyAdded }
+export {
+	UnauthorizedError,
+	CustomError,
+	NotFoundError,
+	BadRequestError,
+	AlreadyAdded,
+}

@@ -1,5 +1,5 @@
 import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im'
-import { MdEdit, MdSearch, MdDeleteForever } from 'react-icons/md'
+import { MdEdit, MdSearch, MdDeleteForever, MdLogout } from 'react-icons/md'
 
 export const btnsIcons = {
 	enabled: { icon: <ImCheckboxChecked /> },
@@ -7,4 +7,5 @@ export const btnsIcons = {
 	edit: { icon: <MdEdit /> },
 	search: { icon: <MdSearch /> },
 	delete: { icon: <MdDeleteForever /> },
+	close: { icon: <MdLogout /> },
 }

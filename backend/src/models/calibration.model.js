@@ -1,6 +1,8 @@
+/** @format */
+
 import { DataTypes } from 'sequelize'
 import dbConnection from '../connection/db.connection.js'
-import { EquipmentModel } from './__index.js'
+import { EquipmentModel, UserModel } from './__index.js'
 
 const Calibration = dbConnection.define(
 	'calibration',
@@ -9,6 +11,15 @@ const Calibration = dbConnection.define(
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
 			primaryKey: true,
+		},
+		user_id: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			validate: {
+				notEmpty: {
+					msg: 'Usuário não informado!',
+				},
+			},
 		},
 		equipment_id: {
 			type: DataTypes.INTEGER,
@@ -96,5 +107,8 @@ const Calibration = dbConnection.define(
 
 Calibration.belongsTo(EquipmentModel, { foreignKey: 'equipment_id' })
 EquipmentModel.hasMany(Calibration, { foreignKey: 'equipment_id' })
+
+Calibration.belongsTo(UserModel, { foreignKey: 'user_id' })
+UserModel.hasMany(Calibration, { foreignKey: 'user_id' })
 
 export default Calibration

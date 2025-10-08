@@ -1,7 +1,14 @@
+/** @format */
+
 import { param, body, query } from 'express-validator'
 import { validationResult } from '../utils/validationResult.utils.js'
 
 const calibrationBodyValidator = [
+	body('user_id')
+		.notEmpty()
+		.withMessage('ID do usuario não informado!')
+		.isLength()
+		.withMessage('O tipo de dados to user_id deve ser um numero inteiro'),
 	body('equipment_id')
 		.notEmpty()
 		.withMessage('Equipamento não informado!')

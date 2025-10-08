@@ -8,6 +8,8 @@ async function createUser(user) {
 }
 
 async function updateUser(user) {
+	console.log(user)
+
 	const { id } = user
 	delete user.id
 	const { data } = await API.put(`${routeName}/${id}`, user)

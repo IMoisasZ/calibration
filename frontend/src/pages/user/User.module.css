@@ -1,0 +1,80 @@
+.container {
+    & h1 {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    & .form {
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    & .checkbox {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        
+        & label {
+            margin-bottom: 0;
+        }
+    }
+
+    & .container_btns {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        width: 100%;
+        & .btn {
+            width: 100%;
+        }
+    }
+}
+
+/* user list */
+
+.container_list {
+    & h1 {
+        margin-bottom: 1rem;
+    }
+
+    & .container_input_button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    & .checkbox_status {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+        gap: .5rem;
+
+        & label {
+            margin-bottom: 0 !important;
+        }
+    }
+}
+
+/* user menu */
+
+.container_user_menu {
+    & div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+
+        & button {
+            font-size: 2rem;
+            width: 25rem;
+            height: 6rem;
+            transition: 1s ease;
+
+            &:hover {
+                background-color: rgb(2, 2, 254);
+            }
+        }
+    }
+}

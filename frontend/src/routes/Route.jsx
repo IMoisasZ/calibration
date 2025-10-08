@@ -20,7 +20,9 @@ import CalibrationAnalysisDefinition from '../pages/calibration/calibration_anal
 import CalibrationAnalysisList from '../pages/calibration/calibration_analysis/CalibrationAnalysisList'
 import CalibrationFinalList from '../pages/calibration/calibration_final/CalibrationFinalList'
 import CalibrationGeral from '../pages/calibration/calibration_final/calibration_geral/CalibrationGeral'
-
+import User from '../pages/user/User'
+import UserList from '../pages/user/UserList'
+import UserMenu from '../pages/user/UserMenu'
 export default function CalibrationRoutes({ children }) {
 	return (
 		<>
@@ -31,6 +33,18 @@ export default function CalibrationRoutes({ children }) {
 					<Route
 						path='/'
 						element={<Home />}
+					/>
+					<Route
+						path='/user_menu'
+						element={<UserMenu />}
+					/>
+					<Route
+						path='/user_list'
+						element={<UserList />}
+					/>
+					<Route
+						path='/user'
+						element={<User />}
 					/>
 					<Route
 						path='/login'

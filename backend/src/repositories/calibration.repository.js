@@ -75,9 +75,6 @@ async function getAllCalibrationsIsAnalysis() {
 					{
 						model: CalibrationPeriodicity,
 					},
-					{
-						model: UserModel,
-					},
 				],
 			},
 			{
@@ -95,6 +92,9 @@ async function getAllCalibrationsIsAnalysis() {
 						model: UserModel,
 					},
 				],
+			},
+			{
+				model: UserModel,
 			},
 		],
 	})

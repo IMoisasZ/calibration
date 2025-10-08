@@ -78,18 +78,18 @@ const User = dbConnection.define(
 			},
 
 			// 2. 🚨 NOVO HOOK: APENAS para criação
-			beforeCreate: (instance, options) => {
+			beforeCreate: async (instance, options) => {
 				// Hashing na criação
 				if (instance.password) {
-					instance.password = hashPassword(instance.password)
+					instance.password = await hashPassword(instance.password)
 				}
 			},
 
 			// 3. 🚨 NOVO HOOK: APENAS para atualização
-			beforeUpdate: (instance, options) => {
+			beforeUpdate: async (instance, options) => {
 				// Hashing APENAS se o campo 'password' foi explicitamente alterado
 				if (instance.changed('password')) {
-					instance.password = hashPassword(instance.password)
+					instance.password = await hashPassword(instance.password)
 				}
 			},
 		},

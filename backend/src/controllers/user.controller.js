@@ -1,3 +1,5 @@
+/** @format */
+
 import UserService from '../services/user.service.js'
 
 const pathName = '/user'
@@ -5,6 +7,7 @@ const pathName = '/user'
 async function createUser(req, res, next) {
 	try {
 		const user = req.body
+
 		const newUser = await UserService.createUser(user)
 		res.status(201).send(newUser)
 		const loggerMessage = `POST - ${pathName} - ${JSON.stringify(newUser)}`

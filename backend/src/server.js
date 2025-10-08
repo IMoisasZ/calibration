@@ -1,6 +1,9 @@
+/** @format */
+
 import app from './app.js'
 import dbConnection from './connection/db.connection.js'
 import { syncModels } from './models/__index.js'
+import { createUserDefault } from './utils/user.utils.js'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -17,6 +20,9 @@ try {
 
 	/**@description -> Start the server */
 	app.listen(PORT, () => console.warn(`SERVER RUNNING ON PORT ${PORT}`))
+
+	/**@description -> Create the user default */
+	createUserDefault()
 } catch (error) {
 	console.error('Unable to connect to the database:', error)
 	process.exit(1)

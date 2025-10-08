@@ -1,3 +1,5 @@
+/** @format */
+
 import { DataTypes } from 'sequelize'
 import dbConnection from '../connection/db.connection.js'
 import { hashPassword } from '../utils/user.utils.js'

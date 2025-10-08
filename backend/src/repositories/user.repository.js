@@ -1,3 +1,5 @@
+/** @format */
+
 import { UserModel } from '../models/__index.js'
 
 async function createUser(user) {
@@ -36,11 +38,16 @@ async function getUser(id) {
 }
 
 async function getUserByEmail(email) {
-	return await UserModel.findOne({
-		where: {
-			email,
-		},
-	})
+	try {
+		return await UserModel.findOne({
+			where: {
+				email,
+			},
+		})
+	} catch (error) {
+		console.log(error)
+		return null
+	}
 }
 
 async function patchUserDisableEnable(id, active) {

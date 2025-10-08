@@ -1,6 +1,8 @@
+/** @format */
+
 import UserRepository from '../repositories/user.repository.js'
-import { BadRequestError, NotFoundError } from '../errors/customErrors.error.js'
-import { comparePassword, hashPassword } from '../utils/user.utils.js'
+import { BadRequestError } from '../errors/customErrors.error.js'
+import { comparePassword } from '../utils/user.utils.js'
 import jwt from 'jsonwebtoken'
 import 'dotenv/config'
 

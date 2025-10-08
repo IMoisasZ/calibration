@@ -35,19 +35,6 @@ export default function CalibrationGeral() {
 			<section className={styles.equipment}>
 				<div className={styles.div_h4_h3}>
 					<h4>Instrumento:</h4>
-					<div>
-						<p>Status da Calibração: </p>
-						<h3
-							className={
-								dataLocation.calibration_status === 'EM ANALISE'
-									? styles.analysis
-									: dataLocation.calibration_status === 'APROVADO'
-									? styles.approved
-									: styles.reproved
-							}>
-							{dataLocation.calibration_status}
-						</h3>
-					</div>
 				</div>
 				<div className={styles.div_data_equipment}>
 					<p>
@@ -103,6 +90,19 @@ export default function CalibrationGeral() {
 							{dataLocation.certificate_number}
 						</a>
 					</p>
+					<div>
+						<p>Status da Calibração: </p>
+						<h3
+							className={
+								dataLocation.calibration_status === 'EM ANALISE'
+									? styles.analysis
+									: dataLocation.calibration_status === 'APROVADO'
+									? styles.approved
+									: styles.reproved
+							}>
+							{dataLocation.calibration_status}
+						</h3>
+					</div>
 				</div>
 			</section>
 
@@ -189,13 +189,27 @@ export default function CalibrationGeral() {
 						</div>
 					))
 				) : dataLocation.calibration_status === 'REPROVADO' ? (
-					<p className={styles.has_not_data_analysis}>
-						EQUIPAMENTO INAPTO PARA USO!
-					</p>
+					<div className={styles.data_calibration_analysis}>
+						<p className={styles.has_not_data_analysis}>
+							EQUIPAMENTO INAPTO PARA USO!
+						</p>
+						<p>
+							Data analise:{' '}
+							{new Date(dataLocation.createdAt).toLocaleDateString()}
+						</p>
+						<p>Analisado por: {dataLocation.user.user_name.toUpperCase()}</p>
+					</div>
 				) : (
-					<p className={styles.has_not_data_analysis}>
-						EQUIPAMENTO APTO PARA USO!
-					</p>
+					<div className={styles.data_calibration_analysis}>
+						<p className={styles.has_not_data_analysis}>
+							EQUIPAMENTO APTO PARA USO!
+						</p>
+						<p>
+							Data analise:{' '}
+							{new Date(dataLocation.createdAt).toLocaleDateString()}
+						</p>
+						<p>Analisado por: {dataLocation.user.user_name.toUpperCase()}</p>
+					</div>
 				)}
 			</section>
 			<Divider />

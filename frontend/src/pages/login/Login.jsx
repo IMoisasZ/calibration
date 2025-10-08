@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Container from '../../components/container/Container'
@@ -52,9 +54,7 @@ export default function Login() {
 					type='subimit'
 					title='Clique para fazer login!'
 				/>
-				<span>
-					Não tem uma conta? <a href='#'>Clique aqui</a> e crie a sua!
-				</span>
+				<span>Não tem uma conta? Fale com o setor da qualidade!</span>
 			</Form>
 		</Container>
 	)

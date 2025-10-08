@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useUser } from '../../context/user.context' // Importação correta do hook
 import Container from '../../components/container/Container'
 import Form from '../../components/form/Form'
 import Button from '../../components/button/Button'
@@ -48,6 +49,7 @@ const getInitialCurrentResult = () => ({
 // Estado inicial COMPLETO
 const getInitialState = () => ({
 	calibrationData: {
+		user_id: '',
 		equipment_id: '',
 		calibration_date: today.toISOString().substring(0, 10),
 		next_calibration: '',
@@ -81,8 +83,40 @@ export default function Calibration() {
 		body: null,
 		actions: null,
 	})
+	const [userId, setUserId] = useState('')
 
 	const navigate = useNavigate()
+	const { isLogged } = useUser()
+
+	const verifyUserLogged = useCallback(async () => {
+		if (!isLogged) {
+			createMessage('error', 'Não há usuáriio logado!')
+			navigate('/login')
+			return
+		}
+
+		const factorData = await getAllCalibrationConfig()
+
+		if (factorData.length === 0) {
+			createMessage('error', 'Não há fator criado!')
+			navigate('/calibration_config')
+			return
+		}
+
+		const userIdLogged = JSON.parse(localStorage.getItem('userData'))
+		setUserId(userIdLogged)
+		setFormData((prevData) => ({
+			...prevData,
+			calibrationData: {
+				...prevData.calibrationData,
+				user_id: userIdLogged.id,
+			},
+		}))
+	}, [isLogged, navigate])
+
+	useEffect(() => {
+		verifyUserLogged()
+	}, [isLogged, navigate, verifyUserLogged])
 
 	const fetchEquipment = useCallback(
 		async (identifierNumber) => {
@@ -438,15 +472,19 @@ export default function Calibration() {
 				}))
 			} catch (error) {
 				console.error({ error })
-				createMessage('error', 'Erro ao carregar o fator de calibração.')
-				setTimeout(() => {
-					navigate('/calibration_config')
-					createMessage('info', 'Crie um fator!.')
-				}, 3000)
+				console.log(isLogged)
+
+				if (isLogged) {
+					createMessage('error', 'Erro ao carregar o fator de calibração.')
+					setTimeout(() => {
+						navigate('/calibration_config')
+						createMessage('info', 'Crie um fator!.')
+					}, 3000)
+				}
 			}
 		}
 		loadActualFactor()
-	}, [navigate])
+	}, [isLogged, navigate])
 
 	// 2. EFEITO: Recalcula optimal_resolution quando o FATOR ou o CRITÉRIO de aceitação mudam - MANTIDO
 	useEffect(() => {
@@ -565,6 +603,7 @@ export default function Calibration() {
 			calibrationData: {
 				...prevData.calibrationData,
 				calibration_status: newCalibrationStatus,
+				user_id: userId.id,
 			},
 			currentResult: {
 				...getInitialCurrentResult(),
@@ -657,6 +696,7 @@ export default function Calibration() {
 	}
 
 	const currentFactor = formData.calibrationOthers.factor
+	console.log(formData)
 	async function handleSubmit(e) {
 		e.preventDefault()
 		try {
@@ -692,34 +732,34 @@ export default function Calibration() {
 				error.message ||
 				'Ocorreu um erro desconhecido!'
 			createMessage('error', errorMessage)
-		} finally {
-			setFormData((prevData) => {
-				const currentFactorId = prevData.calibrationData.factor_id
-				const initialState = getInitialState()
+		} // } finally {
+		// 	setFormData((prevData) => {
+		// 		const currentFactorId = prevData.calibrationData.factor_id
+		// 		const initialState = getInitialState()
 
-				// Recalcula a resolução ideal para o novo currentResult com base no FATOR carregado
-				const acceptanceCriteria =
-					initialState.calibrationOthers.acceptanceCriteriaValue // 0
-				const newOptimalResolution = calculateOptimalResolution(
-					acceptanceCriteria,
-					Number(currentFactor)
-				)
+		// 		// Recalcula a resolução ideal para o novo currentResult com base no FATOR carregado
+		// 		const acceptanceCriteria =
+		// 			initialState.calibrationOthers.acceptanceCriteriaValue // 0
+		// 		const newOptimalResolution = calculateOptimalResolution(
+		// 			acceptanceCriteria,
+		// 			Number(currentFactor)
+		// 		)
 
-				return {
-					...initialState,
-					calibrationOthers: {
-						...initialState.calibrationOthers,
-						factor: currentFactor, // PRESERVA O FATOR DE CONFIGURAÇÃO
-					},
-					currentResult: {
-						...initialState.currentResult,
-						optimal_resolution: newOptimalResolution, // APLICA NOVA RESOLUÇÃO
-						factor_id: currentFactorId,
-					},
-				}
-			})
-			setSelectedFile(null)
-		}
+		// 		return {
+		// 			...initialState,
+		// 			calibrationOthers: {
+		// 				...initialState.calibrationOthers,
+		// 				factor: currentFactor, // PRESERVA O FATOR DE CONFIGURAÇÃO
+		// 			},
+		// 			currentResult: {
+		// 				...initialState.currentResult,
+		// 				optimal_resolution: newOptimalResolution, // APLICA NOVA RESOLUÇÃO
+		// 				factor_id: currentFactorId,
+		// 			},
+		// 		}
+		// 	})
+		// 	setSelectedFile(null)
+		// }
 	}
 
 	const header = [

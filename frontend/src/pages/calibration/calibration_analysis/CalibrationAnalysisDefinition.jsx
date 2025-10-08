@@ -1,5 +1,8 @@
+/** @format */
+
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { useUser } from '../../../context/user.context' // Importação correta do hook
 import Container from '../../../components/container/Container'
 import Form from '../../../components/form/Form'
 import Select from '../../../components/select/Select'
@@ -19,13 +22,15 @@ export default function CalibrationAnalysisDefinition() {
 
 	const navigate = useNavigate()
 
+	const { user } = useUser()
+
 	async function handleOnSubmit(e) {
 		e.preventDefault()
 		const CalibrationAnalysis = {
 			calibration_id: calibration.id,
 			original_status: calibration.calibration_status,
 			decision_status: statusDefinition,
-			user_id: 1,
+			user_id: user.id,
 			notes: notes,
 		}
 		try {

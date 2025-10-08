@@ -1,8 +1,15 @@
+/** @format */
+
 function createUpdateCalibrationValidator(dataCalibration) {
 	const { calibrationData, calibrationResults } = dataCalibration
 
 	if (!dataCalibration) {
 		throw new Error('Dados não informados!')
+	}
+	if (!calibrationData.user_id || !Number.isInteger(calibrationData.user_id)) {
+		throw new Error(
+			'O usuário deve ser informado e deve ser um numero inteiero!'
+		)
 	}
 	if (!calibrationData.equipment_id) {
 		throw new Error('O equipamento é obrigatório!')

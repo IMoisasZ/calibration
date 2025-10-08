@@ -1,3 +1,5 @@
+/** @format */
+
 // frontend/src/components/Header.js
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -61,7 +63,9 @@ function Header() {
 					</nav>
 
 					<div className={styles.userAvatar}>
-						<Link to='/user_menu'>
+						<Link
+							to='/user_menu'
+							title={`${userName} - ${user?.email}`}>
 							{/* Use 'userName' diretamente, garantindo que existe antes de slice */}
 							<p>{userName.slice(0, 1).toUpperCase()}</p>
 						</Link>
@@ -69,7 +73,9 @@ function Header() {
 				</>
 			) : (
 				// 4. Se não estiver logado, pode mostrar o link de Login
-				<div className={styles.nav}>
+				<div
+					className={styles.nav}
+					title='Clique para ir para a tela de login'>
 					<Link
 						to='/login'
 						className={styles.navLink}>

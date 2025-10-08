@@ -1,3 +1,5 @@
+/** @format */
+
 import React from 'react'
 import Divider from '../../../components/divider/Divider'
 import styles from './CalibrationAnalysis.module.css'

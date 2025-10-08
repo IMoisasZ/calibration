@@ -7,7 +7,20 @@ async function createUser(user) {
 async function updateUser(id, user) {
 	const instanceUser = await getUser(id)
 
-	Object.assign(instanceUser, user)
+	// 1. Lógica para Senha (Se a senha estiver sendo atualizada)
+	if (user.password) {
+		// A. Se a senha nova for diferente da senha existente (sempre será, pois é hash vs plaintext),
+		// ou se não houver senha existente, o 'set' irá marcá-la como alterada.
+
+		// 🚨 NOVO: Use .set() para a senha e depois remova-a do objeto de atualização
+		// Isso garante que o setter da senha do Sequelize seja ativado primeiro.
+		instanceUser.set('password', user.password)
+		delete user.password
+	}
+
+	// Object.assign(instanceUser, user)
+	instanceUser.set(user)
+
 	await instanceUser.save()
 	return await instanceUser
 }

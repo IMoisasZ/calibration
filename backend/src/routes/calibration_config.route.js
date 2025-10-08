@@ -5,6 +5,7 @@ import {
 	getAllCalibrationConfigValidator,
 	getCalibrationConfigValidator,
 } from '../middlewares/calibration_config.middleware.js'
+import { verifyToken } from '../middlewares/auth.middleware.js'
 
 const route = Router()
 
@@ -15,6 +16,7 @@ route.post(
 )
 route.get(
 	'/',
+	verifyToken,
 	getAllCalibrationConfigValidator,
 	CalibrationConfigController.getAllCalibrationConfig
 )

@@ -19,6 +19,19 @@ const User = dbConnection.define(
 				},
 			},
 		},
+		role: {
+			type: DataTypes.STRING(20),
+			allowNull: false,
+			validate: {
+				notEmpty: {
+					msg: 'Tipo de usuario não informado!',
+				},
+				isIn: {
+					args: [['MASTER', 'ADMINISTRADOR', 'USUARIO']],
+					msg: 'É permitido apenas, "MASTER","ADMINISTRADOR","USUARIO"',
+				},
+			},
+		},
 		email: {
 			type: DataTypes.STRING(100),
 			allowNull: false,
@@ -36,12 +49,12 @@ const User = dbConnection.define(
 			type: DataTypes.STRING(255),
 			allowNull: false,
 			validate: {
+				len: {
+					args: [[6, 20]],
+					msg: 'A senha deve ter no minimo 6 caracteres e no máximo 20!',
+				},
 				notEmpty: {
 					msg: 'Senha não informada!',
-				},
-				len: {
-					args: [6, 20],
-					msg: 'A senha deve ter no minimo 6 caracteres e no máximo 20!',
 				},
 			},
 		},
@@ -60,8 +73,20 @@ const User = dbConnection.define(
 				) {
 					instance.user_name = instance.user_name.trim().toUpperCase()
 				}
+			},
 
-				if (instance.changed('password') && instance.password.trim()) {
+			// 2. 🚨 NOVO HOOK: APENAS para criação
+			beforeCreate: (instance, options) => {
+				// Hashing na criação
+				if (instance.password) {
+					instance.password = hashPassword(instance.password)
+				}
+			},
+
+			// 3. 🚨 NOVO HOOK: APENAS para atualização
+			beforeUpdate: (instance, options) => {
+				// Hashing APENAS se o campo 'password' foi explicitamente alterado
+				if (instance.changed('password')) {
 					instance.password = hashPassword(instance.password)
 				}
 			},

@@ -2,7 +2,7 @@ import { body, param, query } from 'express-validator'
 import { validationResult } from '../utils/validationResult.utils.js'
 
 const createUserRequiredFields = [
-	body(['user_name', 'email', 'password'])
+	body(['user_name', 'role', 'email', 'password'])
 		.exists()
 		.withMessage('Campo obrigatório não informado!')
 		.notEmpty()
@@ -14,6 +14,10 @@ const userBodyValidator = [
 		.optional()
 		.isString()
 		.withMessage('O tipo de dados do user_name deve ser um texto!'),
+	body('role')
+		.optional()
+		.isIn(['MASTER', 'ADMINISTRADOR', 'USUARIO'])
+		.withMessage('É permitido apenas "MASTER","ADMINISTRADOR" e "USUARIO"'),
 	body('email')
 		.optional()
 		.isString()

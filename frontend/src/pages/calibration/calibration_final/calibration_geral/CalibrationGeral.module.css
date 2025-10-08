@@ -178,6 +178,7 @@
 		color: white;
 		padding: 0.2rem;
 		vertical-align: middle;
+		text-align: center;
 	}
 
 	& .reproved {
@@ -186,6 +187,7 @@
 		color: white;
 		padding: 0.2rem;
 		vertical-align: middle;
+		text-align: center;
 	}
 
 	& .analysis {
@@ -194,5 +196,6 @@
 		color: white;
 		padding: 0.2rem;
 		vertical-align: middle;
+		text-align: center;
 	}
 }

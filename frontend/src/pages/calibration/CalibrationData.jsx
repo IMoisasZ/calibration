@@ -1,3 +1,5 @@
+/** @format */
+
 import React from 'react'
 import Input from '../../components/input/Input'
 import Button from '../../components/button/Button'
@@ -7,9 +9,7 @@ import styles from './Calibration.module.css'
 export default function CalibrationData({
 	formData,
 	handleChange,
-	setFormData,
 	handleFileChange,
-	handleImmediateSearch, // Recebido, mas não usado diretamente no botão de lupa
 	handleOpenListEquipment, // NOVO: Função para abrir a lista
 }) {
 	return (

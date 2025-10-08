@@ -19,6 +19,7 @@ import {
 	CalibrationResultRoutes,
 	CalibrationConfigRoutes,
 	CalibrationAnalysisRoutes,
+	LoginRoutes,
 } from './routes/__index.route.js'
 
 const app = express()
@@ -42,6 +43,7 @@ app.use('/calibration', CalibrationRoutes)
 app.use('/calibration_result', CalibrationResultRoutes)
 app.use('/calibration_config', CalibrationConfigRoutes)
 app.use('/calibration_analysis', CalibrationAnalysisRoutes)
+app.use('/login', LoginRoutes)
 
 /**@description -> Log (winston) */
 global.logger = loggerConfig

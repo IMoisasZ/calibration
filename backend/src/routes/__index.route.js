@@ -9,6 +9,7 @@ import CalibrationRoutes from './calibration.route.js'
 import CalibrationResultRoutes from './calibration_result.route.js'
 import CalibrationConfigRoutes from './calibration_config.route.js'
 import CalibrationAnalysisRoutes from './calibration_analysis.route.js'
+import LoginRoutes from './login.route.js'
 
 export {
 	UserRoutes,
@@ -22,4 +23,5 @@ export {
 	CalibrationResultRoutes,
 	CalibrationConfigRoutes,
 	CalibrationAnalysisRoutes,
+	LoginRoutes,
 }

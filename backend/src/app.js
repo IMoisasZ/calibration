@@ -1,8 +1,11 @@
+/** @format */
+
 import express from 'express'
 import cors from 'cors'
 import path from 'node:path'
 import errorMiddleware from './middlewares/errorMiddleware.js'
 import loggerConfig from './logger/logger_config.logger.js'
+import corsMiddleware from './middlewares/cors.middleware.js'
 import { configDotenv } from 'dotenv'
 configDotenv()
 
@@ -26,7 +29,7 @@ const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(cors())
+app.use(cors(corsMiddleware))
 
 const UPLOAD_DIR = path.resolve(process.cwd(), 'src', 'uploads')
 app.use('/uploads', express.static(UPLOAD_DIR))

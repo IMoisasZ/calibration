@@ -33,9 +33,7 @@ async function createUnity(unity) {
 async function updateUnity(id, unity) {
 	const unityInstance = await getUnity(id)
 
-	unityInstance.description = unity.description
-	unityInstance.tag = unity.tag
-	unityInstance.active = unity.active
+	Object.assign(unityInstance, unity)
 
 	return await unityInstance.save()
 }

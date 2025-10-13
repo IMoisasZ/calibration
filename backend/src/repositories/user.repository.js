@@ -51,7 +51,7 @@ async function updateUser(id, user) {
 	instanceUser.set(user)
 
 	await instanceUser.save()
-	return await instanceUser
+	return instanceUser
 }
 
 /**

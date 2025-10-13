@@ -50,18 +50,7 @@ async function createEquipment(equipment) {
 async function updateEquipment(id, equipment) {
 	const instanceEquipment = await getEquipment(id)
 
-	instanceEquipment.equipment_type_id = equipment.equipment_type_id
-	instanceEquipment.identifier = equipment.identifier
-	instanceEquipment.description = equipment.description
-	instanceEquipment.owner_id = equipment.owner_id
-	instanceEquipment.division = equipment.division
-	instanceEquipment.division_unity_id = equipment.division_unity_id
-	instanceEquipment.min_capacity = equipment.min_capacity
-	instanceEquipment.max_capacity = equipment.max_capacity
-	instanceEquipment.acceptance_criteria = equipment.acceptance_criteria
-	instanceEquipment.capacity_unity_id = equipment.capacity_unity_id
-	instanceEquipment.calibration_periodicity = equipment.calibration_periodicity
-	instanceEquipment.active = equipment.active
+	Object.assign(instanceEquipment, equipment)
 
 	await instanceEquipment.save()
 

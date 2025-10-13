@@ -37,11 +37,7 @@ async function createCalibrationPeriodicity(calibrationPeriodicity) {
 async function updateCalibrationPeriodicity(id, calibrationPeriodicity) {
 	const instanceCalibrationPeriodicity = await getCalibrationPeriodicity(id)
 
-	instanceCalibrationPeriodicity.description =
-		calibrationPeriodicity.description
-	instanceCalibrationPeriodicity.calibration_days =
-		calibrationPeriodicity.calibration_days
-	instanceCalibrationPeriodicity.active = calibrationPeriodicity.active
+	Object.assign(instanceCalibrationPeriodicity, calibrationPeriodicity)
 
 	await instanceCalibrationPeriodicity.save()
 

@@ -1,5 +1,8 @@
+/** @format */
+
 import { DataTypes } from 'sequelize'
 import DbConnection from '../connection/db.connection.js'
+import i18n from '../config/i18n.config.js'
 
 const Localization = DbConnection.define(
 	'localization',
@@ -15,7 +18,7 @@ const Localization = DbConnection.define(
 			unique: true,
 			validate: {
 				notEmpty: {
-					msg: 'A localização deve ser informada!',
+					msg: i18n.__('VALIDATION.LOCALIZATION.LOCALIZATION_NOT_PROVIDE'),
 				},
 			},
 		},

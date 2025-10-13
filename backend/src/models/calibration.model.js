@@ -3,6 +3,79 @@
 import { DataTypes } from 'sequelize'
 import dbConnection from '../connection/db.connection.js'
 import { EquipmentModel, UserModel } from './__index.js'
+import i18n from '../config/i18n.config.js'
+
+/**
+ * @typedef {import('sequelize').Model} Model
+ * @typedef {import('./EquipmentModel').EquipmentModel} EquipmentModel
+ * @typedef {import('./UserModel').UserModel} UserModel
+ */
+
+/**
+ * Defines the Sequelize model for the 'calibration' table.
+ * This model records a calibration event, linking it to a user and equipment,
+ * and tracking its status and important dates.
+ *
+ * @type {Model & {
+ * // Static Methods (Associations)
+ * belongsTo: function(model: Model, options: object): void,
+ * hasMany: function(model: Model, options: object): void,
+ *
+ * // Instance Properties (Columns)
+ * /**
+ * * Primary key and auto-incrementing ID.
+ * * @type {number}
+ * *\/
+ * id: number,
+ * /**
+ * * Foreign key linking to the User who performed or registered the calibration.
+ * * @type {number}
+ * *\/
+ * user_id: number,
+ * /**
+ * * Foreign key linking to the Equipment that was calibrated.
+ * * @type {number}
+ * *\/
+ * equipment_id: number,
+ * /**
+ * * The date on which the calibration was performed.
+ * * @type {Date}
+ * *\/
+ * calibration_date: Date,
+ * /**
+ * * The date when the next calibration is due.
+ * * @type {Date}
+ * *\/
+ * next_calibration: Date,
+ * /**
+ * * The unique identifier (number) of the calibration certificate. Normalized to uppercase.
+ * * @type {string}
+ * *\/
+ * certificate_number: string,
+ * /**
+ * * Optional path or identifier for the certificate file/document.
+ * * @type {string | null}
+ * *\/
+ * certificate_file: string | null,
+ * /**
+ * * The overall status of the calibration result.
+ * * @type {'EM ANALISE'|'APROVADO'|'REPROVADO'}
+ * *\/
+ * calibration_status: string,
+ * /**
+ * * Boolean flag indicating if this calibration record has an associated analysis record.
+ * * Default is false.
+ * * @type {boolean}
+ * *\/
+ * is_analysis: boolean,
+ *
+ * // Instance Properties (belongsTo Relationships)
+ * Equipment: EquipmentModel,
+ * User: UserModel
+ * }}
+ */
+
+const VALID_CALIBRATION_STATUS = ['EM ANALISE', 'APROVADO', 'REPROVADO']
 
 const Calibration = dbConnection.define(
 	'calibration',
@@ -17,7 +90,7 @@ const Calibration = dbConnection.define(
 			allowNull: false,
 			validate: {
 				notEmpty: {
-					msg: 'Usuário não informado!',
+					msg: i18n.__('VALID_CALIBRATION_STATUS.CALIBRATION.USER_NOT_PROVIDE'),
 				},
 			},
 		},
@@ -26,7 +99,9 @@ const Calibration = dbConnection.define(
 			allowNull: false,
 			validate: {
 				notEmpty: {
-					msg: 'Equipamento não informado!',
+					msg: i18n.__(
+						'VALID_CALIBRATION_STATUS.CALIBRATION.EQUIPMENT_NOT_PROVIDE'
+					),
 				},
 			},
 		},
@@ -35,10 +110,14 @@ const Calibration = dbConnection.define(
 			allowNull: false,
 			validate: {
 				notEmpty: {
-					msg: 'Data da calibração não informada!',
+					msg: i18n.__(
+						'VALID_CALIBRATION_STATUS.CALIBRATION.CALIBRATION_DATE_NOT_PROVIDE'
+					),
 				},
 				isDate: {
-					msg: 'O tipo informado deve ser uma data válida!',
+					msg: i18n.__(
+						'VALID_CALIBRATION_STATUS.CALIBRATION.CALIBRATION_DATE_TYPE_ERROR'
+					),
 				},
 			},
 		},
@@ -47,10 +126,14 @@ const Calibration = dbConnection.define(
 			allowNull: false,
 			validate: {
 				notEmpty: {
-					msg: 'Data da calibração não informada!',
+					msg: i18n.__(
+						'VALID_CALIBRATION_STATUS.CALIBRATION.CALIBRATION_DATE_TYPE_ERROR'
+					),
 				},
 				isDate: {
-					msg: 'O tipo informado deve ser uma data válida!',
+					msg: i18n.__(
+						'VALID_CALIBRATION_STATUS.CALIBRATION.NEXT_CALIBRATION_TYPE_ERROR'
+					),
 				},
 			},
 		},
@@ -59,7 +142,9 @@ const Calibration = dbConnection.define(
 			allowNull: false,
 			validate: {
 				notEmpty: {
-					msg: 'Certificado não informado!',
+					msg: i18n.__(
+						'VALID_CALIBRATION_STATUS.CALIBRATION.CERTIFICATE_NUMBER_NOT_PROVIDE'
+					),
 				},
 			},
 		},
@@ -68,12 +153,13 @@ const Calibration = dbConnection.define(
 			allowNull: true,
 		},
 		calibration_status: {
-			type: DataTypes.STRING(20),
+			type: DataTypes.ENUM(...VALID_CALIBRATION_STATUS),
 			allowNull: false,
 			validate: {
-				isIn: {
-					args: [['EM ANALISE', 'APROVADO', 'REPROVADO']],
-					msg: 'Informe apenas "EM ANALISE", "APROVADO" ou "REPROVADO"!',
+				notEmpty: {
+					msg: i18n.__(
+						'VALID_CALIBRATION_STATUS.CALIBRATION.CALIBRATION_STATUS_NOT_PROVIDE'
+					),
 				},
 			},
 		},

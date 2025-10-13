@@ -1,5 +1,8 @@
+/** @format */
+
 import { DataTypes } from 'sequelize'
 import dbConnection from '../connection/db.connection.js'
+import i18n from '../config/i18n.config.js'
 
 const EquipmentType = dbConnection.define(
 	'equipment_type',
@@ -15,7 +18,7 @@ const EquipmentType = dbConnection.define(
 			unique: true,
 			validate: {
 				notEmpty: {
-					msg: 'Tipo de equipamento não informado!',
+					msg: i18n.__('VALIDATION.EQUIPMENT_TYPE.EQUIPMENT_TYPE_NOT_PROVIDE'),
 				},
 			},
 		},

@@ -1,3 +1,5 @@
+/** @format */
+
 import {
 	EquipmentModel,
 	EquipmentTypeModel,
@@ -23,6 +25,7 @@ async function updateEquipment(id, equipment) {
 	instanceEquipment.division_unity_id = equipment.division_unity_id
 	instanceEquipment.min_capacity = equipment.min_capacity
 	instanceEquipment.max_capacity = equipment.max_capacity
+	instanceEquipment.acceptance_criteria = equipment.acceptance_criteria
 	instanceEquipment.capacity_unity_id = equipment.capacity_unity_id
 	instanceEquipment.calibration_periodicity = equipment.calibration_periodicity
 	instanceEquipment.active = equipment.active

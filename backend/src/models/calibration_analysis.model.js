@@ -1,6 +1,34 @@
+/** @format */
+
 import { DataTypes } from 'sequelize'
 import dbConnection from '../connection/db.connection.js'
 import { CalibrationModel, UserModel } from './__index.js'
+import i18n from '../config/i18n.config.js'
+
+/**
+ * @typedef {import('sequelize').Model} Model
+ * @typedef {import('./CalibrationModel').CalibrationModel} CalibrationModel
+ * @typedef {import('./UserModel').UserModel} UserModel
+ */
+
+/**
+ * Defines the Sequelize model for the 'calibration_analysis' table.
+ * This model records the analyses and decisions made during calibration processes.
+ *
+ * @type {Model & {
+ * // Static Methods (Associations)
+ * belongsTo: function(model: Model, options: object): void,
+ * hasMany: function(model: Model, options: object): void,
+ *
+ * // Instance Properties (belongsTo Relationships)
+ * // These are accessible on a loaded instance via .include
+ * Calibration: CalibrationModel,
+ * User: UserModel
+ * }}
+ */
+
+const VALID_ORIGINAL_STATUSES = ['EM ANALISE', 'APROVADO', 'REPROVADO']
+const VALID_DECISION_STATUSES = ['APROVADO CONDICIONAL', 'REPROVADO']
 
 const CalibrationAnalysis = dbConnection.define(
 	'calibration_analysis',
@@ -15,28 +43,20 @@ const CalibrationAnalysis = dbConnection.define(
 			allowNull: false,
 		},
 		original_status: {
-			type: DataTypes.STRING(20),
+			type: DataTypes.ENUM(...VALID_ORIGINAL_STATUSES),
 			allowNull: false,
 			validate: {
 				notEmpty: {
-					msg: 'Status original não informado!',
-				},
-				isIn: {
-					args: [['EM ANALISE', 'APROVADO', 'REPROVADO']],
-					msg: 'São aceitos apenas os status "EM ANALISE", "APROVADO" ou "REPROVADO"!',
+					msg: i18n.__('VALIDATION.CALIBRATION_ANALYSIS.STATUS_NOT_PROVIDE'),
 				},
 			},
 		},
 		decision_status: {
-			type: DataTypes.STRING(20),
+			type: DataTypes.ENUM(...VALID_DECISION_STATUSES),
 			allowNull: false,
 			validate: {
 				notEmpty: {
-					msg: 'Status de decisão final não informado!',
-				},
-				isIn: {
-					args: [['APROVADO CONDICIONAL', 'REPROVADO']],
-					msg: 'São aceitos apenas os status "APROVADO CONDICIONAL" ou "REPROVADO"!',
+					msg: i18n.__('VALIDATION.CALIBRATION_ANALYSIS.DECISION_NOT_PROVIDE'),
 				},
 			},
 		},
@@ -49,11 +69,15 @@ const CalibrationAnalysis = dbConnection.define(
 			allowNull: false,
 			validate: {
 				notEmpty: {
-					msg: 'Informação sobre a analise efetuada não informada!',
+					msg: i18n.__('VALIDATION.CALIBRATION_ANALYSIS..NOTES_NOT_PROVIDED'),
 				},
 				len: {
 					args: [15, 500],
-					msg: 'A quantidade de caracteres deve ser entre 15 e 500',
+					msg: i18n.__(
+						'VALIDATION.CALIBRATION_ANALYSIS..NOTES_LENGTH',
+						15,
+						500
+					),
 				},
 			},
 		},

@@ -1,5 +1,44 @@
+/** @format */
+
 import { DataTypes } from 'sequelize'
 import dbConnection from '../connection/db.connection.js'
+import i18n from '../config/i18n.config.js'
+
+/**
+ * @typedef {import('sequelize').Model} Model
+ */
+
+/**
+ * Defines the Sequelize model for the 'calibration_periodicity' table.
+ * This lookup table stores the different calibration intervals available
+ * (e.g., 'Annual', 'Semiannual') and the corresponding number of days.
+ *
+ * @type {Model & {
+ * // Instance Properties (Columns)
+ * /**
+ * * Primary key and auto-incrementing ID for the periodicity record.
+ * * @type {number}
+ * *\/
+ * id: number,
+ * /**
+ * * A descriptive name for the periodicity (e.g., 'SEMESTRAL', 'ANUAL').
+ * * This field must be unique.
+ * * @type {string}
+ * *\/
+ * description: string,
+ * /**
+ * * The number of days corresponding to this calibration interval.
+ * * Used for calculating the next due date.
+ * * @type {number}
+ * *\/
+ * calibration_days: number,
+ * /**
+ * * Indicates whether this periodicity option is currently active and available for selection.
+ * * @type {boolean}
+ * *\/
+ * active: boolean
+ * }}
+ */
 
 const CalibrationPeriodicity = dbConnection.define(
 	'calibration_periodicity',
@@ -15,7 +54,9 @@ const CalibrationPeriodicity = dbConnection.define(
 			unique: true,
 			validate: {
 				notEmpty: {
-					msg: 'A descrição deve ser informada!',
+					msg: i18n.__(
+						'VALIDATION.CALIBRATION_PERIODICITY.PERIODICITY_CALIBRATION_DESCRITION_NOT_PROVIDE'
+					),
 				},
 			},
 		},
@@ -24,7 +65,9 @@ const CalibrationPeriodicity = dbConnection.define(
 			allowNull: false,
 			validate: {
 				notEmpty: {
-					msg: 'A quantidade de dias deve ser iformada!',
+					msg: i18n.__(
+						'VALIDATION.CALIBRATION_PERIODICITY.QUANTITY_DAYS_PERIODICITY_NOT_PROVIDE'
+					),
 				},
 			},
 		},

@@ -3,6 +3,53 @@
 import { DataTypes } from 'sequelize'
 import dbConnection from '../connection/db.connection.js'
 import { hashPassword } from '../utils/user.utils.js'
+import i18n from '../config/i18n.config.js'
+
+/**
+ * @typedef {import('sequelize').Model} Model
+ */
+
+/**
+ * Defines the Sequelize model for the 'user' table.
+ * This model manages user authentication details, roles, and status.
+ * It enforces password hashing and data normalization through hooks.
+ *
+ * @type {Model & {
+ * // Instance Properties (Columns)
+ * /**
+ * * Primary key and auto-incrementing ID for the user record.
+ * * @type {number}
+ * *\/
+ * id: number,
+ * /**
+ * * The full name of the user. Normalized (trimmed and uppercased) before saving.
+ * * @type {string}
+ * *\/
+ * user_name: string,
+ * /**
+ * * The user's role/access level. Must be one of the predefined roles.
+ * * @type {'MASTER'|'ADMINISTRADOR'|'USUARIO'}
+ * *\/
+ * role: string,
+ * /**
+ * * The user's unique email address, used for login. Must be unique and follow email format.
+ * * @type {string}
+ * *\/
+ * email: string,
+ * /**
+ * * The user's password. Stored as a hash (encrypted) in the database.
+ * * @type {string}
+ * *\/
+ * password: string,
+ * /**
+ * * Flag indicating if the user account is currently active. Default is true.
+ * * @type {boolean}
+ * *\/
+ * active: boolean
+ * }}
+ */
+
+const VALID_ROLE_STATUS = ['MASTER', 'ADMINISTRADOR', 'USUARIO']
 
 const User = dbConnection.define(
 	'user',
@@ -17,20 +64,16 @@ const User = dbConnection.define(
 			allowNull: false,
 			validate: {
 				notEmpty: {
-					msg: 'Nome de usuário não informado!',
+					msg: i18n.__('VALIDATION.USER.USER_NOT_PROVIDE'),
 				},
 			},
 		},
 		role: {
-			type: DataTypes.STRING(20),
+			type: DataTypes.ENUM(...VALID_ROLE_STATUS),
 			allowNull: false,
 			validate: {
 				notEmpty: {
-					msg: 'Tipo de usuario não informado!',
-				},
-				isIn: {
-					args: [['MASTER', 'ADMINISTRADOR', 'USUARIO']],
-					msg: 'É permitido apenas, "MASTER","ADMINISTRADOR","USUARIO"',
+					msg: i18n.__('VALIDATION.USER.ROLE_NOT_PROVIDE'),
 				},
 			},
 		},
@@ -40,10 +83,10 @@ const User = dbConnection.define(
 			unique: true,
 			validate: {
 				notEmpty: {
-					msg: 'Email não informado!',
+					msg: i18n.__('VALIDATION.USER.EMAIL_NOT_PROVIDE'),
 				},
 				isEmail: {
-					msg: 'Informe um email valido!',
+					msg: i18n.__('VALIDATION.USER.EMAIL_TYPE_ERROR'),
 				},
 			},
 		},
@@ -53,10 +96,10 @@ const User = dbConnection.define(
 			validate: {
 				len: {
 					args: [[6, 20]],
-					msg: 'A senha deve ter no minimo 6 caracteres e no máximo 20!',
+					msg: i18n.__('VALIDATION.USER.PASSWORD_LENGTH', 6, 20),
 				},
 				notEmpty: {
-					msg: 'Senha não informada!',
+					msg: i18n.__('VALIDATION.USER.PASSWORD_NOT_PROVIDE'),
 				},
 			},
 		},
@@ -77,7 +120,6 @@ const User = dbConnection.define(
 				}
 			},
 
-			// 2. 🚨 NOVO HOOK: APENAS para criação
 			beforeCreate: async (instance, options) => {
 				// Hashing na criação
 				if (instance.password) {
@@ -85,9 +127,7 @@ const User = dbConnection.define(
 				}
 			},
 
-			// 3. 🚨 NOVO HOOK: APENAS para atualização
 			beforeUpdate: async (instance, options) => {
-				// Hashing APENAS se o campo 'password' foi explicitamente alterado
 				if (instance.changed('password')) {
 					instance.password = await hashPassword(instance.password)
 				}

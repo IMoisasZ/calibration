@@ -1,5 +1,6 @@
 /** @format */
 
+/**@description -> Imports */
 import express from 'express'
 import cors from 'cors'
 import path from 'node:path'
@@ -7,7 +8,6 @@ import errorMiddleware from './middlewares/errorMiddleware.js'
 import loggerConfig from './logger/logger_config.logger.js'
 import corsMiddleware from './middlewares/cors.middleware.js'
 import { configDotenv } from 'dotenv'
-configDotenv()
 
 /**@description -> Import routes */
 import {
@@ -24,13 +24,17 @@ import {
 	CalibrationAnalysisRoutes,
 	LoginRoutes,
 } from './routes/__index.route.js'
+configDotenv()
 
+/**@description ->  Creating the variable app*/
 const app = express()
 
+/**@description -> Using libraries */
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors(corsMiddleware))
 
+/**@description ->  Config the path to get the certificates and put into the folder uploads*/
 const UPLOAD_DIR = path.resolve(process.cwd(), 'src', 'uploads')
 app.use('/uploads', express.static(UPLOAD_DIR))
 
@@ -51,6 +55,7 @@ app.use('/login', LoginRoutes)
 /**@description -> Log (winston) */
 global.logger = loggerConfig
 
+/**@description -> Middleware error global */
 app.use(errorMiddleware)
 
 export default app

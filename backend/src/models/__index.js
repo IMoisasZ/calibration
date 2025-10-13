@@ -1,20 +1,6 @@
-/** @format */
-
-import UserModel from './user.model.js'
-import LocalizationModel from './localization.model.js'
-import EquipmentTypeModel from './equipment_type.model.js'
-import UnityModel from './unity.model.js'
-import OwnerModel from './owner.model.js'
-import CalibrationPeriodicityModel from './calibration_periodicity.model.js'
-import EquipmentModel from './equipment.model.js'
-import CalibrationConfigModel from './calibration_config.model.js'
-import CalibrationModel from './calibration.model.js'
-import CalibrationResultModel from './calibration_result.model.js'
-import CalibrationAnalysisModel from './calibration_analysis.model.js'
-
 /**
- * @fileoverview Central module for managing and synchronizing all Sequelize database models.
- * This file serves as the main export hub for all defined models and provides the synchronization logic.
+ * @format
+ * @fileoverview Central module for managing and synchronizing all Sequelize database models. This file serves as the main export hub for all defined models and provides the synchronization logic.
  */
 
 import UserModel from './user.model.js'

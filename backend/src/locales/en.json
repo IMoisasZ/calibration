@@ -1,0 +1,70 @@
+{
+  "VALIDATION": {
+    "CALIBRATION_ANALYSIS":{
+      "STATUS_NOT_PROVIDED": "Original status not provided!",
+      "STATUS_INVALID": "Only the statuses %s are accepted!",
+      "DECISION_NOT_PROVIDED": "Final decision status not provided!",
+      "DECISION_INVALID": "Only the statuses %s are accepted!",
+      "NOTES_NOT_PROVIDED": "Information about the analysis performed not provided!",
+      "NOTES_LENGTH": "The character count must be between %d and %d"
+    },
+    "CALIBRATION_CONFIG": {
+      "FACTOR_NOT_PROVIDE": "Factor not provide!"
+    },
+    "CALIBRATION_PERIODICITY": {
+      "PERIODICITY_CALIBRATION_DESCRITION_NOT_PROVIDE": "Description of periodicity not provide!",
+      "QUANTITY_DAYS_PERIODICITY_NOT_PROVIDE":"The quantity days of periodicity not provide!"
+    },
+    "CALIBRATION_RESULT": {
+      "MEASURING_RANGE_NOT_PROVIDE": "Measuring range not provide!",
+      "OPTIMAL_RESOLUTION_NOT_PROVIDE":"Optmal resolution not provide!",
+      "BIGGEST_DEVIATION_NOT_PROVIDE":"Biggest deviation not provide!",
+      "MEASUREMENT_UNCERTAINTY_NOT_PROVIDE":"Measurement uncertainty not provide!",
+      "MD+IM_NOT_PROVIDE":"Measurement uncertainty plus biggest deviation, not provide!",
+      "STATUS_RESULT_NOT_PROVIDE": "Resut calibration status not provide!"
+    },
+    "CALIBRATION": {
+      "USER_NOT_PROVIDE": "User not provide!",
+      "EQUIPMENT_NOT_PROVIDE": "Equipment not provide!",
+      "CALIBRATION_DATE_NOT_PROVIDE": "Calibration date not provide!",
+      "CALIBRATION_DATE_TYPE_ERROR": "The data type should be valid date!",
+      "NEXT_CALIBRATION_NOT_PROVIDE": "Next date not provide!",
+      "NEXT_CALIBRATION_TYPE_ERROR": "The data type should be valid date!!",
+      "CERTIFICATE_NUMBER_NOT_PROVIDE": "Certificate not provide!",
+      "CALIBRATION_STATUS_NOT_PROVIDE": "Calibration status not provide!"
+    },
+    "EQUIPMENT_TYPE": {
+      "EQUIPMENT_TYPE_NOT_PROVIDE": "Type of equipment not provide!"
+    },
+    "EQUIPMENT": {
+      "EQUIPMENT_TYPE_ID_NOT_PROVIDE": "Equipment not provide!",
+      "IDENTIFIER_NOT_PROVIDE": "Identifier not provide!",
+      "DESCRIPTION_NOT_PROVIDE": "Equipment description not provide!",
+      "DIVISION_NOT_PROVIDE": "Division not provide!",
+      "UNITY_ID_PROVIDE": "Unity measurement not provide!",
+      "MIN_CAPACITY_NOT_PROVIDE": "Min capacity not provide!",
+      "MAX_CAPACITY_NOT_PROVIDE": "Max capacity not provide!",
+      "ACCEPTANCE_CRITERIA_NOT_PROVIDE": "Acceptance criteria not provide!",
+      "CALIBRATION_PERIODICITY_ID_NOT_PROVIDE": "Calibration periodicity not provide!"
+    },
+    "LOCALIZATION": {
+      "LOCALIZATION_NOT_PROVIDE": "Localization not provide!"
+    },
+    "OWNER": {
+      "OWNER_NOT_PROVIDE": "Owner not provide!",
+      "LOCALIZATION_ID_NOT_PROVIDE": "Localization not provide!"
+    },
+    "UNITY": {
+      "UNITY_NOT_PROVIDE": "Unity not provide!",
+      "TAG_NOT_PROVIDE": "Taq not provide!"
+    },
+    "USER": {
+      "USER_NOT_PROVIDE":"User not provide!",
+      "ROLE_NOT_PROVIDE":"User type not provide!",
+      "EMAIL_NOT_PROVIDE": "Email not provide!",
+      "EMAIL_TYPE_ERROR": "Provide a email valid!",
+      "PASSWORD_NOT_PROVIDE": "Password not provide!",
+      "PASSWORD_LENGTH": "The password should have a min %d characters and the max %d!"
+    }
+  }
+}

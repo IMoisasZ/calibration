@@ -1,0 +1,70 @@
+{
+  "VALIDATION": {
+    "CALIBRATION_ANALYSIS":{
+      "STATUS_NOT_PROVIDED": "Status original não informado!",
+      "STATUS_INVALID": "São aceitos apenas os status %s!",
+      "DECISION_NOT_PROVIDED": "Status de decisão final não informado!",
+      "DECISION_INVALID": "São aceitos apenas os status %s!",
+      "NOTES_NOT_PROVIDED": "Informação sobre a analise efetuada não informada!",
+      "NOTES_LENGTH": "A quantidade de caracteres deve ser entre %d e %d"
+    },
+    "CALIBRATION_CONFIG":{
+      "FACTOR_NOT_PROVIDE": "Fator não informado!"
+    },
+    "CALIBRATION_PERIODICITY": {
+      "PERIODICITY_CALIBRATION_DESCRITION_NOT_PROVIDE": "A descrição deve ser informada!",
+      "QUANTITY_DAYS_PERIODICITY_NOT_PROVIDE":"A quantidade de dias deve ser iformada!"
+    },
+    "CALIBRATION_RESULT": {
+      "MEASURING_RANGE_NOT_PROVIDE": "Faixa de medição não informada!",
+      "OPTIMAL_RESOLUTION_NOT_PROVIDE":"Resolução ideal não informada!",
+      "BIGGEST_DEVIATION_NOT_PROVIDE":"Maior desvio não informado!",
+      "MEASUREMENT_UNCERTAINTY_NOT_PROVIDE":"Incerteza da medição não informada!",
+      "MD+IM_NOT_PROVIDE":"Soma do maior desvio + incerteza da medição, não informado!",
+      "STATUS_RESULT_NOT_PROVIDE": "Status do resultado da calibração não informado!"
+    },
+    "CALIBRATION": {
+      "USER_NOT_PROVIDE": "Usuário não informado!",
+      "EQUIPMENT_NOT_PROVIDE": "Equipamento não informado!",
+      "CALIBRATION_DATE_NOT_PROVIDE": "Data da calibração não informada!",
+      "CALIBRATION_DATE_TYPE_ERROR": "O tipo informado deve ser uma data válida!",
+      "NEXT_CALIBRATION_NOT_PROVIDE": "Data da proxima calibração não informada!",
+      "NEXT_CALIBRATION_TYPE_ERROR": "O tipo informado deve ser uma data válida!",
+      "CERTIFICATE_NUMBER_NOT_PROVIDE": "Certificado não informado!",
+      "CALIBRATION_STATUS_NOT_PROVIDE": "Status da calibração não informada!"
+    },
+    "EQUIPMENT_TYPE": {
+      "EQUIPMENT_TYPE_NOT_PROVIDE": "Tipo de equipamento não informado!"
+    },
+    "EQUIPMENT": {
+      "EQUIPMENT_TYPE_ID_NOT_PROVIDE": "Equipamento não informado!",
+      "IDENTIFIER_NOT_PROVIDE": "Identificação não informada!",
+      "DESCRIPTION_NOT_PROVIDE": "Descrição do equipamento não informado!",
+      "DIVISION_NOT_PROVIDE": "Divisão não informada!",
+      "UNITY_ID_PROVIDE": "Unidade de medida da divisão deve ser informada!",
+      "MIN_CAPACITY_NOT_PROVIDE": "Capacidade minima não informada!",
+      "MAX_CAPACITY_NOT_PROVIDE": "Capacidade maxima não informada!",
+      "ACCEPTANCE_CRITERIA_NOT_PROVIDE": "Critério de aceitação não informado!",
+      "CALIBRATION_PERIODICITY_ID_NOT_PROVIDE": "Periodicidade de calibração não informada!"
+    },
+    "LOCALIZATION": {
+      "LOCALIZATION_NOT_PROVIDE": "Localização não informada!"
+    },
+    "OWNER": {
+      "OWNER_NOT_PROVIDE": "Proprietário não informado!",
+      "LOCALIZATION_ID_NOT_PROVIDE": "Localização não informada!"
+    },
+    "UNITY": {
+      "UNITY_NOT_PROVIDE": "Unidade não informada!",
+      "TAG_NOT_PROVIDE": "Tag não informada!"
+    },
+    "USER": {
+      "USER_NOT_PROVIDE":"Usuário não informado!",
+      "ROLE_NOT_PROVIDE":"Tipo de usuario não informado!",
+      "EMAIL_NOT_PROVIDE": "Email não informado!",
+      "EMAIL_TYPE_ERROR": "Informe um email valido!",
+      "PASSWORD_NOT_PROVIDE": "'Senha não informada!",
+      "PASSWORD_LENGTH": "A senha deve ter no minimo %d caracteres e no máximo %d!"
+    }
+  }
+}

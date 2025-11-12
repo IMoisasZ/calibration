@@ -1,0 +1,23 @@
+{
+"tags": {
+"allowUnknownTags": true,
+"dictionaries": ["jsdoc"]
+},
+"source": {
+"include": ["./src"],
+"includePattern": ".js$",
+"excludePattern": "(node_modules/|docs/|config/)"
+},
+"plugins": [],
+"opts": {
+"encoding": "utf8",
+"destination": "./src/docs",
+"recurse": true,
+"verbose": true,
+"template": "node_modules/docdash"
+},
+"templates": {
+"cleverLinks": true,
+"monospaceLinks": true
+}
+}

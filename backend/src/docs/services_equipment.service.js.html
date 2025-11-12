@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>services/equipment.service.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-CustomErrors-AlreadyAdded.html">AlreadyAdded</a></li><li></li><li><a href="module-CustomErrors-BadRequestError.html">BadRequestError</a></li><li></li><li><a href="module-CustomErrors-CustomError.html">CustomError</a></li><li></li><li><a href="module-CustomErrors-NotFoundError.html">NotFoundError</a></li><li></li><li><a href="module-CustomErrors-UnauthorizedError.html">UnauthorizedError</a></li><li></li></ul><h3>Modules</h3><ul><li><a href="module-App.html">App</a></li><li><a href="module-CalibrationAnalysisController.html">CalibrationAnalysisController</a><ul class='methods'><li data-type='method'><a href="module-CalibrationAnalysisController.html#~createCalibrationAnalysis">createCalibrationAnalysis</a></li></ul></li><li><a href="module-CalibrationAnalysisRepository.html">CalibrationAnalysisRepository</a></li><li><a href="module-CalibrationAnalysisRoutes.html">CalibrationAnalysisRoutes</a></li><li><a href="module-CalibrationAnalysisService.html">CalibrationAnalysisService</a></li><li><a href="module-CalibrationConfigController.html">CalibrationConfigController</a><ul class='methods'><li data-type='method'><a href="module-CalibrationConfigController.html#~getAllCalibrationConfig">getAllCalibrationConfig</a></li><li data-type='method'><a href="module-CalibrationConfigController.html#~getCalibrationConfig">getCalibrationConfig</a></li><li data-type='method'><a href="module-CalibrationConfigController.html#~updateCalibrationConfigToNoActualAndCreate">updateCalibrationConfigToNoActualAndCreate</a></li></ul></li><li><a href="module-CalibrationConfigRepository.html">CalibrationConfigRepository</a></li><li><a href="module-CalibrationConfigRoutes.html">CalibrationConfigRoutes</a></li><li><a href="module-CalibrationConfigService.html">CalibrationConfigService</a></li><li><a href="module-CalibrationConfigValidators.html">CalibrationConfigValidators</a></li><li><a href="module-CalibrationController.html">CalibrationController</a><ul class='methods'><li data-type='method'><a href="module-CalibrationController.html#~createCalibration">createCalibration</a></li><li data-type='method'><a href="module-CalibrationController.html#~createCalibrationWithResults">createCalibrationWithResults</a></li><li data-type='method'><a href="module-CalibrationController.html#~deleteCalibration">deleteCalibration</a></li><li data-type='method'><a href="module-CalibrationController.html#~getAllCalibrations">getAllCalibrations</a></li><li data-type='method'><a href="module-CalibrationController.html#~getAllCalibrationsIsAnalysis">getAllCalibrationsIsAnalysis</a></li><li data-type='method'><a href="module-CalibrationController.html#~getCalibration">getCalibration</a></li><li data-type='method'><a href="module-CalibrationController.html#~patchCalibrationByCalibrationAnalysis">patchCalibrationByCalibrationAnalysis</a></li><li data-type='method'><a href="module-CalibrationController.html#~updateCalibration">updateCalibration</a></li></ul></li><li><a href="module-CalibrationPeriodicityController.html">CalibrationPeriodicityController</a><ul class='methods'><li data-type='method'><a href="module-CalibrationPeriodicityController.html#~createCalibrationPeriodicity">createCalibrationPeriodicity</a></li><li data-type='method'><a href="module-CalibrationPeriodicityController.html#~getAllCalibrationPeriodicity">getAllCalibrationPeriodicity</a></li><li data-type='method'><a href="module-CalibrationPeriodicityController.html#~getCalibrationPeriodicity">getCalibrationPeriodicity</a></li><li data-type='method'><a href="module-CalibrationPeriodicityController.html#~updateCalibrationPeriodicity">updateCalibrationPeriodicity</a></li><li data-type='method'><a href="module-CalibrationPeriodicityController.html#~updateCalibrationPeriodicityStatus">updateCalibrationPeriodicityStatus</a></li></ul></li><li><a href="module-CalibrationPeriodicityRepository.html">CalibrationPeriodicityRepository</a></li><li><a href="module-CalibrationPeriodicityRoutes.html">CalibrationPeriodicityRoutes</a></li><li><a href="module-CalibrationPeriodicityValidators.html">CalibrationPeriodicityValidators</a></li><li><a href="module-CalibrationRepository.html">CalibrationRepository</a></li><li><a href="module-CalibrationResultController.html">CalibrationResultController</a><ul class='methods'><li data-type='method'><a href="module-CalibrationResultController.html#~createCalibrationResult">createCalibrationResult</a></li><li data-type='method'><a href="module-CalibrationResultController.html#~deleteCalibrationResult">deleteCalibrationResult</a></li><li data-type='method'><a href="module-CalibrationResultController.html#~getAllCalibrationResultByCalibrationId">getAllCalibrationResultByCalibrationId</a></li><li data-type='method'><a href="module-CalibrationResultController.html#~getCalibrationResult">getCalibrationResult</a></li><li data-type='method'><a href="module-CalibrationResultController.html#~updateCalibrationResult">updateCalibrationResult</a></li><li data-type='method'><a href="module-CalibrationResultController.html#~updateCalibrationResultStatus">updateCalibrationResultStatus</a></li></ul></li><li><a href="module-CalibrationResultRepository.html">CalibrationResultRepository</a></li><li><a href="module-CalibrationResultRoutes.html">CalibrationResultRoutes</a></li><li><a href="module-CalibrationResultService.html">CalibrationResultService</a></li><li><a href="module-CalibrationResultUtils.html">CalibrationResultUtils</a><ul class='methods'><li data-type='method'><a href="module-CalibrationResultUtils.html#.biggestDeviationPlusMeasurementUncertainty">biggestDeviationPlusMeasurementUncertainty</a></li><li data-type='method'><a href="module-CalibrationResultUtils.html#.optimalResolution">optimalResolution</a></li><li data-type='method'><a href="module-CalibrationResultUtils.html#.statusResult">statusResult</a></li></ul></li><li><a href="module-CalibrationResultValidators.html">CalibrationResultValidators</a></li><li><a href="module-CalibrationRoutes.html">CalibrationRoutes</a></li><li><a href="module-CalibrationValidators.html">CalibrationValidators</a></li><li><a href="module-CorsMiddleware.html">CorsMiddleware</a></li><li><a href="module-CustomErrors.html">CustomErrors</a></li><li><a href="module-DateCalculationUtils.html">DateCalculationUtils</a><ul class='methods'><li data-type='method'><a href="module-DateCalculationUtils.html#.nextCalibration">nextCalibration</a></li></ul></li><li><a href="module-EquipmentController.html">EquipmentController</a><ul class='methods'><li data-type='method'><a href="module-EquipmentController.html#~createEquipment">createEquipment</a></li><li data-type='method'><a href="module-EquipmentController.html#~getAllEquipment">getAllEquipment</a></li><li data-type='method'><a href="module-EquipmentController.html#~getEquipment">getEquipment</a></li><li data-type='method'><a href="module-EquipmentController.html#~getEquipmentByIdentifier">getEquipmentByIdentifier</a></li><li data-type='method'><a href="module-EquipmentController.html#~updateEquipment">updateEquipment</a></li><li data-type='method'><a href="module-EquipmentController.html#~updateEquipmentStatus">updateEquipmentStatus</a></li></ul></li><li><a href="module-EquipmentRepository.html">EquipmentRepository</a></li><li><a href="module-EquipmentRoutes.html">EquipmentRoutes</a></li><li><a href="module-EquipmentService.html">EquipmentService</a></li><li><a href="module-EquipmentTypeController.html">EquipmentTypeController</a><ul class='methods'><li data-type='method'><a href="module-EquipmentTypeController.html#~createEquipmentType">createEquipmentType</a></li><li data-type='method'><a href="module-EquipmentTypeController.html#~getAllEquipmentType">getAllEquipmentType</a></li><li data-type='method'><a href="module-EquipmentTypeController.html#~getEquipmentType">getEquipmentType</a></li><li data-type='method'><a href="module-EquipmentTypeController.html#~updateEquipmentType">updateEquipmentType</a></li><li data-type='method'><a href="module-EquipmentTypeController.html#~updateEquipmentTypeStatus">updateEquipmentTypeStatus</a></li></ul></li><li><a href="module-EquipmentTypeRepository.html">EquipmentTypeRepository</a></li><li><a href="module-EquipmentTypeRoutes.html">EquipmentTypeRoutes</a></li><li><a href="module-EquipmentTypeService.html">EquipmentTypeService</a></li><li><a href="module-EquipmentTypeValidators.html">EquipmentTypeValidators</a></li><li><a href="module-EquipmentValidators.html">EquipmentValidators</a></li><li><a href="module-LocalizationController.html">LocalizationController</a><ul class='methods'><li data-type='method'><a href="module-LocalizationController.html#~createLocalization">createLocalization</a></li><li data-type='method'><a href="module-LocalizationController.html#~getAllLocalization">getAllLocalization</a></li><li data-type='method'><a href="module-LocalizationController.html#~getLocalization">getLocalization</a></li><li data-type='method'><a href="module-LocalizationController.html#~updateLocalization">updateLocalization</a></li><li data-type='method'><a href="module-LocalizationController.html#~updateLocalizationStatus">updateLocalizationStatus</a></li></ul></li><li><a href="module-LocalizationRepository.html">LocalizationRepository</a></li><li><a href="module-LocalizationRoutes.html">LocalizationRoutes</a></li><li><a href="module-LocalizationService.html">LocalizationService</a></li><li><a href="module-LocalizationValidators.html">LocalizationValidators</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-LoginController.html">LoginController</a><ul class='methods'><li data-type='method'><a href="module-LoginController.html#~login">login</a></li></ul></li><li><a href="module-LoginRoutes.html">LoginRoutes</a></li><li><a href="module-LoginValidator.html">LoginValidator</a></li><li><a href="module-MulterUploadConfig.html">MulterUploadConfig</a><ul class='methods'><li data-type='method'><a href="module-MulterUploadConfig.html#~destination">destination</a></li><li data-type='method'><a href="module-MulterUploadConfig.html#~fileFilter">fileFilter</a></li><li data-type='method'><a href="module-MulterUploadConfig.html#~filename">filename</a></li></ul></li><li><a href="module-OwnerController.html">OwnerController</a><ul class='methods'><li data-type='method'><a href="module-OwnerController.html#~createOwner">createOwner</a></li><li data-type='method'><a href="module-OwnerController.html#~getAllOwner">getAllOwner</a></li><li data-type='method'><a href="module-OwnerController.html#~getOwner">getOwner</a></li><li data-type='method'><a href="module-OwnerController.html#~updateOwner">updateOwner</a></li><li data-type='method'><a href="module-OwnerController.html#~updateOwnerStatus">updateOwnerStatus</a></li></ul></li><li><a href="module-OwnerRepository.html">OwnerRepository</a></li><li><a href="module-OwnerRoutes.html">OwnerRoutes</a></li><li><a href="module-OwnerService.html">OwnerService</a></li><li><a href="module-OwnerValidators.html">OwnerValidators</a></li><li><a href="module-RoutesIndex.html">RoutesIndex</a></li><li><a href="module-Server.html">Server</a></li><li><a href="module-UnityController.html">UnityController</a><ul class='methods'><li data-type='method'><a href="module-UnityController.html#~createUnity">createUnity</a></li><li data-type='method'><a href="module-UnityController.html#~getAllUnity">getAllUnity</a></li><li data-type='method'><a href="module-UnityController.html#~getUnity">getUnity</a></li><li data-type='method'><a href="module-UnityController.html#~updateUnity">updateUnity</a></li><li data-type='method'><a href="module-UnityController.html#~updateUnityStatus">updateUnityStatus</a></li></ul></li><li><a href="module-UnityRepository.html">UnityRepository</a></li><li><a href="module-UnityRoutes.html">UnityRoutes</a></li><li><a href="module-UnityService.html">UnityService</a></li><li><a href="module-UnityValidators.html">UnityValidators</a></li><li><a href="module-UserController.html">UserController</a><ul class='methods'><li data-type='method'><a href="module-UserController.html#~createUser">createUser</a></li><li data-type='method'><a href="module-UserController.html#~getAllUsers">getAllUsers</a></li><li data-type='method'><a href="module-UserController.html#~getUser">getUser</a></li><li data-type='method'><a href="module-UserController.html#~getUserByEmail">getUserByEmail</a></li><li data-type='method'><a href="module-UserController.html#~patchUserDisableEnable">patchUserDisableEnable</a></li><li data-type='method'><a href="module-UserController.html#~updateUser">updateUser</a></li></ul></li><li><a href="module-UserRepository.html">UserRepository</a></li><li><a href="module-UserRoutes.html">UserRoutes</a></li><li><a href="module-UserService.html">UserService</a></li><li></li><li><a href="module-UserUtils.html">UserUtils</a><ul class='methods'><li data-type='method'><a href="module-UserUtils.html#~comparePassword">comparePassword</a></li><li data-type='method'><a href="module-UserUtils.html#~createUserDefault">createUserDefault</a></li><li data-type='method'><a href="module-UserUtils.html#~hashPassword">hashPassword</a></li></ul></li><li><a href="module-UserValidators.html">UserValidators</a></li><li><a href="module-ValidationResultUtils.html">ValidationResultUtils</a><ul class='methods'><li data-type='method'><a href="module-ValidationResultUtils.html#~validationResult">validationResult</a></li></ul></li><li><a href="module-dbConnection.html">dbConnection</a><ul class='methods'><li data-type='method'><a href="module-dbConnection.html#~checkAndCreateDatabase">checkAndCreateDatabase</a></li></ul></li><li></li><li><a href="module-i18n.html">i18n</a></li><li><a href="module-i18nConfig.html">i18nConfig</a></li><li><a href="module-middleware_verifyToken.html">middleware/verifyToken</a></li><li><a href="module-models.html">models</a></li><li><a href="module-upload.html">upload</a></li><li><a href="module-userDefaultConstants.html">userDefaultConstants</a></li><li><a href="module-validators_calibrationAnalysisValidator.html">validators/calibrationAnalysisValidator</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CalibrationConfig">CalibrationConfig</a></li><li><a href="global.html#CalibrationPeriodicity">CalibrationPeriodicity</a></li><li><a href="global.html#Equipment">Equipment</a></li><li><a href="global.html#Owner">Owner</a></li><li><a href="global.html#Unity">Unity</a></li><li><a href="global.html#VALID_CALIBRATION_STATUS">VALID_CALIBRATION_STATUS</a></li><li><a href="global.html#VALID_ORIGINAL_STATUSES">VALID_ORIGINAL_STATUSES</a></li><li><a href="global.html#VALID_ROLE_STATUS">VALID_ROLE_STATUS</a></li><li><a href="global.html#VALID_STATUS_RESULT">VALID_STATUS_RESULT</a></li><li><a href="global.html#biggest_deviation">biggest_deviation</a></li><li><a href="global.html#biggest_deviation_plus_measurement_uncertainty">biggest_deviation_plus_measurement_uncertainty</a></li><li><a href="global.html#createCalibration">createCalibration</a></li><li><a href="global.html#createCalibrationAnalysis">createCalibrationAnalysis</a></li><li><a href="global.html#createCalibrationConfig">createCalibrationConfig</a></li><li><a href="global.html#createCalibrationPeriodicity">createCalibrationPeriodicity</a></li><li><a href="global.html#createCalibrationResult">createCalibrationResult</a></li><li><a href="global.html#createCalibrationWithResults">createCalibrationWithResults</a></li><li><a href="global.html#createEquipment">createEquipment</a></li><li><a href="global.html#createEquipmentType">createEquipmentType</a></li><li><a href="global.html#createLocalization">createLocalization</a></li><li><a href="global.html#createOwner">createOwner</a></li><li><a href="global.html#createUnity">createUnity</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#deleteCalibration">deleteCalibration</a></li><li><a href="global.html#deleteCalibrationResult">deleteCalibrationResult</a></li><li><a href="global.html#environmental_conditions">environmental_conditions</a></li><li><a href="global.html#errorMiddleware">errorMiddleware</a></li><li><a href="global.html#existCalibrationRepositoryById">existCalibrationRepositoryById</a></li><li><a href="global.html#existCalibrationResultByCalibrationId">existCalibrationResultByCalibrationId</a></li><li><a href="global.html#existCalibrationResultById">existCalibrationResultById</a></li><li><a href="global.html#getAllCalibrationConfig">getAllCalibrationConfig</a></li><li><a href="global.html#getAllCalibrationPeriodicity">getAllCalibrationPeriodicity</a></li><li><a href="global.html#getAllCalibrationResultByCalibrationId">getAllCalibrationResultByCalibrationId</a></li><li><a href="global.html#getAllCalibrations">getAllCalibrations</a></li><li><a href="global.html#getAllCalibrationsIsAnalysis">getAllCalibrationsIsAnalysis</a></li><li><a href="global.html#getAllEquipment">getAllEquipment</a></li><li><a href="global.html#getAllEquipmentType">getAllEquipmentType</a></li><li><a href="global.html#getAllLocalization">getAllLocalization</a></li><li><a href="global.html#getAllOwner">getAllOwner</a></li><li><a href="global.html#getAllUnity">getAllUnity</a></li><li><a href="global.html#getAllUsers">getAllUsers</a></li><li><a href="global.html#getCalibration">getCalibration</a></li><li><a href="global.html#getCalibrationConfig">getCalibrationConfig</a></li><li><a href="global.html#getCalibrationPeriodicity">getCalibrationPeriodicity</a></li><li><a href="global.html#getCalibrationResult">getCalibrationResult</a></li><li><a href="global.html#getEquipment">getEquipment</a></li><li><a href="global.html#getEquipmentByIdentifier">getEquipmentByIdentifier</a></li><li><a href="global.html#getEquipmentType">getEquipmentType</a></li><li><a href="global.html#getExistOwnerAndLocalization">getExistOwnerAndLocalization</a></li><li><a href="global.html#getLocalization">getLocalization</a></li><li><a href="global.html#getOwner">getOwner</a></li><li><a href="global.html#getUnity">getUnity</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#getUserByEmail">getUserByEmail</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#measurement_uncertainty">measurement_uncertainty</a></li><li><a href="global.html#measuring_range">measuring_range</a></li><li><a href="global.html#optimal_resolution">optimal_resolution</a></li><li><a href="global.html#patchCalibrationByCalibrationAnalysis">patchCalibrationByCalibrationAnalysis</a></li><li><a href="global.html#patchUserDisableEnable">patchUserDisableEnable</a></li><li><a href="global.html#syncModels">syncModels</a></li><li><a href="global.html#updateCalibration">updateCalibration</a></li><li><a href="global.html#updateCalibrationConfigToNoActualAndCreate">updateCalibrationConfigToNoActualAndCreate</a></li><li><a href="global.html#updateCalibrationPeriodicity">updateCalibrationPeriodicity</a></li><li><a href="global.html#updateCalibrationPeriodicityStatus">updateCalibrationPeriodicityStatus</a></li><li><a href="global.html#updateCalibrationResult">updateCalibrationResult</a></li><li><a href="global.html#updateCalibrationResultStatus">updateCalibrationResultStatus</a></li><li><a href="global.html#updateEquipment">updateEquipment</a></li><li><a href="global.html#updateEquipmentStatus">updateEquipmentStatus</a></li><li><a href="global.html#updateEquipmentType">updateEquipmentType</a></li><li><a href="global.html#updateEquipmentTypeStatus">updateEquipmentTypeStatus</a></li><li><a href="global.html#updateLocalization">updateLocalization</a></li><li><a href="global.html#updateLocalizationStatus">updateLocalizationStatus</a></li><li><a href="global.html#updateOwner">updateOwner</a></li><li><a href="global.html#updateOwnerStatus">updateOwnerStatus</a></li><li><a href="global.html#updateUnity">updateUnity</a></li><li><a href="global.html#updateUnityStatus">updateUnityStatus</a></li><li><a href="global.html#updateUser">updateUser</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">services/equipment.service.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** @format */
+
+import EquipmentRepository from '../repositories/equipment.repository.js'
+import { UniqueConstraintError } from 'sequelize'
+import {
+	BadRequestError,
+	NotFoundError,
+	AlreadyAdded,
+} from '../errors/customErrors.error.js'
+import i18n from '../config/i18n.config.js'
+
+/**
+ * @typedef {object} EquipmentPayload
+ * @property {string} identifier - The unique alphanumeric identifier for the equipment (e.g., 'EQP-1001').
+ * @property {string} description - A detailed description of the equipment.
+ * @property {string} brand - The equipment manufacturer's brand.
+ * @property {string} model - The specific model name or number.
+ * @property {string} serial_number - The manufacturer's unique serial number.
+ * @property {number} equipment_type_id - Foreign key to the EquipmentType model.
+ * @property {number} unity_id - Foreign key to the Unity (unit of measurement) model.
+ * @property {number} owner_id - Foreign key to the Owner (responsible department/person) model.
+ * @property {number} localization_id - Foreign key to the Localization (physical location) model.
+ * @property {number} acceptance_criteria - The technical acceptance limit for calibration results.
+ * @property {number} calibration_periodicity_id - Foreign key to the CalibrationPeriodicity model.
+ * @property {boolean} [active=true] - Status indicating if the equipment is currently active and in use.
+ */
+
+/**
+ * Internal function to check if an Equipment record exists by its primary key (ID).
+ * Throws specific, internationalized errors if the ID is missing or the record is not found.
+ *
+ * @async
+ * @private
+ * @param {number} id - The primary key ID of the Equipment record to check.
+ * @returns {Promise&lt;import('../repositories/equipment.repository.js').EquipmentInstance>} A promise that resolves to the found Equipment instance.
+ * @throws {BadRequestError} If the ID is not provided.
+ * @throws {NotFoundError} If no equipment record is found with the given ID.
+ */
+async function existEquipmentId(id) {
+	if (!id) {
+		throw new BadRequestError(
+			i18n.__('VALIDATION.SERVICES.EQUIPMENT_ID_NOT_PROVIDE')
+		)
+	}
+
+	const equipment = await EquipmentRepository.getEquipment(id)
+	if (!equipment) {
+		throw new NotFoundError(
+			i18n.__('VALIDATION.SERVICES.EQUIPMENT_BY_ID_NOT_FOUND', id)
+		)
+	}
+
+	return equipment
+}
+
+/**
+ * Creates a new Equipment record.
+ * Handles Sequelize's UniqueConstraintError, translating it into a custom AlreadyAdded error,
+ * primarily to enforce the uniqueness of the equipment's identifier.
+ *
+ * @async
+ * @param {EquipmentPayload} equipment - The data payload for the new equipment.
+ * @returns {Promise&lt;import('../repositories/equipment.repository.js').EquipmentInstance>} The newly created Equipment instance.
+ * @throws {AlreadyAdded} If an Equipment with the same unique identifier already exists.
+ * @throws {Error} Propagates other errors.
+ */
+async function createEquipment(equipment) {
+	try {
+		return await EquipmentRepository.createEquipment(equipment)
+	} catch (error) {
+		if (error instanceof UniqueConstraintError) {
+			throw new AlreadyAdded(
+				i18n.__(
+					'VALIDATION.SERVICES.EQUIPMENT_ALRED_ADDED',
+					equipment.identifier
+				)
+			)
+		}
+		throw error
+	}
+}
+
+/**
+ * Updates an existing Equipment record by ID.
+ * Ensures the record exists before update and handles unique constraint errors if the identifier is changed to a duplicate.
+ *
+ * @async
+ * @param {number} id - The ID of the record to update.
+ * @param {EquipmentPayload} equipment - The updated data payload.
+ * @returns {Promise&lt;import('../repositories/equipment.repository.js').EquipmentInstance>} The updated Equipment instance.
+ * @throws {NotFoundError} If the record to update does not exist.
+ * @throws {AlreadyAdded} If the update causes a unique constraint violation on the identifier.
+ * @throws {Error} Propagates other errors.
+ */
+async function updateEquipment(id, equipment) {
+	await existEquipmentId(id)
+	try {
+		return await EquipmentRepository.updateEquipment(id, equipment)
+	} catch (error) {
+		if (error instanceof UniqueConstraintError) {
+			throw new AlreadyAdded(
+				i18n.__(
+					'VALIDATION.SERVICES.EQUIPMENT_ALREDY_ADDED',
+					equipment.identifier
+				)
+			)
+		}
+		throw error
+	}
+}
+
+/**
+ * Retrieves a list of all Equipment records.
+ * Allows optional filtering to return only active equipment.
+ *
+ * @async
+ * @param {string} status - If the string value is not 'true', returns all records. If 'true', only returns records where `active: true`.
+ * @returns {Promise&lt;Array&lt;import('../repositories/equipment.repository.js').EquipmentInstance>>} An array of Equipment instances.
+ */
+async function getAllEquipment(status) {
+	if (status !== 'true') {
+		return await EquipmentRepository.getAllEquipment({})
+	}
+	return await EquipmentRepository.getAllEquipment({ active: true })
+}
+
+/**
+ * Finds a single Equipment record by its primary key (ID).
+ * Leverages `existEquipmentId` to ensure the record is found or an error is thrown.
+ *
+ * @async
+ * @param {number} id - The primary key ID of the record to find.
+ * @returns {Promise&lt;import('../repositories/equipment.repository.js').EquipmentInstance>} The found Equipment instance.
+ * @throws {BadRequestError} If the ID is not provided.
+ * @throws {NotFoundError} If the record does not exist.
+ */
+async function getEquipment(id) {
+	return await existEquipmentId(id)
+}
+
+/**
+ * Finds a single Equipment record by its unique identifier (e.g., asset tag or ID number).
+ *
+ * @async
+ * @param {string} identifier - The unique identifier string of the equipment.
+ * @returns {Promise&lt;import('../repositories/equipment.repository.js').EquipmentInstance>} The found Equipment instance.
+ * @throws {BadRequestError} If the identifier is not provided.
+ * @throws {NotFoundError} If no equipment record is found with the given identifier.
+ */
+async function getEquipmentByIdentifier(identifier) {
+	if (!identifier) {
+		throw new BadRequestError(
+			i18n.__('VALIDATION.SERVICES.EQUIPMENT_IDENTIFIER_NOT_PROVIDE')
+		)
+	}
+
+	const equipmentIdentifier =
+		await EquipmentRepository.getEquipmentByIdentifier(identifier)
+
+	if (!equipmentIdentifier) {
+		throw new NotFoundError(
+			i18n.__(
+				'VALIDATION.SERVICES.EQUIPMENT_NOT_FOUND_BY_IDENTIFIER',
+				identifier
+			)
+		)
+	}
+
+	return equipmentIdentifier
+}
+
+/**
+ * Updates only the 'active' status flag of an Equipment record.
+ * Ensures the record exists before attempting the status update.
+ *
+ * @async
+ * @param {number} id - The ID of the equipment to update.
+ * @param {boolean} active - The new status (true for active, false for inactive).
+ * @returns {Promise&lt;import('../repositories/equipment.repository.js').EquipmentInstance>} The updated Equipment instance.
+ * @throws {NotFoundError} If the record does not exist.
+ */
+async function updateEquipmentStatus(id, active) {
+	await existEquipmentId(id)
+
+	return await EquipmentRepository.updateEquipmentStatus(id, active)
+}
+
+/**
+ * @module EquipmentService
+ * @description Service layer for managing Equipment records. It provides CRUD operations,
+ * ensures identifier uniqueness, validates record existence for updates and lookups,
+ * and manages the equipment's active status.
+ */
+export default {
+	createEquipment,
+	updateEquipment,
+	getAllEquipment,
+	getEquipment,
+	getEquipmentByIdentifier,
+	updateEquipmentStatus,
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a> on Wed Nov 12 2025 13:22:19 GMT-0300 (Horário Padrão de Brasília) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

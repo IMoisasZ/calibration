@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useState } from 'react'
 import Container from '../../components/container/Container'
 import Form from '../../components/form/Form'
@@ -65,9 +67,13 @@ export default function Equipment() {
 				const { id, ...data } = dataEquipment
 				await createEquipment(data)
 				createMessage('success', 'Equipamento criado com sucesso!')
+				handleClear()
+				setShowListEquipment(true)
 			} else {
 				await updateEquipment(dataEquipment)
 				createMessage('success', 'Equipamento alterado com sucesso!')
+				handleClear()
+				setShowListEquipment(true)
 			}
 		} catch (error) {
 			console.error({ error })
@@ -78,10 +84,10 @@ export default function Equipment() {
 			createMessage('error', errorMessage)
 		} finally {
 			setIsLoading(false)
-			handleClear()
-			setShowListEquipment(true)
 		}
 	}
+
+	console.log(acceptanceCriteria)
 
 	function handleOnEdit(row) {
 		setId(row.id)

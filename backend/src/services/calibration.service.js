@@ -1,24 +1,32 @@
+/** @format */
+
 import CalibrationRepository from '../repositories/calibration.repository.js'
-import CalibrationResultRepository from '../repositories/calibration_result.repository.js'
 import EquipmentRepository from '../repositories/equipment.repository.js'
 import CalibrationPeriodicityRepository from '../repositories/calibration_periodicity.repository.js'
 import { BadRequestError, NotFoundError } from '../errors/customErrors.error.js'
 import { nextCalibration } from '../utils/next_calibration.utils.js'
+import i18n from '../config/i18n.config.js'
 
 async function existCalibrationById(id) {
 	if (!id) {
-		throw new BadRequestError(`ID não informado!`)
+		throw new BadRequestError(
+			i18n.__('VALIDATION.SERVICES.CALIBRATION.ID_NOT_PROVIDE')
+		)
 	}
 	const calibration = await CalibrationRepository.getCalibration(id)
 	if (!calibration) {
-		throw new NotFoundError(`Calibração com ID ${id} não encontrada!`)
+		throw new NotFoundError(
+			i18n.__('VALIDATION.SERVICES.CALIBRATION.CALIBRATION_NOT_FOUND', id)
+		)
 	}
 	return calibration
 }
 
 async function newCalibrationDate(calibration) {
 	if (!calibration) {
-		throw new BadRequestError('Dados da calibração não informados!')
+		throw new BadRequestError(
+			i18n.__('VALIDATION.SERVICES.CALIBRATION.CALIBRATION_DATA_NOT_PROVIDE')
+		)
 	}
 	const { calibration_periodicity_id } = await EquipmentRepository.getEquipment(
 		calibration.equipment_id

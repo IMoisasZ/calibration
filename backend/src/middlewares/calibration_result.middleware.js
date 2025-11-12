@@ -1,113 +1,242 @@
 /** @format */
 
+/**
+ * @fileoverview Express-validator middleware definitions for validating requests related to the CalibrationResult entity.
+ * This entity captures the technical measurements and status of a calibration execution.
+ *
+ * @module CalibrationResultValidators
+ * @requires express-validator
+ */
+
 import { param, body } from 'express-validator'
 import { validationResult } from '../utils/validationResult.utils.js'
 
+/**
+ * @const {Array<Function>} calibrationResultBodyValidator
+ * @description Validator chain for all properties in the request body when creating or fully updating a CalibrationResult record.
+ * Includes foreign keys, mandatory fields, and optional numeric/status fields.
+ */
 const calibrationResultBodyValidator = [
 	body('calibration_id')
 		.notEmpty()
-		.withMessage('Calibração ID não informada!')
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.CALIBRATION_ID_NOT_PROVIDE'
+			)
+		)
 		.isNumeric()
-		.withMessage('Tipo de dados da calibração ID é numerico!'),
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.DATA_TYPE_SHOULD_BE_A_NUMBER'
+			)
+		),
 	body('factor_id')
 		.notEmpty()
-		.withMessage('Fator ID não informado!')
+		.withMessage((value, { req }) =>
+			req.__('VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.FACTOR_ID_NOT_PROVIDE')
+		)
 		.isInt()
-		.withMessage('Tipo de dados do factor_id deve ser um numero inteiro!'),
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.DATA_TYPE_SHOULD_BE_A_NUMBER'
+			)
+		),
 	body('measuring_range')
 		.notEmpty()
-		.withMessage('Faixa de medição não informada!')
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.MEASURING_RANGE_NOT_PROVIDE'
+			)
+		)
 		.isString()
-		.withMessage('Tipo de dados da faixa de medição é texto!'),
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.DATA_TYPE_SHOULD_BE_A_TEXT'
+			)
+		),
 	body('optimal_resolution')
 		.optional()
 		.isNumeric()
-		.withMessage('Tipo de dados da resolução ideal é numerico!'),
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.DATA_TYPE_SHOULD_BE_A_NUMBER'
+			)
+		),
 	body('identifier')
 		.notEmpty()
-		.withMessage('Identificação não informada!')
+		.withMessage((value, { req }) =>
+			req.__('VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.IDENTIFIER_NOT_PROVIDE')
+		)
 		.isBoolean()
-		.withMessage('Tipo de dados da identificação é boleano!'),
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.DATA_TYPE_SHOULD_BE_A_BOLLEAN'
+			)
+		),
 	body('environmental_conditions')
 		.notEmpty()
-		.withMessage('Condições ambientais não informada!')
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.ENVIRONMENTAL_CONDITIONS_NOT_PROVIDE'
+			)
+		)
 		.isBoolean()
-		.withMessage('Tipo de dados da condições ambientais é boleano!'),
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.DATA_TYPE_SHOULD_BE_A_BOLLEAN'
+			)
+		),
 	body('biggest_deviation')
 		.optional()
 		.isNumeric()
-		.withMessage('Tipo de dados do maior desvio é numerico!'),
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.DATA_TYPE_SHOULD_BE_A_NUMBER'
+			)
+		),
 	body('measurement_uncertainty')
 		.optional()
 		.isNumeric()
-		.withMessage('Tipo de dados da incerteza da medição é numerico!'),
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.DATA_TYPE_SHOULD_BE_A_NUMBER'
+			)
+		),
 	body('biggest_deviation_plus_measurement_uncertainty')
 		.optional()
 		.isNumeric()
-		.withMessage(
-			'Tipo de dados do maior desvio + incerteza da medição é numerico!'
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.DATA_TYPE_SHOULD_BE_A_NUMBER'
+			)
 		),
 	body('status_result')
 		.optional()
 		.isString()
-		.withMessage('Tipo de dados do status do resultado da calibração é texto!')
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.DATA_TYPE_SHOULD_BE_A_TEXT'
+			)
+		)
 		.isIn(['APROVADO', 'REPROVADO'])
-		.withMessage('Informe apenas: "APROVADO" ou "REPROVADO"'),
-]
-
-const calibrationResultBodyStatusResultValidator = [
-	body('status_result')
-		.notEmpty()
-		.withMessage('Status do resultado da calibração não informado!')
-		.isString()
-		.withMessage(
-			'O tipo de dados do do status do resultado da calibração é texto!'
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.INFO_APROVED_OR_REPROVED'
+			)
 		),
 ]
 
+/**
+ * @const {Array<Function>} calibrationResultBodyStatusResultValidator
+ * @description Validator chain for updating only the 'status_result' field (PATCH operation).
+ */
+const calibrationResultBodyStatusResultValidator = [
+	body('status_result')
+		.notEmpty()
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.STATUS_RESULT_NOT_PROVIDE'
+			)
+		)
+		.isString()
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.DATA_TYPE_SHOULD_BE_A_TEXT'
+			)
+		),
+]
+
+/**
+ * @const {Array<Function>} calibrationResultParamIDValidator
+ * @description Validator chain for the route parameter 'id' (referring to the CalibrationResult ID).
+ */
 const calibrationResultParamIDValidator = [
 	param('id')
 		.notEmpty()
-		.withMessage('ID não informado!')
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.CALIBRATION_RESULT_ID_NOT_PROVIDE'
+			)
+		)
 		.isNumeric()
-		.withMessage('O tipo de dados do ID é numerico!'),
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.DATA_TYPE_SHOULD_BE_A_NUMBER'
+			)
+		),
 ]
 
+/**
+ * @const {Array<Function>} calibrationResultParamCalibrationIDValidator
+ * @description Validator chain for the route parameter 'calibration_id' (referring to the parent Calibration record ID).
+ */
 const calibrationResultParamCalibrationIDValidator = [
 	param('calibration_id')
 		.notEmpty()
-		.withMessage('ID da calibração não informado!')
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.CALIBRATION_RESULT_ID_NOT_PROVIDE'
+			)
+		)
 		.isNumeric()
-		.withMessage('O tipo de dados do ID da calibração é numerico!'),
+		.withMessage((value, { req }) =>
+			req.__(
+				'VALIDATION.MIDDLEWARES.CALIBRATION_RESULT.DATA_TYPE_SHOULD_BE_A_NUMBER'
+			)
+		),
 ]
 
+/**
+ * @const {Array<Function>} createCalibrationResultValidator
+ * @description Full validator set for creating a new CalibrationResult record.
+ */
 const createCalibrationResultValidator = [
 	...calibrationResultBodyValidator,
 	validationResult(),
 ]
 
+/**
+ * @const {Array<Function>} updateCalibrationResultValidator
+ * @description Full validator set for updating an existing CalibrationResult record by its ID.
+ */
 const updateCalibrationResultValidator = [
 	...calibrationResultParamIDValidator,
 	...calibrationResultBodyValidator,
 	validationResult(),
 ]
 
+/**
+ * @const {Array<Function>} getAllCalibrationResultByCalibrationIdValidator
+ * @description Full validator set for retrieving all results associated with a specific Calibration ID.
+ */
 const getAllCalibrationResultByCalibrationIdValidator = [
 	...calibrationResultParamCalibrationIDValidator,
 	validationResult(),
 ]
 
+/**
+ * @const {Array<Function>} getCalibrationResultValidator
+ * @description Full validator set for retrieving a single CalibrationResult record by its ID.
+ */
 const getCalibrationResultValidator = [
 	...calibrationResultParamIDValidator,
 	validationResult(),
 ]
 
+/**
+ * @const {Array<Function>} updateCalibrationResultStatusValidator
+ * @description Full validator set for updating the status_result of a CalibrationResult record (PATCH).
+ */
 const updateCalibrationResultStatusValidator = [
 	...calibrationResultParamIDValidator,
 	...calibrationResultBodyStatusResultValidator,
 	validationResult(),
 ]
 
+/**
+ * @const {Array<Function>} deleteCalibrationResultValidator
+ * @description Full validator set for deleting a CalibrationResult record by its ID.
+ */
 const deleteCalibrationResultValidator = [
 	...calibrationResultParamIDValidator,
 	validationResult(),

@@ -1,3 +1,5 @@
+/** @format */
+
 import { API } from '../api/API'
 
 const pathName = 'equipment'
@@ -9,6 +11,8 @@ async function createEquipment(equipment) {
 }
 
 async function updateEquipment(equipment) {
+	console.log(equipment)
+
 	const { id } = equipment
 	const { data } = await API.put(`${pathName}/${id}`, equipment)
 	return data

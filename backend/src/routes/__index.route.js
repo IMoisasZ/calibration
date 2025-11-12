@@ -1,3 +1,13 @@
+/** @format */
+
+/**
+ * @fileoverview Route aggregator module.
+ * This file imports all individual route files for the API and exports them
+ * for easy mounting in the main application file (e.g., server.js).
+ *
+ * @module RoutesIndex
+ * @exports {object} all API route modules
+ */
 import UserRoutes from './user.route.js'
 import LocalizationRoutes from './localization.route.js'
 import UnityRoutes from './unity.route.js'

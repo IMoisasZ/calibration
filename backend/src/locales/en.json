@@ -278,7 +278,8 @@
         "DATA_TYPE_SHOULD_BE_A_BOOLEAN": "The data type must be boolean!",
         "USER_ID_NOT_PROVIDE": "ID not provided!",
         "DATA_TYPE_SHOULD_BE_A_NUMBER": "The data type must be a positive integer!",
-        "EMAIL_NOT_PROVIDE": "Email not provided!"
+        "EMAIL_NOT_PROVIDE": "Email not provided!",
+        "PASSWORD_NOT_PROVIDE": "Password not provide!"
       }
     },
     "UTILS": {

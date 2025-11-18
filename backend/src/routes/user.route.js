@@ -14,6 +14,7 @@ import UserController from '../controllers/user.controller.js'
 import {
 	createUserValidator,
 	updateUserValidator,
+	updatePasswordUserValidator,
 	getAllUsersValidator,
 	getUserValidator,
 	getUserByEmailValidator,
@@ -42,6 +43,19 @@ route.post('/', createUserValidator, UserController.createUser)
  * @controller UserController.updateUser - Handles the full update logic.
  */
 route.put('/:id', updateUserValidator, UserController.updateUser)
+
+/**
+ * @route PATCH /change_password/:id
+ * @description Updates only the password for an existing user record by ID.
+ * @access Private
+ * @middleware {Array<Function>} updatePasswordUserValidator - Validates the ID parameter and the 'password' field in the body.
+ * @controller UserController.updatePasswordUser - Handles the password hashing and update logic.
+ */
+route.patch(
+	'/change_password/:id',
+	updatePasswordUserValidator,
+	UserController.updatePasswordUser
+)
 
 /**
  * @route GET /

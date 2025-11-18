@@ -36,22 +36,34 @@ async function createUser(user) {
 async function updateUser(id, user) {
 	const instanceUser = await getUser(id)
 
-	// 1. Lógica para Senha (Se a senha estiver sendo atualizada)
-	if (user.password) {
-		// A. Se a senha nova for diferente da senha existente (sempre será, pois é hash vs plaintext),
-		// ou se não houver senha existente, o 'set' irá marcá-la como alterada.
+	delete user.password
 
-		// 🚨 NOVO: Use .set() para a senha e depois remova-a do objeto de atualização
-		// Isso garante que o setter da senha do Sequelize seja ativado primeiro.
-		instanceUser.set('password', user.password)
-		delete user.password
-	}
+	Object.assign(instanceUser, user)
 
-	// Object.assign(instanceUser, user)
-	instanceUser.set(user)
+	return await instanceUser.save()
+}
 
-	await instanceUser.save()
-	return instanceUser
+/**
+ * Updates only the password for an existing User record by ID.
+ * Assumes the password hashing is correctly configured within the Sequelize model
+ * as a setter or a `beforeUpdate`/`beforeSave` hook to be executed upon the update.
+ *
+ * @async
+ * @param {number} id - The ID of the User record to update.
+ * @param {string} password - The new password (plaintext before hashing).
+ * @returns {Promise<UserInstance|null>} A promise that resolves to the updated User instance, or null if not found.
+ */
+async function updatePasswordUser(id, password) {
+	await UserModel.update(
+		{ password },
+		{
+			where: {
+				id,
+			},
+		}
+	)
+
+	return await getUser(id)
 }
 
 /**
@@ -127,6 +139,7 @@ async function patchUserDisableEnable(id, active) {
 export default {
 	createUser,
 	updateUser,
+	updatePasswordUser,
 	getAllUsers,
 	getUser,
 	getUserByEmail,

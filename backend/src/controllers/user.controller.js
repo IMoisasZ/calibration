@@ -66,6 +66,30 @@ async function updateUser(req, res, next) {
 }
 
 /**
+ * Handles the partial update (PATCH) of a User's password by ID.
+ * Expects the new password in the request body.
+ *
+ * @async
+ * @function updatePasswordUser
+ * @param {import('express').Request<{id: string}, {}, {password: string}>} req - Express Request object, including the ID in params and the new password in the body.
+ * @param {import('express').Response} res - Express Response object.
+ * @param {import('express').NextFunction} next - Callback function to pass errors to the middleware.
+ * @returns {Promise<void>} Sends a 200/204 status response (depending on implementation choice) indicating success.
+ */
+async function updatePasswordUser(req, res, next) {
+	try {
+		const { id } = req.params
+		const { password } = req.body
+		const changedPassword = await UserService.updatePasswordUser(id, password)
+		res.status(200).send(changedPassword)
+		const loggerMessage = `PATCH - ${pathName}/change_password/${id} - ${id}`
+		logger.info(loggerMessage)
+	} catch (error) {
+		next(error)
+	}
+}
+
+/**
  * Retrieves a list of all User records.
  * Supports optional filtering by the 'active' query parameter.
  *
@@ -161,6 +185,7 @@ async function patchUserDisableEnable(req, res, next) {
 export default {
 	createUser,
 	updateUser,
+	updatePasswordUser,
 	getAllUsers,
 	getUser,
 	getUserByEmail,

@@ -89,6 +89,8 @@ async function getAllLocalization(req, res, next) {
 		const loggerMessage = `GET - /localization - All localizations`
 		logger.info(loggerMessage)
 	} catch (error) {
+		console.log({ error })
+
 		next(error)
 	}
 }

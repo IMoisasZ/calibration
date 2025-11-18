@@ -18,11 +18,11 @@ const localizationParamValidation = [
 	param('id')
 		.notEmpty()
 		.withMessage((value, { req }) =>
-			req.__('VALIDATION.MIDDLEWARES.LOCALIZATION_ID_NOT_PROVIDE')
+			req.__('VALIDATION.MIDDLEWARES.LOCALIZATION.LOCALIZATION_ID_NOT_PROVIDE')
 		)
 		.isNumeric()
 		.withMessage((value, { req }) =>
-			req.__('VALIDATION.MIDDLEWARES.DATA_TYPE_SHOULD_BE_A_NUMBER')
+			req.__('VALIDATION.MIDDLEWARES.LOCALIZATION.DATA_TYPE_SHOULD_BE_A_NUMBER')
 		),
 ]
 
@@ -34,20 +34,24 @@ const localizationBodyValidation = [
 	body('description')
 		.notEmpty()
 		.withMessage((value, { req }) =>
-			req.__('VALIDATION.MIDDLEWARES.DESCRIPTION_NOT_PROVIDE')
+			req.__('VALIDATION.MIDDLEWARES.LOCALIZATION.DESCRIPTION_NOT_PROVIDE')
 		)
 		.isString()
 		.withMessage((value, { req }) =>
-			req.__('VALIDATION.MIDDLEWARES.DATA_TYPE_SHOULD_BE_A_TEXT')
+			req.__('VALIDATION.MIDDLEWARES.LOCALIZATION.DATA_TYPE_SHOULD_BE_A_TEXT')
 		),
 	body('active')
 		.notEmpty()
 		.withMessage((value, { req }) =>
-			req.__('VALIDATION.MIDDLEWARES.LOCALIZATION_ACTIVE_NOT_PROVIDE')
+			req.__(
+				'VALIDATION.MIDDLEWARES.LOCALIZATION.LOCALIZATION_ACTIVE_NOT_PROVIDE'
+			)
 		)
 		.isBoolean()
 		.withMessage((value, { req }) =>
-			req.__('VALIDATION.MIDDLEWARES.DATA_TYPE_SHOULD_BE_A_BOOLEAN')
+			req.__(
+				'VALIDATION.MIDDLEWARES.LOCALIZATION.DATA_TYPE_SHOULD_BE_A_BOOLEAN'
+			)
 		),
 ]
 
@@ -59,11 +63,11 @@ const localizationQueryValidator = [
 	query('status')
 		.notEmpty()
 		.withMessage((value, { req }) =>
-			req.__('VALIDATION.MIDDLEWARES.STATUS_NOT_PROVIDE')
+			req.__('VALIDATION.MIDDLEWARES.LOCALIZATION.STATUS_NOT_PROVIDE')
 		)
 		.isString()
 		.withMessage((value, { req }) =>
-			req.__('VALIDATION.MIDDLEWARES.DATA_TYPE_SHOULD_BE_A_TEXT')
+			req.__('VALIDATION.MIDDLEWARES.LOCALIZATION.DATA_TYPE_SHOULD_BE_A_TEXT')
 		),
 ]
 
@@ -113,11 +117,15 @@ const updateLocalizationStatusValidate = [
 	body('active')
 		.notEmpty()
 		.withMessage((value, { req }) =>
-			req.__('VALIDATION.MIDDLEWARES.LOCALIZATION_ACTIVE_NOT_PROVIDE')
+			req.__(
+				'VALIDATION.MIDDLEWARES.LOCALIZATION.LOCALIZATION_ACTIVE_NOT_PROVIDE'
+			)
 		)
 		.isBoolean()
 		.withMessage((value, { req }) =>
-			req.__('VALIDATION.MIDDLEWARES.DATA_TYPE_SHOULD_BE_A_BOOLEAN')
+			req.__(
+				'VALIDATION.MIDDLEWARES.LOCALIZATION.DATA_TYPE_SHOULD_BE_A_BOOLEAN'
+			)
 		),
 	validationResult(),
 ]

@@ -18,11 +18,12 @@
 
 /**@description -> Imports */
 import express from 'express'
-import cors from 'cors'
+// import cors from 'cors'
 import path from 'node:path'
 import errorMiddleware from './middlewares/errorMiddleware.js'
 import loggerConfig from './logger/logger_config.logger.js'
 import corsMiddleware from './middlewares/cors.middleware.js'
+import i18n from './config/i18n.config.js'
 import { configDotenv } from 'dotenv'
 
 /**@description -> Import routes */
@@ -56,7 +57,9 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // Apply custom CORS policy
-app.use(cors(corsMiddleware))
+app.use(corsMiddleware)
+
+app.use(i18n.init)
 
 /**@description ->  Config the path to get the certificates and put into the folder uploads*/
 

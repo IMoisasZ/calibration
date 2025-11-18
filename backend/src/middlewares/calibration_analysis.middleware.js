@@ -63,7 +63,7 @@ const calibrationAnalysisBodyValidator = [
 				'VALIDATION.MIDDLEWARES.CALIBRATION_ANALYSIS.ORIGINAL_STATUS_TYPE_SHOULD_BE_A_TEXT'
 			)
 		)
-		.isIn([
+		.isIn((value, { req }) => [
 			...req.__(
 				'VALIDATION.MIDDLEWARES.CALIBRATION_ANALYSIS.ORIGINAL_STATUS_SHOULD_BE'
 			),
@@ -93,7 +93,7 @@ const calibrationAnalysisBodyValidator = [
 				'VALIDATION.MIDDLEWARES.CALIBRATION_ANALYSIS.DECISION_STATUS_SHOULD_BE_A_TEXT'
 			)
 		)
-		.isIn([
+		.isIn((valus, { req }) => [
 			...req.__(
 				'VALIDATION.MIDDLEWARES.CALIBRATION_ANALYSIS.DECISION_STATUS_SHOULD_BE'
 			),

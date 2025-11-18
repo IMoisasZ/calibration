@@ -144,6 +144,23 @@ const userQueryEmailValidator = [
 ]
 
 /**
+ * @const {Array<Function>} userBodyPasswordValidator
+ * @description Validator chain specifically for checking the presence and data type of the 'password' field in the request body.
+ * This is typically used when the password is the only required field in the body (e.g., changing password endpoint).
+ */
+const userBodyPasswordValidator = [
+	body('password')
+		.notEmpty()
+		.withMessage((value, { req }) =>
+			req.__('VALIDATION.MIDDLEWARES.USER.PASSWORD_NOT_PROVIDE')
+		)
+		.isString()
+		.withMessage((value, { req }) =>
+			req.__('VALIDATION.MIDDLEWARES.USER.DATA_TYPE_SHOULD_BE_A_TEXT')
+		),
+]
+
+/**
  * @const {Array<Function>} createUserValidator
  * @description Full validator set for creating a new user. Combines required fields and body format checks.
  */
@@ -160,6 +177,17 @@ const createUserValidator = [
 const updateUserValidator = [
 	...userParamValidator,
 	...userBodyValidator,
+	validationResult(),
+]
+
+/**
+ * @const {Array<Function>} updatePasswordUserValidator
+ * @description Full validator set for updating a user's password. Requires the user ID parameter
+ * and ensures the 'password' field in the body is present and valid.
+ */
+const updatePasswordUserValidator = [
+	...userParamValidator,
+	...userBodyPasswordValidator,
 	validationResult(),
 ]
 
@@ -194,6 +222,7 @@ const patchUserDisableEnableValidator = [
 export {
 	createUserValidator,
 	updateUserValidator,
+	updatePasswordUserValidator,
 	getAllUsersValidator,
 	getUserValidator,
 	getUserByEmailValidator,

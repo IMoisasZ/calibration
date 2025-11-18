@@ -8,6 +8,7 @@ import {
 } from '../errors/customErrors.error.js'
 import { UniqueConstraintError } from 'sequelize'
 import { UserModel } from '../models/__index.js'
+import { hashPassword } from '../utils/user.utils.js'
 import i18n from '../config/i18n.config.js'
 
 /**
@@ -146,6 +147,26 @@ async function updateUser(id, user) {
 }
 
 /**
+ * Updates only the password for an existing User record by ID.
+ * The new password is first hashed using a utility function before being passed to the repository.
+ *
+ * @async
+ * @param {number} id - The ID of the User record to update.
+ * @param {string} password - The new password (plain text).
+ * @returns {Promise<UserWithoutPassword>} The updated user data, with the password removed.
+ * @throws {NotFoundError} If the user record does not exist.
+ */
+async function updatePasswordUser(id, password) {
+	await existUserById(id)
+
+	const hashedPassword = await hashPassword(password)
+
+	const userData = await UserRepository.updatePasswordUser(id, hashedPassword)
+
+	return removePassword(userData)
+}
+
+/**
  * Retrieves a list of all User records, optionally filtered by active status.
  * Ensures that all returned records have the password field removed.
  *
@@ -234,6 +255,7 @@ async function patchUserDisableEnable(id, active) {
 export default {
 	createUser,
 	updateUser,
+	updatePasswordUser,
 	getAllUsers,
 	getUser,
 	getUserByEmail,

@@ -54,7 +54,7 @@ async function createUserDefault() {
 
 		if (existUserByEmail) {
 			// User already exists, log a warning and exit.
-			return console.warn(i18n.__('VALIDATION.UTILS.USER.USER_CREDATE'), {
+			return console.warn(i18n.__('VALIDATION.UTILS.USER.USER_CREATED'), {
 				email: userDefault.email,
 				password: userDefault.password,
 			})

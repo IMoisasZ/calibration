@@ -98,15 +98,6 @@ const equipmentBodyValidator = [
 		.withMessage((value, { req }) =>
 			req.__('VALIDATION.MIDDLEWARES.EQUIPMENT.DATA_TYPE_SHOULD_BE_A_NUMBER')
 		),
-	body('active')
-		.notEmpty()
-		.withMessage((value, { req }) =>
-			req.__('VALIDATION.MIDDLEWARES.EQUIPMENT.ACTIVE_NOT_PROVIDE')
-		)
-		.isBoolean()
-		.withMessage((value, { req }) =>
-			req.__('VALIDATION.MIDDLEWARES.EQUIPMENT.DATA_TYPE_SHOULD_BE_A_BOOLEAN')
-		),
 ]
 
 /**

@@ -20,12 +20,12 @@ const calibrationConfigBodyValidator = [
 	body('factor')
 		.notEmpty()
 		.withMessage((value, { req }) =>
-			req.__('VALIDATION.MIDDLWARES.CALIBRATION_CONFIG.FACTOR_NOT_PROVIDE')
+			req.__('VALIDATION.MIDDLEWARES.CALIBRATION_CONFIG.FACTOR_NOT_PROVIDE')
 		)
 		.isInt({ min: 1 })
 		.withMessage((value, { req }) =>
 			req.__(
-				'VALIDATION.MIDDLWARES.CALIBRATION_CONFIG.DATA_TYPE_SHOULD_BE_A_NUMBER'
+				'VALIDATION.MIDDLEWARES.CALIBRATION_CONFIG.DATA_TYPE_SHOULD_BE_A_NUMBER'
 			)
 		),
 ]
@@ -40,19 +40,19 @@ const calibrationConfigQueryValidator = [
 		.exists()
 		.withMessage((value, { req }) =>
 			req.__(
-				'VALIDATION.MIDDLWARES.CALIBRATION_CONFIG.PARAMETER_DID_NOT_PROVIDE'
+				'VALIDATION.MIDDLEWARES.CALIBRATION_CONFIG.PARAMETER_DID_NOT_PROVIDE'
 			)
 		)
 		.isString()
 		.withMessage((value, { req }) =>
 			req.__(
-				'VALIDATION.MIDDLWARES.CALIBRATION_CONFIG.DATA_TYPE_SHOUD_BE_A_TEXT'
+				'VALIDATION.MIDDLEWARES.CALIBRATION_CONFIG.DATA_TYPE_SHOUD_BE_A_TEXT'
 			)
 		)
 		.isIn(['true', 'false'])
 		.withMessage((value, { req }) =>
 			req.__(
-				'VALIDATION.MIDDLWARES.CALIBRATION_CONFIG.VALUE_ACTUAL_SHOUL_BE_TRUE_OR_FALSE'
+				'VALIDATION.MIDDLEWARES.CALIBRATION_CONFIG.VALUE_ACTUAL_SHOUL_BE_TRUE_OR_FALSE'
 			)
 		),
 ]
@@ -66,12 +66,12 @@ const calibrationConfigParamValidator = [
 	param('id')
 		.notEmpty()
 		.withMessage((value, { req }) =>
-			req.__('VALIDATION.MIDDLWARES.CALIBRATION_CONFIG.ID_NOT_PROVIDE')
+			req.__('VALIDATION.MIDDLEWARES.CALIBRATION_CONFIG.ID_NOT_PROVIDE')
 		)
 		.isNumeric()
 		.withMessage((value, { req }) =>
 			req.__(
-				'VALIDATION.MIDDLWARES.CALIBRATION_CONFIG.DATA_TYPE_SHOULD_BE_A_NUMBER'
+				'VALIDATION.MIDDLEWARES.CALIBRATION_CONFIG.DATA_TYPE_SHOULD_BE_A_NUMBER'
 			)
 		),
 ]

@@ -64,6 +64,7 @@ async function updateEquipmentType(req, res, next) {
 			id,
 			equipmentType
 		)
+
 		res.status(200).send(equipmentTypeUpdate)
 		const loggerMessage = `PUT - ${routeName}/${id} - ${JSON.stringify(
 			equipmentTypeUpdate.id

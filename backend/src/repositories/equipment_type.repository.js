@@ -1,5 +1,6 @@
 /** @format */
 
+import { log } from 'console'
 import { EquipmentTypeModel } from '../models/__index.js'
 
 /**

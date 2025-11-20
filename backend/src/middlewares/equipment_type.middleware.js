@@ -86,7 +86,6 @@ const equipmentTypeBodyActiveValidator = [
  */
 const createEquipmentTypeValidator = [
 	...equipmentTypeBodyValidator,
-	...equipmentTypeBodyActiveValidator,
 	validationResult(),
 ]
 

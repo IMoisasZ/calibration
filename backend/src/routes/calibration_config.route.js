@@ -48,7 +48,6 @@ route.post(
  */
 route.get(
 	'/',
-	verifyToken,
 	getAllCalibrationConfigValidator,
 	CalibrationConfigController.getAllCalibrationConfig
 )

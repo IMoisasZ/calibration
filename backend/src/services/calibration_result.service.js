@@ -44,7 +44,8 @@ async function existCalibrationResultById(id) {
 	if (!calibrationResult) {
 		throw new NotFoundError(
 			i18n.__(
-				'VALIDATION.SERVICES.CALIBRATION_RESULT.CALIBRATION_RESULT_NOT_FOUND'
+				'VALIDATION.SERVICES.CALIBRATION_RESULT.CALIBRATION_RESULT_NOT_FOUND',
+				id
 			)
 		)
 	}
@@ -76,7 +77,8 @@ async function existCalibrationResultByCalibrationId(calibration_id) {
 	if (calibrationResult.length === 0) {
 		throw new NotFoundError(
 			i18n.__(
-				'VALIDATION.SERVICES.CALIBRATION_RESULT.CALIBRATION_RESULT_BY_CALIBRATION_ID_NOT_FOUND'
+				'VALIDATION.SERVICES.CALIBRATION_RESULT.CALIBRATION_RESULT_BY_CALIBRATION_ID_NOT_FOUND',
+				calibration_id
 			)
 		)
 	}

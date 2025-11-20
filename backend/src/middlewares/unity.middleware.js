@@ -33,15 +33,6 @@ const unityBodyValidator = [
 		.withMessage((value, { req }) =>
 			req.__('VALIDATION.MIDDLEWARES.UNITY.DATA_TYPE_SHOULD_BE_A_TEXT')
 		),
-	body('active')
-		.notEmpty()
-		.withMessage((value, { req }) =>
-			req.__('VALIDATION.MIDDLEWARES.UNITY.ACTIVE_NOT_PROVIDE')
-		)
-		.isBoolean()
-		.withMessage((value, { req }) =>
-			req.__('VALIDATION.MIDDLEWARES.UNITY.DATA_TYPE_SHOULD_BE_A_BOOLEAN')
-		),
 ]
 
 /**

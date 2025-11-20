@@ -163,7 +163,55 @@ async function getAllCalibrationsIsAnalysis() {
  * @returns {Promise<CalibrationInstance|null>} The Calibration instance or null if not found.
  */
 async function getCalibration(id, transaction) {
-	return await CalibrationModel.findByPk(id, { transaction })
+	return await CalibrationModel.findByPk(
+		id,
+		{ transaction },
+		{
+			include: [
+				{
+					model: EquipmentModel,
+					include: [
+						{
+							model: OwnerModel,
+							include: [
+								{
+									model: LocalizationModel,
+								},
+							],
+						},
+						{
+							model: EquipmentTypeModel,
+						},
+						{
+							model: UnityModel,
+						},
+						{
+							model: CalibrationPeriodicity,
+						},
+					],
+				},
+				{
+					model: CalibrationResultModel,
+					include: [
+						{
+							model: CalibrationConfigModel,
+						},
+					],
+				},
+				{
+					model: CalibrationAnalysisModel,
+					include: [
+						{
+							model: UserModel,
+						},
+					],
+				},
+				{
+					model: UserModel,
+				},
+			],
+		}
+	)
 }
 
 /**

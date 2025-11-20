@@ -40,6 +40,19 @@ route.post(
 )
 
 /**
+ * @route POST /calibration_teste
+ * @description Temporary route used for testing the basic calibration creation logic
+ * without complex middleware (like file uploads or extensive validation).
+ * This endpoint should ideally be removed or renamed in a production environment
+ * to adhere to RESTful naming conventions (e.g., using '/calibrations').
+ * @access Private/Testing
+ * @controller CalibrationController.createCalibration - Handles the basic creation and business logic.
+ * @deprecated This route name is not RESTful and is intended primarily for internal testing.
+ * Use POST / for creating production records.
+ */
+route.post('/calibration_teste', CalibrationController.createCalibration)
+
+/**
  * @route PUT /:id
  * @description Fully updates an existing calibration record by ID.
  * @access Private
@@ -86,11 +99,11 @@ route.get(
 route.get('/:id', getCalibrationValidator, CalibrationController.getCalibration)
 
 /**
- * @route GET /:id
- * @description Retrieves a single calibration record by its ID.
+ * @route DELETE /:id
+ * @description Deletes a single calibration record by its ID.
  * @access Private
- * @middleware {Array<Function>} getCalibrationValidator - Validates the 'id' route parameter.
- * @controller CalibrationController.getCalibration - Handles fetching the specific record.
+ * @middleware {Array<Function>} deleteCalibrationValidator - Validates the 'id' route parameter.
+ * @controller CalibrationController.deleteCalibration - Handles the record deletion.
  */
 route.delete(
 	'/:id',

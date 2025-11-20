@@ -28,19 +28,19 @@ const calibrationAnalysisBodyValidator = [
 		.exists()
 		.withMessage((value, { req }) =>
 			req.__(
-				'VALIDATION.MIDDLWARES.CALIBRATION_ANALYSIS.CALIBRATION_ID_NOT_PROVIDE'
+				'VALIDATION.MIDDLEWARES.CALIBRATION_ANALYSIS.CALIBRATION_ID_NOT_PROVIDE'
 			)
 		)
 		.notEmpty()
 		.withMessage((value, { req }) =>
 			req.__(
-				'VALIDATION.MIDDLWARES.CALIBRATION_ANALYSIS.CALIBRATION_ID_NOT_BE_NULL'
+				'VALIDATION.MIDDLEWARES.CALIBRATION_ANALYSIS.CALIBRATION_ID_NOT_BE_NULL'
 			)
 		)
 		.isNumeric()
 		.withMessage((value, { req }) =>
 			req.__(
-				'VALIDATION.MIDDLWARES.CALIBRATION_ANALYSIS.CALIBRATION_ID_TYPE_SHOULD_BE_A_NUMBER'
+				'VALIDATION.MIDDLEWARES.CALIBRATION_ANALYSIS.CALIBRATION_ID_TYPE_SHOULD_BE_A_NUMBER'
 			)
 		),
 	// --- original_status validation ---
@@ -63,11 +63,7 @@ const calibrationAnalysisBodyValidator = [
 				'VALIDATION.MIDDLEWARES.CALIBRATION_ANALYSIS.ORIGINAL_STATUS_TYPE_SHOULD_BE_A_TEXT'
 			)
 		)
-		.isIn((value, { req }) => [
-			...req.__(
-				'VALIDATION.MIDDLEWARES.CALIBRATION_ANALYSIS.ORIGINAL_STATUS_SHOULD_BE'
-			),
-		])
+		.isIn(['EM ANALISE', 'APROVADO', 'REPROVADO'])
 		.withMessage((value, { req }) =>
 			req.__(
 				'VALIDATION.MIDDLEWARES.CALIBRATION_ANALYSIS.ORIGINAL_STATUS_ACCEPTS_ARE'
@@ -93,11 +89,7 @@ const calibrationAnalysisBodyValidator = [
 				'VALIDATION.MIDDLEWARES.CALIBRATION_ANALYSIS.DECISION_STATUS_SHOULD_BE_A_TEXT'
 			)
 		)
-		.isIn((valus, { req }) => [
-			...req.__(
-				'VALIDATION.MIDDLEWARES.CALIBRATION_ANALYSIS.DECISION_STATUS_SHOULD_BE'
-			),
-		])
+		.isIn(['APROVADO CONDICIONAL', 'REPROVADO'])
 		.withMessage((value, { req }) =>
 			req.__(
 				'VALIDATION.MIDDLEWARES.CALIBRATION_ANALYSIS.DECISION_STATUS_ACCEPTS_ARE'
@@ -132,7 +124,7 @@ const calibrationAnalysisBodyValidator = [
 		.isString()
 		.withMessage((value, { req }) =>
 			req.__(
-				'VALIDATION.MIDDLEWARES.CALIBRATION_ANALYSIS.NOTES_TYPE_SHOULD_BE_A_TEXT'
+				'VALIDATION.MIDDELWARES.CALIBRATION_ANALYSIS.NOTES_TYPE_SHOULD_BE_A_TEXT'
 			)
 		)
 		.isLength({ min: lengthNotes.min, max: lengthNotes.max })

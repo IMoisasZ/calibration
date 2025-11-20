@@ -179,8 +179,8 @@ async function deleteCalibration(req, res, next) {
 async function createCalibrationWithResults(req, res, next) {
 	try {
 		const calibrationData = JSON.parse(req.body.calibrationData)
+
 		const calibrationResults = JSON.parse(req.body.calibrationResults)
-		console.log(typeof calibrationResults)
 
 		const certificateFilePath = req.file
 			? `${BASE_URL_CERTIFICATES}${req.file.filename}`
@@ -195,7 +195,11 @@ async function createCalibrationWithResults(req, res, next) {
 		const newCalibration =
 			await CalibrationService.createCalibrationWithResults(finalData)
 
-		return res.status(201).send(newCalibration)
+		const calibrationReturn = res.status(201).send(newCalibration)
+		const loggerMessage = `POST - ${routeName} - ${JSON.stringify(
+			calibrationReturn.id
+		)}`
+		logger.info(loggerMessage)
 	} catch (error) {
 		next(error)
 	}

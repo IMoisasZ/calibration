@@ -152,7 +152,7 @@ O sistema requer inicialmente o cadastro de:
 }
 ```
 
-![POST Localization]![POST Localization](./src/assets/create_localization.PNG)
+![POST Localization](./src/assets/create_localization.PNG)
 
 ---
 

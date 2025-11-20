@@ -194,16 +194,6 @@ O sistema requer inicialmente o cadastro de:
 
 ---
 
-Se desejar, posso adicionar:
-
-- Badges do GitHub
-- Exemplos de respostas completas
-- Documentação dos modelos
-- Diagrama ER do banco de dados
-- Fluxo de calibração em detalhes
-
----
-
 ## 📄 Acesso à Documentação (JSDoc)
 
 Se a documentação já tiver sido gerada, você pode acessá-la diretamente pelo arquivo **index.html** dentro da pasta `docs`.
